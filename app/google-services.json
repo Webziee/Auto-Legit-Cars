@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "691091503664",
+    "project_id": "tablayoutdemo-1c641",
+    "storage_bucket": "tablayoutdemo-1c641.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691091503664:android:1dc62dcd067fc998b68bf5",
+        "android_client_info": {
+          "package_name": "com.example.tablayout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXWm7TlrTHg8UhlzB1WY9B8gUMou27FaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

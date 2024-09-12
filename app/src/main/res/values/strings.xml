@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">TabLayout</string>
+    <string name="login">Sign in</string>
+    <string name="log_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="signup">signup</string>
+    <string name="auto_legit_cars">Auto Legit Cars</string>
+    <string name="email_or_user_name">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="or">sign up with</string>
+    <string name="sign_in_to_enjoy_the_best_car_experience">Sign in to enjoy the best car experience</string>
+    <string name="go_ahead_and_set_up_your_account">Go ahead and set up your account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="this_is_a_custom_toast">This is a custom toast</string>
+    <string name="or_login_with">Sign in with</string>
+    <string name="google">Google</string>
+    <string name="google_image">google_image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="edit">Edit</string>
+    <string name="profile">Profile</string>
+    <string name="email">Email</string>
+    <string name="current_password">Current Password</string>
+    <string name="footer_logo">Footer Logo</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="name">Name</string>
+    <string name="logged_in_email">Logged in Email</string>
+    <string name="logo">logo</string>
+    <string name="search_make_model_and_varient">Search make, model and varient</string>
+    <string name="min_price">Min Price</string>
+    <string name="max_price">Max price</string>
+    <string name="search">search</string>
+
+    <string-array name="min_price_items">
+        <item>Min Price</item>
+        <item>1</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="max_price_items">
+        <item>Max Price</item>
+        <item>100000000</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="location_items">
+        <item>Location</item>
+        <item>Gauteng</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="body_type_items">
+        <item>Body Type</item>
+        <item>SUV</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="min_year_items">
+        <item>Min year</item>
+        <item>2009</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="max_year_items">
+        <item>Max Year</item>
+        <item>2024</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string-array name="transmisson_items">
+        <item>Transmission</item>
+        <item>Automatic</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="max_mileage_items">
+        <item>Max mileage</item>
+        <item>10</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+</resources>
