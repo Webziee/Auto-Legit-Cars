@@ -12,5 +12,10 @@
     <color name="light_gray">#EEF0F2</color>
     <color name="matt_white">#F5F7F8</color>
     <color name="yellow">#F9E400</color>
-
+    <color name="DarkMode">#FF000000</color>
+    <color name="LightMode">#FFFFFFFF</color>
+    <color name="Red">#FF0000</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="Yellow">#FFFF00</color>
 </resources>
