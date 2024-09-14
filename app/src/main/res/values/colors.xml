@@ -18,4 +18,5 @@
     <color name="White">#FFFFFF</color>
     <color name="Black">#000000</color>
     <color name="Yellow">#FFFF00</color>
+    <color name="blackopacity">#80FFFFFF</color>
 </resources>

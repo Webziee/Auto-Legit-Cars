@@ -56,6 +56,9 @@
     <string name="hint_year">Year Model</string>
     <string name="hint_mileage">Mileage</string>
     <string name="hint_description">Tell Us More About Your Car</string>
+    <string name="sell">Sell</string>
+    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing I understand and agree with the Legit auto parts Terms & conditions and privacy policy.]]></string>
+    <string name="enter_details_of_the_car_you_want_to_sell">Enter details of the car you would like to sell</string>
 
     <string-array name="min_price_items">
         <item>Min Price</item>
@@ -145,6 +148,5 @@
         <item>2 Star - Bad</item>
         <item>1 Star - Needs Work</item>
     </string-array>
-
 
 </resources>

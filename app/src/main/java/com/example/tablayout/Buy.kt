@@ -49,10 +49,11 @@ class Buy : Fragment() {
 
         // Set the OnClickListener for the button
         searchButton.setOnClickListener {
-            // Fetch data from Firestore
-            fetchCarsFromFirestore()
+
 
         }
+        // Fetch data from Firestore
+        fetchCarsFromFirestore()
 
         fun setupSpinner(spinner: Spinner, arrayId: Int) {
             val adapter = ArrayAdapter.createFromResource(
@@ -88,7 +89,7 @@ class Buy : Fragment() {
         setupSpinner(view.findViewById(R.id.body_type), R.array.body_type_items)
         setupSpinner(view.findViewById(R.id.min_year), R.array.min_year_items)
         setupSpinner(view.findViewById(R.id.max_year), R.array.max_year_items)
-        setupSpinner(view.findViewById(R.id.transmission), R.array.transmisson_items)
+        setupSpinner(view.findViewById(R.id.transmission), R.array.car_transmission)
         setupSpinner(view.findViewById(R.id.max_mileage), R.array.max_mileage_items)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)

@@ -41,13 +41,14 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-    // Firebase libraries
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    implementation("com.google.firebase:firebase-auth-ktx") // For Firebase Authentication
+
+    // Firestore dependency
+    implementation(libs.firebase.firestore.ktx)
 
     // Other dependencies
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,9 +57,14 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation(libs.firebase.storage.ktx)
 
     // Test dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+
+
+

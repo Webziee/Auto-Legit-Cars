@@ -1,5 +1,6 @@
 package com.example.tablayout
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,19 +31,26 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         holder.carCondition.text = car.condition
         holder.carDealership.text = car.dealership
         holder.carLocation.text = car.location
-//        holder.carimage.setImageResource(car.maincarimage)
 
-        // Load the main car image using Picasso
-        Picasso.get()
-            .load(car.maincarimage)
-            .error(R.drawable.error) // Optional: an error image if loading fails
-            .into(holder.carimage)
+        // Debug log
+        Log.d("CarAdapter", "Image URL: ${car.maincarimage}")
+
+        // Check if the image URL is not empty
+        if (car.maincarimage.isNotEmpty()) {
+            Picasso.get()
+                .load(car.maincarimage)
+                .error(R.drawable.error)
+                .into(holder.carimage)
+        } else {
+            holder.carimage.setImageResource(R.drawable.error) // Placeholder or error image
+        }
 
         // Setup for nested horizontal RecyclerView for images
         val carImagesAdapter = CarImagesAdapter(car.imageResourceList)
         holder.nestedRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
         holder.nestedRecyclerView.adapter = carImagesAdapter
     }
+
 
     override fun getItemCount(): Int = carList.size
 
