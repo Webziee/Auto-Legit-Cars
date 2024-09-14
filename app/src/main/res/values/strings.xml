@@ -32,6 +32,8 @@
     <string name="min_price">Min Price</string>
     <string name="max_price">Max price</string>
     <string name="search">search</string>
+    <string name="reset">Reset</string>
+    <string name="result">Results</string>
 
     <string-array name="min_price_items">
         <item>Min Price</item>
