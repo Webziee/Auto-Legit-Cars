@@ -35,6 +35,20 @@
     <string name="reset">Reset</string>
     <string name="result">Results</string>
 
+    <string name="application_name">LegitAutoCars_ST10088734</string>
+    <string name="biometrics">Biometrics</string>
+    <string name="theme">Theme</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="push_notifications">Push Notifications</string>
+
+    <string name="selection_on">ON</string>
+    <string name="selection_off">OFF</string>
+    <string name="theme_light">LIGHT</string>
+    <string name="theme_dark">DARK</string>
+    <string name="english">ENG</string>
+    <string name="afrikaans">AFR</string>
+
     <string-array name="min_price_items">
         <item>Min Price</item>
         <item>1</item>
