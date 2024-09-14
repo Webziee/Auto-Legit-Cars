@@ -47,6 +47,14 @@
     <string name="english">ENG</string>
     <string name="afrikaans">AFR</string>
 
+    <string name="select_make">Select Car Make</string>
+    <string name="sell_subheading">Fill In The Following About Your Car:</string>
+    <string name="hint_model">Car Model</string>
+    <string name="hint_make">Car Make</string>
+    <string name="hint_year">Year Model</string>
+    <string name="hint_mileage">Mileage</string>
+    <string name="hint_description">Tell Us More About Your Car</string>
+
     <string-array name="min_price_items">
         <item>Min Price</item>
         <item>1</item>
@@ -101,4 +109,40 @@
         <item>Option 2</item>
         <item>Option 3</item>
     </string-array>
+
+    <string-array name="car_transmission">
+        <item>Transmission Type</item>
+        <item>Automatic</item>
+        <item>Manual</item>
+        <item>Semi-Automatic</item>
+    </string-array>
+
+    <string-array name="car_fuel">
+        <item>Fuel Type</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
+        <item>Electric</item>
+    </string-array>
+
+    <string-array name="car_body_type">
+        <item>Body Type</item>
+        <item>Sedan</item>
+        <item>Hatchback</item>
+        <item>Station Wagon</item>
+        <item>SUV</item>
+        <item>Bakkie</item>
+        <item>Coupe</item>
+        <item>Convertible</item>
+    </string-array>
+
+    <string-array name="car_condition">
+        <item>Condition Rating</item>
+        <item>5 Star - Excellent</item>
+        <item>4 Star - Great</item>
+        <item>3 Star - Okay</item>
+        <item>2 Star - Bad</item>
+        <item>1 Star - Needs Work</item>
+    </string-array>
+
+
 </resources>
