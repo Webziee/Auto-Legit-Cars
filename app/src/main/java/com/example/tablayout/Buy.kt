@@ -95,7 +95,18 @@ class Buy : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         val paginationLayout: LinearLayout = view.findViewById(R.id.pagination_layout)
 
-        carAdapter = CarAdapter(carList)
+        //According to Poulopoulos (2015),the correct way to pass data from one fragment to another is as follows:
+        carAdapter = CarAdapter(carList){carTitle ->
+            //Handling the navigation to the booking fragment and we are going to pass the car title (Poulopoulos, 2015),(Mourya, 2023).
+            val bookTestDriveFragment = fragment_book_test_drive()
+            //using arguments bundle to pass the car title to the booking fragment (Poulopoulos, 2015),(Mourya, 2023).
+            val bundle = Bundle()
+            bundle.putString("carTitle", carTitle)
+            bookTestDriveFragment.arguments = bundle
+            //the following code will navigate the user to the book a test drive fragment (Mourya, 2023).
+            //Additionally, we will be passing the carID to the book a test drive fragment
+            parentFragmentManager.beginTransaction().replace(R.id.frame_layout, bookTestDriveFragment).addToBackStack(null).commit()
+        }
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = carAdapter
