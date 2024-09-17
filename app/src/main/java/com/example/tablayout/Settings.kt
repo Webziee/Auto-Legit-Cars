@@ -23,8 +23,6 @@ class Settings : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    //Below i am going to initialise the firebaseAuth
-
 
     /*Below i am declaring my Global lateinit variables for my email value and each button that
       will be used in my functions right at the bottom*/

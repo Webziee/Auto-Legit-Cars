@@ -16,6 +16,11 @@
     <string name="or_login_with">Sign in with</string>
     <string name="google">Google</string>
     <string name="google_image">google_image</string>
+    <string name="car_selected">Car Selected:</string>
+    <string name="book_test_drive">Book A Test Drive</string>
+    <string name="select_test_date_time">Select A Test Date And Time</string>
+    <string name="click_above">Click Above</string>
+    <string name="submit_booking">Submit Booking</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
@@ -34,6 +39,7 @@
     <string name="search">search</string>
     <string name="reset">Reset</string>
     <string name="result">Results</string>
+    <string name="booking">Book A Test Drive</string>
 
     <string name="application_name">LegitAutoCars_ST10088734</string>
     <string name="biometrics">Biometrics</string>
