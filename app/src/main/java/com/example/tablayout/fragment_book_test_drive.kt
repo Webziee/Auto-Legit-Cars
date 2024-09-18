@@ -132,10 +132,11 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val car = car_selected_display.text.toString()
         val loggedInEmail: FirebaseUser? = auth.currentUser
         val email = loggedInEmail?.email
+        val phone = "0812420589"
         val whatsappMSG = "Good Day Sir/Madam,\nI am interested in your $car which i saw for sale on the app.\nWould you please provide me with more details on the vehicle.\n" +
                 "~ $email"
         whatsappIcon.setOnClickListener{
-            openWhatsappMessage("0812420589", whatsappMSG)
+            openWhatsappMessage(phone, whatsappMSG)
         }
 
 
