@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="false">
@@ -23,34 +24,14 @@
                 android:src="@drawable/logo_sell_page"/>
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="190dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginBottom="5dp">-->
-<!--            -->
-<!--            <com.google.android.material.imageview.ShapeableImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="130dp"-->
-<!--                android:src="@drawable/sell_page_image1"/>-->
-<!--            -->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:text="@string/sell_subheading"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textColor="@color/yellow"-->
-<!--                android:layout_marginLeft="-365dp"-->
-<!--                android:layout_marginTop="140dp"/>-->
-<!--        </LinearLayout>-->
-
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/sell_page_image1"
             android:layout_margin="0dp"
-            android:padding="0dp"/>
+            android:contentDescription="@string/capture_image"
+            android:padding="0dp"
+            android:src="@drawable/sell_page_image1"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,101 +42,200 @@
             android:textColor="@color/white"
             android:textSize="15sp"/>
 
+        <!-- ImageView to display the selected image -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <Spinner
                 android:id="@+id/sell_car_make"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
             <Spinner
                 android:id="@+id/sell_car_model"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/sell_car_year"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
             <Spinner
                 android:id="@+id/sell_car_transmission"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
             <Spinner
                 android:id="@+id/sell_car_fuel_type"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
             <Spinner
                 android:id="@+id/sell_car_body_type"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/sell_car_condition"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@drawable/spinner_border"
                 android:layout_margin="10dp"
-                android:textAlignment="center"/>
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/sell_car_special"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:autofillHints="Quattro"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:hint="@string/special_edition"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/sell_mileage"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:autofillHints="1000"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:hint="@string/mileage"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/sell_dealership"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:autofillHints="Dealership"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:hint="@string/dealership"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/sell_location"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:autofillHints="Location"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:hint="@string/location"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/sell_price"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:autofillHints="1000000"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:hint="@string/selling_price"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
 
-        <!-- ImageView to display the selected image -->
-        <LinearLayout
+        <ImageView
             android:id="@+id/imageContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- This LinearLayout will contain ImageView instances -->
-        </LinearLayout>
+            android:contentDescription="@string/main_image"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+        </ImageView>
 
-
-
-        <!-- Button to trigger image selection -->
-        <Button
-            android:id="@+id/buttonUpload"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload Main Image"
-            android:layout_marginTop="20dp"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:gravity="center"
+            android:text="@string/once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image"
+            android:textColor="#757575"
+            android:textSize="12sp" />
 
-        <!-- Search Button -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
-            android:id="@+id/sell_button"
-            android:layout_width="250dp"
+            android:id="@+id/btnPickImages"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -164,46 +244,45 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:gravity="center"
-            android:text="@string/sell"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="@string/pick_selling_images" />
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <!-- Search Button -->
+        <Button
+            android:id="@+id/sell_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="2dp"
             android:backgroundTint="@color/auto_red"
-            android:textColor="@color/textColor"
-            android:textSize="17sp"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/sell"
+            android:textColor="#000000"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:textSize="12sp"
-            android:layout_marginTop="20dp"/>
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginBottom="10dp">-->
-<!--            <EditText-->
-<!--                android:id="@+id/car_description"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="@string/hint_description"-->
-<!--                android:textColorHint="@color/Red"-->
-<!--                android:inputType="textImeMultiLine"-->
-<!--                android:gravity="top|start"-->
-<!--                android:minLines="4"-->
-<!--                android:maxLines="6"-->
-<!--                android:textColor="@color/Red"-->
-<!--                android:padding="16dp"-->
-<!--                android:textSize="16sp"-->
-<!--                android:scrollHorizontally="false"-->
-<!--                android:overScrollMode="always"-->
-<!--                android:ellipsize="none"-->
-<!--                android:singleLine="false"-->
-<!--                android:imeOptions="actionDone"/>-->
-<!--        </LinearLayout>-->
-
+            android:text="@string/by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"
+            android:textColor="#757575"
+            android:textSize="12sp" />
     </LinearLayout>
-
 </androidx.core.widget.NestedScrollView>

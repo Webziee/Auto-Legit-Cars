@@ -16,7 +16,7 @@
     <string name="or_login_with">Sign in with</string>
     <string name="google">Google</string>
     <string name="google_image">google_image</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
     <string name="edit">Edit</string>
@@ -59,6 +59,17 @@
     <string name="sell">Sell</string>
     <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing I understand and agree with the Legit auto parts Terms & conditions and privacy policy.]]></string>
     <string name="enter_details_of_the_car_you_want_to_sell">Enter details of the car you would like to sell</string>
+    <string name="mileage">Mileage</string>
+    <string name="location">Location</string>
+    <string name="dealership">Dealership</string>
+    <string name="special_edition">Special edition</string>
+    <string name="selling_price">Selling Price</string>
+    <string name="upload_main_image">Upload Main Image</string>
+    <string name="select_multiple_images">Select multiple images</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="main_image">Main Image</string>
+    <string name="pick_selling_images">Pick Images</string>
+    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Once you have selected your images, click on the one you want as your main selling image</string>
 
     <string-array name="min_price_items">
         <item>Min Price</item>
