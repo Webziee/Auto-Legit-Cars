@@ -60,7 +60,7 @@ for sale online. This Android app's goal is to provide a smooth and effective us
 fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
 experience while purchasing and selling vehicles.
 
-### Purpose of the 'Legit Auto Cars' Application
+### 5.1 Purpose of the 'Legit Auto Cars' Application
 The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
 and communication between and among the company and its clients which is all done online and from the app. The application does not allow clients 
 or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
@@ -69,11 +69,11 @@ WhatsApp messaging integration, booking a test drive, advanced searching, and to
 The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and submit their own cars for review 
 and ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person dealership visits. 
 
-### DESIGN SPECIFICATIONS
+### 5.2 DESIGN SPECIFICATIONS
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
 They guarantee the app's continued scalability, security, usability, and adaptability for new developments:
 
-#### Focus On User Experience (UX)
+#### 5.2.1 Focus On User Experience (UX)
 ##### Simplicity and ease of use:
 - The software is intended for a wide range of users, including those who might not be tech-smart. Thus, simplicity is of the utmost importance.
 The screens are easy to use, and the navigation is maintained simple with obvious buttons and icons and key operations like making a test-drive
@@ -82,7 +82,7 @@ booking, uploading a vehicle, and changing settings require very few steps and a
 - Every screen in the design has the same navigation structure and layout, thus increasing usability as colours, fonts, and icons are used often
 since it makes it easier for users to anticipate interactions.
 
-#### Performance and Speed
+#### 5.2.2 Performance and Speed
 ##### Loading Times Optimized 
 - The app's main focus, automotive images, are optimised for quick loading without compromising quality. This Performance can be enhanced by using lazy
 loading to make sure that only the relevant photos load at first and appropriate indexing and querying algorithms in the Firestore database maintain the
@@ -91,13 +91,13 @@ efficiency of data retrieval for our advanced searching.
 - The app was designed to consume as little data as possible, since it is likely to be used on mobile networks, this process involves reducing the number of
 API requests made as well as compressing high quality images since they are not data freindly.
 
-#### Scalability
+#### 5.2.3 Scalability
 ##### Architecture Style: Modular
 - The app is built with a modular architecture, which allows for future expansion without having to rewrite significant parts of the code. New features,
 such as price comparison tools or a favorites list, can be added easily, additionally the app’s infrastructure should be designed to handle an increasing
 number of users and vehicle listings, which ensures long-term sustainability.
 
-#### Security
+#### 5.2.4 Security
 ##### Protection of User Data
 - Data security for vehicles and individuals is a crucial design factor. Data encryption, secure storage of sensitive data (such car listings), and secure
 authentication (like email-based logins) were taken into consideration, hence we have decided to use firebase as it is secure.
@@ -105,10 +105,13 @@ authentication (like email-based logins) were taken into consideration, hence we
 - It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
 and APIs were used to start conversations are secured as well as encryption of data.
 
-#### Visual Design
+#### 5.2.5 Visual Design
 ##### Identity
 - The apps name (which is essentially the name of the sole company, in this case we used a fictitious name: 'Legit Auto Cars') and branding are
 reflected in the app in order to keep a polished and recognisable look, the colour scheme, typography, and iconography adhere to the company's brand guidelines.
+
+### 5.3. GitHub and GitHub Action Itilization
+
 
 
 
