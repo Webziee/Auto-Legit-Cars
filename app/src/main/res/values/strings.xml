@@ -70,6 +70,15 @@
     <string name="main_image">Main Image</string>
     <string name="pick_selling_images">Pick Images</string>
     <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Once you have selected your images, click on the one you want as your main selling image</string>
+    <string name="car_selected">Car Selected</string>
+    <string name="select_test_date_time">Select Test Date &amp; Time</string>
+    <string name="click_above">click_above</string>
+    <string name="submit_booking">Submit Booking</string>
+    <string name="whatapp_us">whatApp_Us</string>
+    <string name="book_test_drive">Book test drive</string>
+    <string name="settings">settings</string>
+    <string name="booking">Book Test Drive</string>
+    <string name="or_contact_us_by">Or Contact us on</string>
 
     <string-array name="min_price_items">
         <item>Min Price</item>

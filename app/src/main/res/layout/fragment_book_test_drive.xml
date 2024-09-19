@@ -1,143 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_book_test_drive"
-    android:background="@color/DarkMode"
-    android:orientation="vertical">
+    tools:context="fragment_book_test_drive"
+    android:background="@color/DarkMode">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
-        <com.google.android.material.imageview.ShapeableImageView
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logo_sell_page"/>
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="190dp"
-    android:orientation="horizontal">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="0dp"
-        android:padding="0dp"
-        android:src="@drawable/book_test_drive_image"/>
-</LinearLayout>
+            android:layout_height="140dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo_sell_page" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:padding="5dp">
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:src="@drawable/book_test_drive_image" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/car_selected"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:gravity="top"
-            android:layout_marginStart="125dp"/>
-        <EditText
-            android:id="@+id/booking_car_selected"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="-220dp"
-            android:textSize="15sp"
-            android:inputType="none"
-            android:focusable="false"
-            android:text="@string/car_selected"
-            android:textColor="@color/white"
-            android:textAlignment="center"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:padding="5dp">
-        <TextView
-            android:id="@+id/select_date_time_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:text="@string/select_test_date_time"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:gravity="top"
-            android:layout_marginStart="40dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"/>
-        <EditText
-            android:id="@+id/booking_date_time"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="-310dp"
-            android:textSize="15sp"
-            android:inputType="none"
-            android:focusable="false"
-            android:text="@string/click_above"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            tools:ignore="TextFields" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:padding="5dp">
-        <Button
-            android:id="@+id/book_test_drive"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center"
-            android:layout_marginStart="105dp"
             android:gravity="center"
-            android:text="@string/submit_booking"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/auto_red"
-            android:textColor="@color/textColor"
-            android:textSize="17sp"/>
-    </LinearLayout>
+            android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_selected"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:layout_marginBottom="20dp" />
+            <EditText
+                android:id="@+id/booking_car_selected"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:inputType="none"
+                android:focusable="false"
+                android:textColor="@color/white"
+                android:textAlignment="center" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:layout_marginTop="5dp">
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/whatApp_Us"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="top"
-            android:layout_marginStart="65dp"/>
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/select_date_time_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spinner_border"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:minHeight="48dp"
+                android:text="@string/select_test_date_time"
+                android:textColor="@color/white"
+                android:padding="20dp"
+                android:textSize="15sp" />
+            <EditText
+                android:id="@+id/booking_date_time"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:inputType="none"
+                android:focusable="false"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                tools:ignore="TextFields" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:padding="5dp">
+            <Button
+                android:id="@+id/book_test_drive"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/submit_booking"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/auto_red"
+                android:textColor="@color/textColor"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#474646" />
+
+            <TextView
+                android:id="@+id/login_in_with_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="@string/or_contact_us_by"
+                android:textColor="#474646"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#474646" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:weightSum="2">
+
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/whatsapp_icon"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_gravity="bottom"
-            android:padding="5dp"
-            android:layout_marginStart="-175dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/whatsapp_logo"
             android:background="@drawable/whatapp_circular_shape"
-            android:scaleType="centerCrop"
-            android:clipToOutline="true"
             android:clickable="true"
-            android:focusable="true"/>
+            android:clipToOutline="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:src="@drawable/whatsapp_logo"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </LinearLayout>
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

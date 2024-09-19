@@ -32,15 +32,15 @@
                     app:shapeAppearance="@style/circular"
                     app:srcCompat="@drawable/dm_settings_icon_100"/>
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginStart="-150dp"
                 android:layout_marginTop="120dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="@color/White"
                 android:text="@string/settings"
-                android:textSize="35sp"/>
+                android:textColor="@color/White"
+                android:textSize="35sp" />
         </LinearLayout>
 
         <LinearLayout

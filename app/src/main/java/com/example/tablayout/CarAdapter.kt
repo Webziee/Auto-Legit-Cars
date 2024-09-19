@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import android.util.Base64
+import android.widget.Button
 
 
-class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
+class CarAdapter(private var carList: List<Car>, private var onBookClick: (carTitle: String) -> Unit) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
     
     fun updateData(newCars: List<Car>) {
         carList = newCars
@@ -51,6 +52,10 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         val carImagesAdapter = CarImagesAdapter(car.imageResourceList)
         holder.nestedRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
         holder.nestedRecyclerView.adapter = carImagesAdapter
+
+        holder.bookTestDrive.setOnClickListener{
+            onBookClick(car.year +" "+ car.make +" "+ car.model +" "+ car.special)
+        }
     }
 
     override fun getItemCount(): Int = carList.size
@@ -65,6 +70,7 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         val carDealership: TextView = itemView.findViewById(R.id.car_dealership)
         val carLocation: TextView = itemView.findViewById(R.id.car_location)
         val nestedRecyclerView: RecyclerView = itemView.findViewById(R.id.nested_recycler_view)
+        val bookTestDrive: Button = itemView.findViewById(R.id.book_test_drive_button)
     }
 }
 

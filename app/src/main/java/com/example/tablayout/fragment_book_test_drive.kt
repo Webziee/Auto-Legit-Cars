@@ -1,5 +1,3 @@
-package com.example.tablayout
-
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
@@ -22,6 +20,7 @@ import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.tablayout.R
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -53,7 +52,7 @@ private const val ARG_PARAM2 = "param2"
 
 /*Below we going to allow this fragment to be the listener for the date and time, this is done by implementing
  the OnDateSetListener and OnTimeSetListener(Domenic, 2022)*/
-class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
+public class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
 
     /*Below i am declaring my Global lateinit variables*/
     private lateinit var firestore: FirebaseFirestore
@@ -148,7 +147,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     {
         //launch dialog by creating date picker dialog
         DatePickerDialog(requireContext(), this,calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                                            calendar.get(Calendar.DAY_OF_MONTH)).show()
+            calendar.get(Calendar.DAY_OF_MONTH)).show()
     }
     //This function will be invoked with the date selected by the user (Domenic, 2022)
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
