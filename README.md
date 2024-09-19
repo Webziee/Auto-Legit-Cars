@@ -51,10 +51,10 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Demonstration Video
 
 ## 5. REPORT ON 'LEGIT AUTO CARS' 
-The development team has started to develop and build the "Legit Auto Cars" appplication, which is designed for a sole automobile
-company to connect with their clientel. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and 
-WeBuyCars, but is leaning more towards the WeBuyCars idea in which an app is created for a sole company to interact with their clients
-(potential clients) whereas the other 2 apps allow for multiple companies, and potential clinets to interact. With the use of 'Legit Auto Cars', 
+The development team has started to develop and build the "Legit Auto Cars" application, which is designed for a sole automobile
+company to connect and engage with their clientele. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and 
+WeBuyCars, but is leaning more towards the WeBuyCars idea in which an app is created for a sole company to interact with their clients whereas the
+other 2 apps allow for multiple companies, and potential clients to interact. With the use of 'Legit Auto Cars', 
 users will be able to upload automobiles they want to sell to a company and view the different vehicles that that company has available
 for sale online. This Android app's goal is to provide a smooth and effective user experience by incorporating new and creative features into the 
 fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
@@ -62,13 +62,53 @@ experience while purchasing and selling vehicles.
 
 ### Purpose of the 'Legit Auto Cars' Application
 The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
-and communication between and amoung the company and its clients as this will all be done online and from the app. The application does 
-not allow clients or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users
-to engage, interact and communicate with eachother. The app includes features that makes the clients and the companys lives much easier such 
-as viewing, uploading, whatsapp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature
-and a price comparison tool. The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and 
-submit their own cars for review. It ensures a seamless digital experience for users by doing away with the necessity for physical paperwork 
-and in-person dealership visits. 
+and communication between and among the company and its clients which is all done online and from the app. The application does not allow clients 
+or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
+communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
+WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
+The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and submit their own cars for review 
+and ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person dealership visits. 
+
+### DESIGN SPECIFICATIONS
+The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
+They guarantee the app's continued scalability, security, usability, and adaptability for new developments:
+
+#### Focus On User Experience (UX)
+##### Simplicity and ease of use:
+- The software is intended for a wide range of users, including those who might not be tech-smart. Thus, simplicity is of the utmost importance.
+The screens are easy to use, and the navigation is maintained simple with obvious buttons and icons and key operations like making a test-drive
+booking, uploading a vehicle, and changing settings require very few steps and are easy to manipulate.
+##### Consistency 
+- Every screen in the design has the same navigation structure and layout, thus increasing usability as colours, fonts, and icons are used often
+since it makes it easier for users to anticipate interactions.
+
+#### Performance and Speed
+##### Loading Times Optimized 
+- The app's main focus, automotive images, are optimised for quick loading without compromising quality. This Performance can be enhanced by using lazy
+loading to make sure that only the relevant photos load at first and appropriate indexing and querying algorithms in the Firestore database maintain the
+efficiency of data retrieval for our advanced searching.
+##### Efficiently of Mobile Data 
+- The app was designed to consume as little data as possible, since it is likely to be used on mobile networks, this process involves reducing the number of
+API requests made as well as compressing high quality images since they are not data freindly.
+
+#### Scalability
+##### Architecture Style: Modular
+- The app is built with a modular architecture, which allows for future expansion without having to rewrite significant parts of the code. New features,
+such as price comparison tools or a favorites list, can be added easily, additionally the app’s infrastructure should be designed to handle an increasing
+number of users and vehicle listings, which ensures long-term sustainability.
+
+##### Security
+##### Protection of User Data
+- Data security for vehicles and individuals is a crucial design factor. Data encryption, secure storage of sensitive data (such car listings), and secure
+authentication (like email-based logins) were taken into consideration, hence we have decided to use firebase as it is secure.
+
+##### Whatsapp Integration 
+- It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
+and APIs were used to start conversations are secured as well as encryption of data.
+
+
+
+
 
 
 
