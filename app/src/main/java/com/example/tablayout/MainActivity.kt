@@ -260,7 +260,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCustomToast(message: String, iconResId: Int) {
         val inflater = layoutInflater
-        val layout: View = inflater.inflate(R.layout.customtoast, findViewById(R.id.custom_toast_root))
+        val layout: View = inflater.inflate(R.layout.customtoast, null) // Inflate directly from XML
         val toastMessage: TextView = layout.findViewById(R.id.toast_message)
         val toastIcon: ImageView = layout.findViewById(R.id.toast_icon)
 
@@ -272,4 +272,5 @@ class MainActivity : AppCompatActivity() {
         toast.view = layout
         toast.show()
     }
+
 }

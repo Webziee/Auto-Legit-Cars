@@ -15,29 +15,40 @@
         android:orientation="vertical"
         android:background="@drawable/result_card_borders">
 
+        <!-- Horizontal RecyclerView for Car Images -->
+
         <ImageView
             android:id="@+id/car_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="2dp"/>
-
-        <!-- Horizontal RecyclerView for Car Images -->
+            android:layout_height="255dp"
+            android:layout_marginBottom="2dp"   
+            android:scaleType="centerCrop" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/nested_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal" />
 
         <TextView
             android:id="@+id/car_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="19sp"
             android:textStyle="bold"
+            android:textColor="#ffff"
+            android:paddingLeft="8dp"/>
+
+        <TextView
+            android:id="@+id/buy_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textFontWeight="@integer/material_motion_duration_short_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingTop="1dp"
             android:textColor="#ffff"
             android:paddingLeft="8dp"/>
 
@@ -46,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="-10dp"
             android:padding="8dp"
             >
 
