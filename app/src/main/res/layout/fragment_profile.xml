@@ -176,13 +176,27 @@
             android:background="@color/white"
             android:layout_marginTop="8dp"/>
 
+        <Button
+            android:id="@+id/book_test_drive"
+            android:layout_width="200dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="@string/book_test_drive"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/auto_red"
+            android:textColor="@color/textColor"
+            android:textSize="17sp"/>
 
         <Button
             android:id="@+id/btnSignOut"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="20dp"
@@ -192,7 +206,7 @@
             android:textAllCaps="false"
             android:backgroundTint="@color/auto_red"
             android:textColor="@color/textColor"
-            android:textSize="17sp" />
+            android:textSize="17sp"/>
 
     </LinearLayout>
 

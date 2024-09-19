@@ -130,5 +130,20 @@
             android:textColor="#ffff"
             android:paddingLeft="8dp"/>
 
+        <Button
+            android:id="@+id/book_test_drive_button"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/booking"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/auto_red"
+            android:textColor="@color/textColor"
+            android:textSize="17sp">
+        </Button>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
