@@ -97,14 +97,20 @@ API requests made as well as compressing high quality images since they are not 
 such as price comparison tools or a favorites list, can be added easily, additionally the app’s infrastructure should be designed to handle an increasing
 number of users and vehicle listings, which ensures long-term sustainability.
 
-##### Security
+#### Security
 ##### Protection of User Data
 - Data security for vehicles and individuals is a crucial design factor. Data encryption, secure storage of sensitive data (such car listings), and secure
 authentication (like email-based logins) were taken into consideration, hence we have decided to use firebase as it is secure.
-
 ##### Whatsapp Integration 
 - It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
 and APIs were used to start conversations are secured as well as encryption of data.
+
+#### Visual Design
+##### Identity
+- The apps name (which is essentially the name of the sole company, in this case we used a fictitious name: 'Legit Auto Cars') and branding are
+reflected in the app in order to keep a polished and recognisable look, the colour scheme, typography, and iconography adhere to the company's brand guidelines.
+
+
 
 
 
