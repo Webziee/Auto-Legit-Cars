@@ -16,12 +16,22 @@ and lastly  a conclusion that reflects on the project and its outcomes.
 1. [READ ME](#read-me)
 2. [TEAM MEMBERS](#group-memers)
 3. [FEATURES SELECTED](#features)
-4. [CHECKLIST OF FEATURES AND FUNCTIONALITIES](#chacklist)
+4. [CHECKLIST OF FEATURES AND FUNCTIONALITIES](#checklist)
 5. [REPORT ON 'LEGIT AUTO CARS'](#report)
    - [Purpose](#purpose)
    - [Design Considerations](#design-considerations)
    - [Utilization of GitHub and GitHub actions](#utilization)
    - [Conclusion](#conclution)
+
+## 3.FEATURES SELECTED AND IMPLEMENTED
+Below is a list of the 5 innovative features to be included in the 'Legit Auto Cars' application with tick or cross next to each 
+features, indicating whether it is implemented in the applicarion or not:
+
+- Advanced Searching
+- Price Comparism Tool
+- Favourites Feature
+- Whatsapp Messaging Integration
+- Book a Test Drive
 
 
 
