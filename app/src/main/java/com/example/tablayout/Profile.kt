@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +19,7 @@ private const val ARG_PARAM2 = "param2"
 
 class Profile : Fragment() {
 
+    private lateinit var bookTestDriveButton: Button
     private lateinit var signOutButton: Button
     private lateinit var auth: FirebaseAuth
 
@@ -51,6 +53,7 @@ class Profile : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         // Find the sign-out button
+        bookTestDriveButton = view.findViewById(R.id.book_test_drive)
         signOutButton = view.findViewById(R.id.btnSignOut)
         emailvalue = view.findViewById(R.id.email_value)
         namevalue = view.findViewById(R.id.name_value)
@@ -71,6 +74,12 @@ class Profile : Fragment() {
 
             //default user name
             namevalue.setText(user.displayName ?: "")
+        }
+
+        //now we set an onclick listener for the book test drive button and call our method (Mourya, 2023).
+        bookTestDriveButton.setOnClickListener{
+            //inside this we just call our method
+            navigateTestDrive()
         }
 
         // Set a click listener for the sign-out button
@@ -96,6 +105,17 @@ class Profile : Fragment() {
         activity?.finish()
     }
 
+    //the following function will navigate the user to the buy page to book a test drive when clicked (Mourya, 2023).
+    private fun navigateTestDrive()
+    {
+        //Below i will have a toast message telling the user what to do in order to book (Grier 2020)
+        val toast = Toast.makeText(requireContext(), "Please Select A Car From Buy Page To Make A Booking",Toast.LENGTH_LONG)
+        toast.show()
+        // Creating an instance of the fragment that i want to navigate to
+        val buyFragement = Buy()
+        //now we will perform the navigation from current fragment to buy fragment
+        parentFragmentManager.beginTransaction().replace(R.id.frame_layout, buyFragement).addToBackStack(null).commit()
+    }
 
     companion object {
 
