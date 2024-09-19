@@ -24,8 +24,8 @@ and lastly  a conclusion that reflects on the project and its outcomes.
    - [Conclusion](#conclution)
 
 ## 3. FEATURES SELECTED AND IMPLEMENTED
-Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with tick or cross next to each 
-features, indicating whether it is implemented in the applicarion or not:
+Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
+cross next to each feature, indicating whether it is implemented in the application or not:
 
 - Advanced Searching ✓ 
 - Price Comparism Tool ✗ 
@@ -34,8 +34,8 @@ features, indicating whether it is implemented in the applicarion or not:
 - Book a Test Drive ✓
 
 ## 4. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
-Below is a checklist of all the features/functionalities and ecpectations that are to be included and met as per the POE rubric with a tick or cross
-indicating of that feature/functionality as been indluded or met:
+Below is a checklist of all the features/functionalities and ecpectations that are to be included and met as per the POE rubric, 
+with a tick or cross indicating if that feature/functionality as been indluded or met:
 
 - App Runs on Mobile Device
 - Feature: SSO Sign-in
@@ -51,6 +51,27 @@ indicating of that feature/functionality as been indluded or met:
 - Demonstration Video
 
 ## 5. REPORT ON 'LEGIT AUTO CARS' 
+The development team has started to develop and build the "Legit Auto Cars" appplication, which is designed for a sole automobile
+company to connect with their clientel. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and 
+WeBuyCars, but is leaning more towards the WeBuyCars idea in which an app is created for a sole company to interact with their clients
+(potential clients) whereas the other 2 apps allow for multiple companies, and potential clinets to interact. With the use of 'Legit Auto Cars', 
+users will be able to upload automobiles they want to sell to a company and view the different vehicles that that company has available
+for sale online. This Android app's goal is to provide a smooth and effective user experience by incorporating new and creative features into the 
+fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
+experience while purchasing and selling vehicles.
+
+### Purpose of the 'Legit Auto Cars' Application
+The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
+and communication between and amoung the company and its clients as this will all be done online and from the app. The application does 
+not allow clients or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users
+to engage, interact and communicate with eachother. The app includes features that makes the clients and the companys lives much easier such 
+as viewing, uploading, whatsapp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature
+and a price comparison tool. The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and 
+submit their own cars for review. It ensures a seamless digital experience for users by doing away with the necessity for physical paperwork 
+and in-person dealership visits. 
+
+
+
 
 
 
