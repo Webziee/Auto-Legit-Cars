@@ -6,7 +6,6 @@
     tools:context=".fragment_book_test_drive"
     android:background="@color/DarkMode"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -139,5 +138,4 @@
             android:clickable="true"
             android:focusable="true"/>
     </LinearLayout>
-
 </LinearLayout>
