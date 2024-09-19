@@ -23,15 +23,35 @@ and lastly  a conclusion that reflects on the project and its outcomes.
    - [Utilization of GitHub and GitHub actions](#utilization)
    - [Conclusion](#conclution)
 
-## 3.FEATURES SELECTED AND IMPLEMENTED
-Below is a list of the 5 innovative features to be included in the 'Legit Auto Cars' application with tick or cross next to each 
+## 3. FEATURES SELECTED AND IMPLEMENTED
+Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with tick or cross next to each 
 features, indicating whether it is implemented in the applicarion or not:
 
-- Advanced Searching
-- Price Comparism Tool
-- Favourites Feature
-- Whatsapp Messaging Integration
-- Book a Test Drive
+- Advanced Searching ✓ 
+- Price Comparism Tool ✗ 
+- Favourites Feature ✗ 
+- Whatsapp Messaging Integration ✓ 
+- Book a Test Drive ✓
+
+## 4. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
+Below is a checklist of all the features/functionalities and ecpectations that are to be included and met as per the POE rubric with a tick or cross
+indicating of that feature/functionality as been indluded or met:
+
+- App Runs on Mobile Device
+- Feature: SSO Sign-in
+- Feature: Settings Menu
+- Creation of API
+- Implementation of REST API
+- Feature: User Defined 1 (Advanced Searching)
+- Feature: User Defined 2 (Whatsapp Messaging Integration)
+- Feature: User Defined 3 (Book a Test Drive)
+- User Interface
+- Read Me
+- Automated Testing
+- Demonstration Video
+
+## 5. REPORT ON 'LEGIT AUTO CARS' 
+
 
 
 
