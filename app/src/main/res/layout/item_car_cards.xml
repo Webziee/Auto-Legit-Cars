@@ -126,7 +126,7 @@
             android:id="@+id/car_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:layout_marginBottom="15dp"
             android:textColor="#ffff"
             android:paddingLeft="8dp"/>
@@ -137,7 +137,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="@string/booking"
             android:textAllCaps="false"
