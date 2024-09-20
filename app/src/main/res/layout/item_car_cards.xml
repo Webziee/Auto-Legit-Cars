@@ -143,8 +143,7 @@
             android:textAllCaps="false"
             android:backgroundTint="@color/auto_red"
             android:textColor="@color/textColor"
-            android:textSize="17sp">
-        </Button>
+            android:textSize="17sp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
