@@ -67,8 +67,16 @@ and communication between and among the company and its clients which is all don
 or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
 WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
-The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and submit their own cars for review 
-and ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person dealership visits. 
+The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars for review, 
+ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
+#### 5.1.1 Key Things To Note
+- Interactions are between the comapny and client only, one to one relationship.
+- In the view page, customers will only be able to see the cars for sale by the company.
+- When a client uploads a car to sell, only the company will be able to see that vehicle and not other clients. the company can then communicate
+with the client directly about their vehicle if they are interested.
+- Customers can only book a test drive on company cars, hence clients cannot see other clients cars.
+- our app inherits and implements more ideas from WeBuyCar rather than AutoTrader and Cars.co.za as these 2 have a one many to many relationship
+in which many companies and many clinets interact. 
 
 ### 5.2 Design Considerations
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
