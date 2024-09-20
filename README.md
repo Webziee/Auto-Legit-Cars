@@ -75,8 +75,8 @@ ensures a seamless digital experience for users by doing away with the necessity
 - When a client uploads a car to sell, only the company will be able to see that vehicle and not other clients. the company can then communicate
 with the client directly about their vehicle if they are interested.
 - Customers can only book a test drive on company cars, hence clients cannot see other clients cars.
-- our app inherits and implements more ideas from WeBuyCar rather than AutoTrader and Cars.co.za as these 2 have a one many to many relationship
-in which many companies and many clinets interact. 
+- Our app inherits and implements more ideas from WeBuyCar rather than AutoTrader and Cars.co.za as these two have a many to many relationship
+in which many companies and many clients interact. 
 
 ### 5.2 Design Considerations
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
