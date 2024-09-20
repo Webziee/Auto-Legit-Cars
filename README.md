@@ -35,7 +35,7 @@ cross next to each feature, indicating whether it is implemented in the applicat
 - Book a Test Drive ✓
 
 ## 4. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
-Below is a checklist of all the features/functionalities and ecpectations that are to be included and met as per the POE rubric, 
+Below is a checklist of all the features/functionalities and expectations that are to be included and met as per the POE rubric, 
 with a tick or cross indicating if that feature/functionality as been indluded or met:
 
 - App Runs on Mobile Device
@@ -114,21 +114,24 @@ reflected in the app in order to keep a polished and recognisable look, the colo
 ### 5.3 Utilization of GitHub
 For the development of the 'Legit Auto Cars' application, GitHud was used and deamed an integral tools for collaboriation an version control,
 here is how the development team used GitHub:
-#### 5.4.1 Collaborative Development Process 
+#### 5.3.1 Collaborative Development Process 
 - Every member of the team copied the main repository into an instance of Android Studio. In order to make sure that everyone was working on the
 most recent version of the project, we routinely pushed our modifications and pulled updates from the same source. We were able to work together
 smoothly and effectively because to this procedure, which integrated each member's contributions.
-#### 5.4.2 Version Control and Commits 
+#### 5.3.2 Version Control and Commits 
 - Throughout the course of the project development, all changes were tracked using Git. All features, bug fixes, and modifications were committed
 with commit messages, guaranteeing that the project's development was thoroughly recorded. Additionally, this gave us access to a thorough commit
 history, which made it simple to identify changes, troubleshoot them, and roll back any modifications that were needed.
-#### 5.4.3 Repository Submission 
+#### 5.3.3 Repository Submission 
 - The entire project is stored in the repository and will be sent to our lecturer for review and marking. With the connection to our GitHub
 repository, the lecturer will have complete access to our project and be able to examine our documentation, code, commits and organisation.
-#### 5.4.5 Documentation
+#### 5.3.5 Documentation
 - We worked together to create an extensive README.md file using GitHub as part of documentation. The README makes it simpler for the lecturer
 and any other users to understand the project by providing the names of the developers involved, and a comprehensive explanation regarding the
 app's goal, design considerations, and use of GitHub and GitHub Actions.
+
+### 5.4 Utilization of GitHub Actions
+
 
 
 
