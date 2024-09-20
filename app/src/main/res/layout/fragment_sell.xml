@@ -126,6 +126,17 @@
                 android:minHeight="48dp"
                 android:textAlignment="center" />
 
+            <Spinner
+                android:id="@+id/sell_dealership"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
             <EditText
                 android:id="@+id/sell_car_special"
                 android:layout_width="300dp"
@@ -158,22 +169,22 @@
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/sell_dealership"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:autofillHints="Dealership"
-                android:background="@drawable/spinner_border"
-                android:gravity="center"
-                android:hint="@string/dealership"
-                android:inputType="text"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@android:color/darker_gray"
-                android:textSize="16sp" />
-
+<!--            <EditText-->
+<!--                android:id="@+id/sell_dealership"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:autofillHints="Dealership"-->
+<!--                android:background="@drawable/spinner_border"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="@string/dealership"-->
+<!--                android:focusable="false"-->
+<!--                android:inputType="none"-->
+<!--                android:padding="15dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textColorHint="@android:color/darker_gray"-->
+<!--                android:textSize="16sp" />-->
 
             <EditText
                 android:id="@+id/sell_location"
