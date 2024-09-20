@@ -20,7 +20,8 @@ and lastly  a conclusion that reflects on the project and its outcomes.
 5. [REPORT ON 'LEGIT AUTO CARS'](#report)
    - [Purpose](#purpose)
    - [Design Considerations](#design-considerations)
-   - [Utilization of GitHub and GitHub actions](#utilization)
+   - [Utilization of GitHub](#utilization-github)
+   - [Utilization of GitHub actions](#itilization-git-action)
    - [Conclusion](#conclution)
 
 ## 3. FEATURES SELECTED AND IMPLEMENTED
@@ -69,7 +70,7 @@ WhatsApp messaging integration, booking a test drive, advanced searching, and to
 The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and submit their own cars for review 
 and ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person dealership visits. 
 
-### 5.2 DESIGN SPECIFICATIONS
+### 5.2 Design Considerations
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
 They guarantee the app's continued scalability, security, usability, and adaptability for new developments:
 
@@ -100,17 +101,38 @@ number of users and vehicle listings, which ensures long-term sustainability.
 #### 5.2.4 Security
 ##### Protection of User Data
 - Data security for vehicles and individuals is a crucial design factor. Data encryption, secure storage of sensitive data (such car listings), and secure
-authentication (like email-based logins) were taken into consideration, hence we have decided to use firebase as it is secure.
+authentication (like email-based logins with SSO) were taken into consideration, hence we have decided to use firebase as it is a secure database to hold
+all of our applications data.
 ##### Whatsapp Integration 
 - It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
 and APIs were used to start conversations are secured as well as encryption of data.
-
 #### 5.2.5 Visual Design
 ##### Identity
 - The apps name (which is essentially the name of the sole company, in this case we used a fictitious name: 'Legit Auto Cars') and branding are
 reflected in the app in order to keep a polished and recognisable look, the colour scheme, typography, and iconography adhere to the company's brand guidelines.
 
-### 5.3. GitHub and GitHub Action Itilization
+### 5.3 Utilization of GitHub
+For the development of the 'Legit Auto Cars' application, GitHud was used and deamed an integral tools for collaboriation an version control,
+here is how the development team used GitHub:
+#### 5.4.1 Collaborative Development Process 
+- Every member of the team copied the main repository into an instance of Android Studio. In order to make sure that everyone was working on the
+most recent version of the project, we routinely pushed our modifications and pulled updates from the same source. We were able to work together
+smoothly and effectively because to this procedure, which integrated each member's contributions.
+#### 5.4.2 Version Control and Commits 
+- Throughout the course of the project development, all changes were tracked using Git. All features, bug fixes, and modifications were committed
+with commit messages, guaranteeing that the project's development was thoroughly recorded. Additionally, this gave us access to a thorough commit
+history, which made it simple to identify changes, troubleshoot them, and roll back any modifications that were needed.
+#### 5.4.3 Repository Submission 
+- The entire project is stored in the repository and will be sent to our lecturer for review and marking. With the connection to our GitHub
+repository, the lecturer will have complete access to our project and be able to examine our documentation, code, commits and organisation.
+#### 5.4.5 Documentation
+- We worked together to create an extensive README.md file using GitHub as part of documentation. The README makes it simpler for the lecturer
+and any other users to understand the project by providing the names of the developers involved, and a comprehensive explanation regarding the
+app's goal, design considerations, and use of GitHub and GitHub Actions.
+
+
+
+
 
 
 
