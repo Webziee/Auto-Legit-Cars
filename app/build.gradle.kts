@@ -47,6 +47,9 @@ dependencies {
     // Firestore dependency
     implementation(libs.firebase.firestore.ktx)
 
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
     // Other dependencies
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation(libs.androidx.core.ktx)

@@ -16,17 +16,11 @@
     <string name="or_login_with">Sign in with</string>
     <string name="google">Google</string>
     <string name="google_image">google_image</string>
-    <string name="car_selected">Car Selected:</string>
-    <string name="book_test_drive">Book A Test Drive</string>
-    <string name="select_test_date_time">Select A Test Date And Time</string>
-    <string name="click_above">Click Above</string>
-    <string name="submit_booking">Submit Booking</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
     <string name="edit">Edit</string>
-    <string name="profile">Profile Settings</string>
-    <string name="settings">App Settings</string>
+    <string name="profile">Profile</string>
     <string name="email">Email</string>
     <string name="current_password">Current Password</string>
     <string name="footer_logo">Footer Logo</string>
@@ -40,8 +34,6 @@
     <string name="search">search</string>
     <string name="reset">Reset</string>
     <string name="result">Results</string>
-    <string name="booking">Book A Test Drive</string>
-    <string name="whatApp_Us">Send Us A Whatsapp Message</string>
 
     <string name="application_name">LegitAutoCars_ST10088734</string>
     <string name="biometrics">Biometrics</string>
@@ -67,6 +59,26 @@
     <string name="sell">Sell</string>
     <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing I understand and agree with the Legit auto parts Terms & conditions and privacy policy.]]></string>
     <string name="enter_details_of_the_car_you_want_to_sell">Enter details of the car you would like to sell</string>
+    <string name="mileage">Mileage</string>
+    <string name="location">Location</string>
+    <string name="dealership">Dealership</string>
+    <string name="special_edition">Special edition</string>
+    <string name="selling_price">Selling Price</string>
+    <string name="upload_main_image">Upload Main Image</string>
+    <string name="select_multiple_images">Select multiple images</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="main_image">Main Image</string>
+    <string name="pick_selling_images">Pick Images</string>
+    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Once you have selected your images, click on the one you want as your main selling image</string>
+    <string name="car_selected">Car Selected</string>
+    <string name="select_test_date_time">Select Test Date &amp; Time</string>
+    <string name="click_above">click_above</string>
+    <string name="submit_booking">Submit Booking</string>
+    <string name="whatapp_us">whatApp_Us</string>
+    <string name="book_test_drive">Book test drive</string>
+    <string name="settings">settings</string>
+    <string name="booking">Book Test Drive</string>
+    <string name="or_contact_us_by">Or Contact us on</string>
 
     <string-array name="min_price_items">
         <item>Min Price</item>

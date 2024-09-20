@@ -3,12 +3,12 @@
     android:layout_width="wrap_content"
     android:layout_height="100dp"
     android:orientation="horizontal"
-    android:layout_marginEnd="1dp"
+    android:layout_marginEnd="0dp"
     >
 
     <ImageView
         android:id="@+id/car_image_view"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
         />
 </LinearLayout>

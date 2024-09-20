@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import fragment_book_test_drive
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -26,6 +27,8 @@ class Buy : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private val carList = mutableListOf<Car>()
     private lateinit var carAdapter: CarAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var paginationLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,58 +45,13 @@ class Buy : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_buy, container, false)
 
-        // Find the button by its ID
-        val searchButton: Button = view.findViewById(R.id.btnSignOut)
-
         firestore = FirebaseFirestore.getInstance()
 
-        // Set the OnClickListener for the button
-        searchButton.setOnClickListener {
+        // Initialize views
+        recyclerView = view.findViewById(R.id.recycler_view)
+        paginationLayout = view.findViewById(R.id.pagination_layout)
 
-
-        }
-        // Fetch data from Firestore
-        fetchCarsFromFirestore()
-
-        fun setupSpinner(spinner: Spinner, arrayId: Int) {
-            val adapter = ArrayAdapter.createFromResource(
-                requireContext(),
-                arrayId,
-                R.layout.custom_spinner_item
-            )
-            adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item)
-            spinner.adapter = adapter
-            spinner.setPopupBackgroundDrawable(
-                ContextCompat.getDrawable(requireContext(), R.drawable.rounded_dropdown_background)
-            )
-            spinner.background = ContextCompat.getDrawable(requireContext(), R.drawable.spinner_border)
-
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                    if (position == 0) {
-                        spinner.setSelection(0)
-                    } else {
-                        val selectedItem = parent.getItemAtPosition(position).toString()
-                        // Perform actions with selectedItem if needed
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                }
-            }
-        }
-
-        setupSpinner(view.findViewById(R.id.max_price), R.array.max_price_items)
-        setupSpinner(view.findViewById(R.id.min_price), R.array.min_price_items)
-        setupSpinner(view.findViewById(R.id.location), R.array.location_items)
-        setupSpinner(view.findViewById(R.id.body_type), R.array.body_type_items)
-        setupSpinner(view.findViewById(R.id.min_year), R.array.min_year_items)
-        setupSpinner(view.findViewById(R.id.max_year), R.array.max_year_items)
-        setupSpinner(view.findViewById(R.id.transmission), R.array.car_transmission)
-        setupSpinner(view.findViewById(R.id.max_mileage), R.array.max_mileage_items)
-
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
-        val paginationLayout: LinearLayout = view.findViewById(R.id.pagination_layout)
+//        carAdapter = CarAdapter(carList)
 
         //According to Poulopoulos (2015),the correct way to pass data from one fragment to another is as follows:
         carAdapter = CarAdapter(carList){carTitle ->
@@ -108,82 +66,69 @@ class Buy : Fragment() {
             parentFragmentManager.beginTransaction().replace(R.id.frame_layout, bookTestDriveFragment).addToBackStack(null).commit()
         }
 
+
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = carAdapter
         recyclerView.isNestedScrollingEnabled = false
 
-        val pageSize = 10
-        var currentPage = 1
+        // Set up pagination
+        setupPagination()
 
-        fun getCarsForPage(page: Int): List<Car> {
-            val start = (page - 1) * pageSize
-            val end = Math.min(start + pageSize, carList.size)
-            return carList.subList(start, end)
-        }
-
-        fun createPaginationButtons(totalPages: Int) {
-            paginationLayout.removeAllViews()
-
-            for (i in 1..totalPages) {
-                val button = Button(requireContext()).apply {
-                    text = i.toString()
-                    layoutParams = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                }
-
-                button.setOnClickListener {
-                    currentPage = i
-                    carAdapter.updateData(getCarsForPage(currentPage))
-                    recyclerView.scrollToPosition(0)
-                }
-
-                paginationLayout.addView(button)
-            }
-        }
-
-        fetchCarsFromFirestore {
-            val totalPages = Math.ceil(carList.size / pageSize.toDouble()).toInt()
-            createPaginationButtons(totalPages)
-            carAdapter.updateData(getCarsForPage(currentPage))
-        }
+        // Set up spinners
+        setupSpinner(view.findViewById(R.id.max_price), R.array.max_price_items)
+        setupSpinner(view.findViewById(R.id.min_price), R.array.min_price_items)
+        setupSpinner(view.findViewById(R.id.location), R.array.location_items)
+        setupSpinner(view.findViewById(R.id.body_type), R.array.body_type_items)
+        setupSpinner(view.findViewById(R.id.min_year), R.array.min_year_items)
+        setupSpinner(view.findViewById(R.id.max_year), R.array.max_year_items)
+        setupSpinner(view.findViewById(R.id.transmission), R.array.car_transmission)
+        setupSpinner(view.findViewById(R.id.max_mileage), R.array.max_mileage_items)
 
         return view
     }
 
-////manually add to database
-//    private fun addSampleCar() {
-//        val car = Car(
-//            maincarimage = "https://img.autotrader.co.za/32490502", // URL of the main car image
-//            title = "2024 BMW M3 Competition",
-//            condition = "New",
-//            mileage = 100,
-//            transmisson = "Automatic",
-//            dealership = "BMW Sandton Motors",
-//            location = "Sandton, Johannesburg",
-//            imageResourceList = listOf(
-//                "https://img.autotrader.co.za/32490503/Crop800x600",
-//                "https://img.autotrader.co.za/32490504/Crop800x600",
-//                "https://img.autotrader.co.za/32490505/Crop800x600",
-//                "https://img.autotrader.co.za/32490506/Crop800x600",
-//                "https://img.autotrader.co.za/32490507/Crop800x600",
-//                "https://img.autotrader.co.za/32490508/Crop800x600",
-//                "https://img.autotrader.co.za/32490509/Crop800x600",
-//            )
-//        )
-//
-//        FirestoreUtils.addCar(car,
-//            onSuccess = { documentId ->
-//                // Handle success (e.g., show a toast or update the UI)
-//                Log.d("BuyFragment", "Car added successfully with ID: $documentId")
-//            },
-//            onFailure = { exception ->
-//                // Handle failure (e.g., show an error message)
-//                Log.e("BuyFragment", "Failed to add car", exception)
-//            }
-//        )
-//    }
+
+
+    private fun setupPagination() {
+        fetchCarsFromFirestore {
+            val pageSize = 10
+            val totalPages = Math.ceil(carList.size / pageSize.toDouble()).toInt()
+            if (totalPages > 1) {
+                createPaginationButtons(totalPages, pageSize)
+            }
+            carAdapter.updateData(getCarsForPage(1, pageSize))
+        }
+    }
+
+    private fun getCarsForPage(page: Int, pageSize: Int): List<Car> {
+        val start = (page - 1) * pageSize
+        val end = Math.min(start + pageSize, carList.size)
+        return carList.subList(start, end)
+    }
+
+    private fun createPaginationButtons(totalPages: Int, pageSize: Int) {
+        paginationLayout.removeAllViews()
+
+        for (i in 1..totalPages) {
+            val button = Button(requireContext()).apply {
+                text = i.toString()
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(8, 0, 8, 0)
+                }
+             //   setBackgroundResource(R.drawable.pagination_button_bg) // Add a background resource for better UI
+            }
+
+            button.setOnClickListener {
+                carAdapter.updateData(getCarsForPage(i, pageSize))
+                recyclerView.scrollToPosition(0)
+            }
+
+            paginationLayout.addView(button)
+        }
+    }
 
     private fun fetchCarsFromFirestore(onComplete: () -> Unit = {}) {
         firestore.collection("cars")
@@ -201,6 +146,33 @@ class Buy : Fragment() {
                 // Handle error
                 exception.printStackTrace()
             }
+    }
+
+    private fun setupSpinner(spinner: Spinner, arrayId: Int) {
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            arrayId,
+            R.layout.custom_spinner_item
+        )
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item)
+        spinner.adapter = adapter
+        spinner.setPopupBackgroundDrawable(
+            ContextCompat.getDrawable(requireContext(), R.drawable.rounded_dropdown_background)
+        )
+        spinner.background = ContextCompat.getDrawable(requireContext(), R.drawable.spinner_border)
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                if (position == 0) {
+                    spinner.setSelection(0)
+                } else {
+                    val selectedItem = parent.getItemAtPosition(position).toString()
+                    // Perform actions with selectedItem if needed
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 
     companion object {
