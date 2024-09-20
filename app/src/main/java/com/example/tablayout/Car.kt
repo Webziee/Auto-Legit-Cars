@@ -12,6 +12,9 @@ data class Car(
     val fueltype: String = "",
     val dealership: String = "",
     val location: String = "",
-    val transmisson: String = "",
+    val transmission: String = "",
+    val special: String = "",
+    val price: Int = 0,
     val imageResourceList: List<String> = listOf()
 )
+
