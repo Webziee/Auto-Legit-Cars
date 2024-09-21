@@ -59,7 +59,7 @@ other 2 apps allow for multiple companies, and potential clients to interact. Wi
 users will be able to upload automobiles they want to sell to a company and view the different vehicles that that company has available
 for sale online. This Android app's goal is to provide a smooth and effective user experience by incorporating new and creative features into the 
 fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
-experience while purchasing and selling vehicles.
+experience while viewing, uploading vehicles and interacting with the company. 
 
 ### 5.1 Purpose of the 'Legit Auto Cars' Application
 The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
@@ -68,7 +68,7 @@ or the company to purchase or sell cars directly (No Money Involved), but rather
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
 WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
 The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars for review, 
-ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
+while also ensuring a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
 #### 5.1.1 Key Things To Note
 - Interactions are between the comapny and client only, one to one relationship.
 - In the view page, customers will only be able to see the cars for sale by the company.
@@ -114,6 +114,7 @@ all of our applications data.
 ##### Whatsapp Integration 
 - It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
 and APIs were used to start conversations are secured as well as encryption of data.
+
 #### 5.2.5 Visual Design
 ##### Identity
 - The apps name (which is essentially the name of the sole company, in this case we used a fictitious name: 'Legit Auto Cars') and branding are
