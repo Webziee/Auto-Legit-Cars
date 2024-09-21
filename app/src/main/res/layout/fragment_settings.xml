@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
-            android:padding="1dp">
+            android:padding="2dp">
 
 
                 <com.google.android.material.imageview.ShapeableImageView
