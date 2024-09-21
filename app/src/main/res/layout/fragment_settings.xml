@@ -16,27 +16,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="165dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="2dp"
-                android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     app:shapeAppearance="@style/circular"
+                    android:layout_marginTop="10dp"
                     app:srcCompat="@drawable/dm_settings_icon_100"/>
-            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
                 android:text="@string/settings"
                 android:textColor="@color/White"
@@ -180,21 +176,22 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <LinearLayout
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="-20dp">
+
+            <ImageView
+                android:id="@+id/settings_logo"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginStart="-412dp"
-                android:layout_marginTop="500dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/settings_logo"
-                    android:layout_width="123dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="142dp"
-                    android:src="@drawable/legit_auto_parts_settings_logo_sml"/>
-            </LinearLayout>
-
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_sell_page"/>
         </LinearLayout>
 
         <LinearLayout

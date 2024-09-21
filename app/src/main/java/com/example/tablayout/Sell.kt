@@ -1,13 +1,7 @@
 package com.example.tablayout
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,15 +13,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
 import java.util.UUID
 
 class Sell : Fragment() {
@@ -122,7 +112,7 @@ class Sell : Fragment() {
             "Subaru" to arrayOf("Impreza", "Outback", "Forester", "WRX", "Legacy"),
             "Mitsubishi" to arrayOf("Pajero", "Eclipse Cross", "Outlander", "ASX", "Triton"),
             "Land Rover" to arrayOf("Range Rover", "Discovery", "Defender", "Evoque", "Velar"),
-            "Porsche" to arrayOf("911", "Cayenne", "Macan", "Panamera", "Taycan"),
+            "Porsche" to arrayOf("911", "Cayenne", "Macan", "Panamera", "Taycan", "GT3rs"),
             "Tesla" to arrayOf("Model S", "Model X", "Model 3", "Model Y", "Cybertruck")
         )
 
@@ -131,6 +121,7 @@ class Sell : Fragment() {
         val fuelTypes = arrayOf("Fuel Type","Petrol", "Diesel", "Electric", "Hybrid")
         val bodyTypes = arrayOf("Body Type","Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Wagon", "Truck")
         val conditions = arrayOf("Condition","New", "Used", "Certified Pre-Owned", "Salvage")
+        val dealership = arrayOf("Dealership","Private")
 
         val makeSpinner: Spinner = view.findViewById(R.id.sell_car_make)
         val modelSpinner: Spinner = view.findViewById(R.id.sell_car_model)
@@ -139,6 +130,7 @@ class Sell : Fragment() {
         val fuelTypeSpinner: Spinner = view.findViewById(R.id.sell_car_fuel_type)
         val bodyTypeSpinner: Spinner = view.findViewById(R.id.sell_car_body_type)
         val conditionSpinner: Spinner = view.findViewById(R.id.sell_car_condition)
+        val dealershipSpinner: Spinner = view.findViewById(R.id.sell_dealership)
 
         setupSpinner(makeSpinner, carMakes)
         setupSpinner(modelSpinner, modelsMap[makeSpinner.selectedItem.toString()] ?: arrayOf())
@@ -147,6 +139,7 @@ class Sell : Fragment() {
         setupSpinner(fuelTypeSpinner, fuelTypes)
         setupSpinner(bodyTypeSpinner, bodyTypes)
         setupSpinner(conditionSpinner, conditions)
+        setupSpinner(dealershipSpinner, dealership)
 
         makeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -218,6 +211,7 @@ class Sell : Fragment() {
         val fuelTypeSpinner: Spinner = view?.findViewById(R.id.sell_car_fuel_type) ?: return false
         val bodyTypeSpinner: Spinner = view?.findViewById(R.id.sell_car_body_type) ?: return false
         val conditionSpinner: Spinner = view?.findViewById(R.id.sell_car_condition) ?: return false
+        val dealershipSpinner : Spinner = view?.findViewById(R.id.sell_dealership) ?: return false
 
         if (makeSpinner.selectedItem == "Car Make") {
             showCustomToast("Please select a car make", R.drawable.error)
@@ -253,6 +247,11 @@ class Sell : Fragment() {
             showCustomToast("Please select a condition", R.drawable.error)
             return false
         }
+        if (dealershipSpinner.selectedItem == "Dealership") {
+            showCustomToast("Please select a Dealership", R.drawable.error)
+            return false
+        }
+
 
         return true
     }
@@ -274,7 +273,7 @@ class Sell : Fragment() {
         val condition = view?.findViewById<Spinner>(R.id.sell_car_condition)?.selectedItem.toString()
         val mileage = view?.findViewById<EditText>(R.id.sell_mileage)?.text.toString()
         val location = view?.findViewById<EditText>(R.id.sell_location)?.text.toString()
-        val dealership = view?.findViewById<EditText>(R.id.sell_dealership)?.text.toString()
+        val dealership = view?.findViewById<Spinner>(R.id.sell_dealership)?.selectedItem.toString()
         val price = view?.findViewById<EditText>(R.id.sell_price)?.text.toString()
 
         if (mainImageUri == null || selectedImages.isEmpty()) {
@@ -356,7 +355,7 @@ class Sell : Fragment() {
             view?.findViewById<Spinner>(R.id.sell_car_body_type)?.setSelection(0)
             view?.findViewById<Spinner>(R.id.sell_car_condition)?.setSelection(0)
             view?.findViewById<EditText>(R.id.sell_mileage)?.text?.clear()
-            view?.findViewById<EditText>(R.id.sell_dealership)?.text?.clear()
+            view?.findViewById<Spinner>(R.id.sell_dealership)?.setSelection(0)
             view?.findViewById<EditText>(R.id.sell_price)?.text?.clear()
             view?.findViewById<EditText>(R.id.sell_location)?.text?.clear()
 
