@@ -41,8 +41,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:orientation="horizontal">
+            android:layout_height="500dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="25dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,27 +194,6 @@
                 android:layout_gravity="center"
                 android:src="@drawable/logo_sell_page"/>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:menu="@menu/bottom_nav"
-                android:background="@color/black"
-                app:itemIconTint="@color/nav_item_selector"
-                app:itemTextColor="@color/nav_item_selector"/>
-
-        </LinearLayout>
-
 
     </LinearLayout>
 
