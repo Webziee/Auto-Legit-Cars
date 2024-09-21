@@ -139,8 +139,30 @@ and any other users to understand the project by providing the names of the deve
 app's goal, design considerations, and use of GitHub and GitHub Actions.
 
 ### 5.4 Utilization of GitHub Actions
+We used GitHub Actions in our project to automate the Android application's creation and testing. This guarantees that our code works reliably
+not just on our local computers but also in various contexts and enviroments.
+#### 5.4.1 Initial Setup 
+- Workflow File Creation: In the.github/workflows folder, we produced a workflow file called android.yml. The procedures needed to build and test
+our application are outlined in this file.
+- JDK Configuration: At first, we encountered a problem with the build process utilising an out-of-date Java version (Java 11). The Android Gradle
+plugin requires Java 17, thus we adjusted the workflow to use that instead.
+#### 5.4.2 Issues Encountered After Testing The Build
+- Dependency Problems: We had trouble downloading dependencies during the initial builds. To fix these problems, we We carefully reviewed and updated
+our Gradle configuration to include all necessary dependencies and repositories.
+- Lint issues: For Android 13 and above especially, lint issues pertaining to notification permissions caused the development process to fail. We discovered
+that the AndroidManifest.xml file required the application to request the POST_NOTIFICATIONS permission. For the purpose of fixing the issue that the lint
+checks produced, this was essential. This issue was resolved by adding POST_NOTIFICATIONS permission to the AndroidManifest.xml to comply with Android 13 requirements.
+- Errors with the Gradle Daemon: We also came across issues when the Kotlin compile daemon abruptly stopped working. Making sure all configurations in the
+build.gradle.kts files were aligned and set up appropriately solved this issue.
 
-
+### 5.5 Conclusion
+Thus far, the "Legit Auto Cars" application has undergone a thorough development process that has placed a strong emphasis on user interaction, efficient procedures, and
+a solid architecture. Our design decisions have been well considered in order to prioritise security and scalability while guaranteeing a flawless user experience.
+Our team's ability to work together more effectively, manage changes more efficiently, and automate testing and building procedures has all improved workflow dependability 
+since we started using GitHub and GitHub Actions. The difficulties we faced—such as handling dependencies and adjusting to Android's permission updates—have improved project
+results and honed our problem-solving abilities.
+In order to maintain the application's value for users, we will continue to develop its features and improve it with the aid of the insights gathered before the publication on 
+the google play store. In addition to fostering teamwork, this experience has laid a solid platform for further improvement and adjustment to the application.
 
 
 
