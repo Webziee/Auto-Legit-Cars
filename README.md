@@ -35,7 +35,7 @@ cross next to each feature, indicating whether it is implemented in the applicat
 - Book a Test Drive ✓
 
 ## 4. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
-Below is a checklist of all the features/functionalities and ecpectations that are to be included and met as per the POE rubric, 
+Below is a checklist of all the features/functionalities and expectations that are to be included and met as per the POE rubric, 
 with a tick or cross indicating if that feature/functionality as been indluded or met:
 
 - App Runs on Mobile Device
@@ -67,8 +67,16 @@ and communication between and among the company and its clients which is all don
 or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
 WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
-The app helps connect buyers and sellers by providing a platform where users can quickly view cars for sale and submit their own cars for review 
-and ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person dealership visits. 
+The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars for review, 
+ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
+#### 5.1.1 Key Things To Note
+- Interactions are between the comapny and client only, one to one relationship.
+- In the view page, customers will only be able to see the cars for sale by the company.
+- When a client uploads a car to sell, only the company will be able to see that vehicle and not other clients. the company can then communicate
+with the client directly about their vehicle if they are interested.
+- Customers can only book a test drive on company cars, hence clients cannot see other clients cars.
+- Our app inherits and implements more ideas from WeBuyCar rather than AutoTrader and Cars.co.za as these two have a many to many relationship
+in which many companies and many clients interact. 
 
 ### 5.2 Design Considerations
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
@@ -114,21 +122,24 @@ reflected in the app in order to keep a polished and recognisable look, the colo
 ### 5.3 Utilization of GitHub
 For the development of the 'Legit Auto Cars' application, GitHud was used and deamed an integral tools for collaboriation an version control,
 here is how the development team used GitHub:
-#### 5.4.1 Collaborative Development Process 
+#### 5.3.1 Collaborative Development Process 
 - Every member of the team copied the main repository into an instance of Android Studio. In order to make sure that everyone was working on the
 most recent version of the project, we routinely pushed our modifications and pulled updates from the same source. We were able to work together
 smoothly and effectively because to this procedure, which integrated each member's contributions.
-#### 5.4.2 Version Control and Commits 
+#### 5.3.2 Version Control and Commits 
 - Throughout the course of the project development, all changes were tracked using Git. All features, bug fixes, and modifications were committed
 with commit messages, guaranteeing that the project's development was thoroughly recorded. Additionally, this gave us access to a thorough commit
 history, which made it simple to identify changes, troubleshoot them, and roll back any modifications that were needed.
-#### 5.4.3 Repository Submission 
+#### 5.3.3 Repository Submission 
 - The entire project is stored in the repository and will be sent to our lecturer for review and marking. With the connection to our GitHub
 repository, the lecturer will have complete access to our project and be able to examine our documentation, code, commits and organisation.
-#### 5.4.5 Documentation
+#### 5.3.5 Documentation
 - We worked together to create an extensive README.md file using GitHub as part of documentation. The README makes it simpler for the lecturer
 and any other users to understand the project by providing the names of the developers involved, and a comprehensive explanation regarding the
 app's goal, design considerations, and use of GitHub and GitHub Actions.
+
+### 5.4 Utilization of GitHub Actions
+
 
 
 
