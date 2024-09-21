@@ -51,7 +51,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_make"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -62,7 +62,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_model"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -73,7 +73,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_year"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -84,7 +84,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_transmission"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -95,7 +95,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_fuel_type"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -106,7 +106,7 @@
 
             <Spinner
                 android:id="@+id/sell_car_body_type"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -117,7 +117,18 @@
 
             <Spinner
                 android:id="@+id/sell_car_condition"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/spinner_border"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/sell_dealership"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -128,7 +139,7 @@
 
             <EditText
                 android:id="@+id/sell_car_special"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
@@ -139,12 +150,12 @@
                 android:inputType="text"
                 android:padding="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/sell_mileage"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
@@ -155,29 +166,29 @@
                 android:inputType="number"
                 android:padding="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/sell_dealership"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:autofillHints="Dealership"
-                android:background="@drawable/spinner_border"
-                android:gravity="center"
-                android:hint="@string/dealership"
-                android:inputType="text"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="16sp" />
-
+<!--            <EditText-->
+<!--                android:id="@+id/sell_dealership"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:autofillHints="Dealership"-->
+<!--                android:background="@drawable/spinner_border"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="@string/dealership"-->
+<!--                android:focusable="false"-->
+<!--                android:inputType="none"-->
+<!--                android:padding="15dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textColorHint="@android:color/darker_gray"-->
+<!--                android:textSize="16sp" />-->
 
             <EditText
                 android:id="@+id/sell_location"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
@@ -188,23 +199,23 @@
                 android:inputType="text"
                 android:padding="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/sell_price"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:autofillHints="1000000"
+                android:autofillHints="1000"
                 android:background="@drawable/spinner_border"
                 android:gravity="center"
                 android:hint="@string/selling_price"
                 android:inputType="number"
                 android:padding="15dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="@android:color/holo_red_light"
                 android:textSize="16sp" />
         </LinearLayout>
 
