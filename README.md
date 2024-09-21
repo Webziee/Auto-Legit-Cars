@@ -158,6 +158,8 @@ build.gradle.kts files were aligned and set up appropriately solved this issue.
 #### 5.4.3 Screenshots of GitHub Actions Results
 ![GitHub Actions Issue 01](https://github.com/user-attachments/assets/99da1152-af86-41ea-b6aa-d971e6669a8e)
 
+![GitHub Actions Issue 02](https://github.com/user-attachments/assets/f2609d2a-a5c8-4d6f-b0d2-3e929b5c4c6f)
+
 
 ### 5.5 Conclusion
 Thus far, the "Legit Auto Cars" application has undergone a thorough development process that has placed a strong emphasis on user interaction, efficient procedures, and
