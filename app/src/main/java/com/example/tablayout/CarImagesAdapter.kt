@@ -6,7 +6,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-
+/**
+ * CarImagesAdapter to display car images in a RecyclerView.
+ *
+ * The following RecyclerView adapter implementation has been adapted based on general
+ * tutorials and examples from official documentation, as well as resources from:
+ *
+ * - Picasso Documentation: https://square.github.io/picasso/
+ * - RecyclerView Documentation: https://developer.android.com/guide/topics/ui/layout/recyclerview
+ *
+ * The adapter loads images using Picasso and displays them in a horizontal
+ * RecyclerView.
+ */
 class CarImagesAdapter(private val imageUrlList: List<String>) : RecyclerView.Adapter<CarImagesAdapter.ImageViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

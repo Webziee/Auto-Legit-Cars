@@ -15,6 +15,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fragment_book_test_drive
 
+/**
+ * CarAdapter class to bind and display car data in a RecyclerView.
+ *
+ * The following RecyclerView Adapter implementation has been adapted from
+ * various Android development resources and tutorials, including:
+ *
+ * - Official Android Developer Documentation: https://developer.android.com
+ * - Picasso Documentation for Image Loading: https://square.github.io/picasso/
+ * - General RecyclerView and ViewHolder design patterns.
+ *
+ * The Adapter handles the binding of car details, including images, to UI components
+ * within a card layout for each car, while also handling user actions like booking
+ * a test drive.
+ */
+
 class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
     private var onTestDriveClickListener: ((Car) -> Unit)? = null

@@ -22,6 +22,29 @@ import retrofit2.Call
 import retrofit2.Response
 import java.util.UUID
 
+/**
+ * Sell Fragment to handle car listings.
+ *
+ * This code allows users to upload car details, images, and save them to Supabase via a Retrofit API.
+ * It also integrates Firebase Storage for handling image uploads.
+ *
+ * The following code structure has been adapted based on various tutorials and resources, including:
+ *
+ * - Supabase Documentation: https://supabase.com/docs
+ * - Retrofit Documentation: https://square.github.io/retrofit/
+ * - Firebase Storage Documentation: https://firebase.google.com/docs/storage
+ * - Picasso Documentation: https://square.github.io/picasso/
+ *
+ * The UI elements and interaction handling, such as spinners for car details and image upload workflows,
+ * were built to align with best practices for Android development.
+ *
+ * Additional concepts on working with Kotlin Fragments, RecyclerViews, and uploading images to Firebase
+ * were drawn from:
+ *
+ * - Android Developers: https://developer.android.com/docs
+ * - StackOverflow contributions on handling multiple images and spinners.
+ */
+
 class Sell : Fragment() {
 
     private lateinit var firestore: FirebaseFirestore
@@ -290,6 +313,7 @@ class Sell : Fragment() {
             view?.findViewById<EditText>(R.id.sell_price)?.text.toString().toIntOrNull() ?: 0
 
         val newPrice = (price * 0.10) + price
+
 
         if (mainImageUri == null || selectedImages.isEmpty()) {
             Toast.makeText(requireContext(), "Please select images", Toast.LENGTH_SHORT).show()

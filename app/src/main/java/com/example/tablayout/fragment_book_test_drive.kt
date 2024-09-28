@@ -28,6 +28,21 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Fragment to handle booking a test drive with date and time selection.
+ *
+ * The following code implementation has been adapted from several resources and tutorials:
+ *
+ * - DatePickerDialog and TimePickerDialog were based on teachings from YouTube channels like
+ *   "The Android Factory" (Domenic, 2022).
+ * - FirebaseAuth integration was based on Firebase Documentation: https://firebase.google.com/docs/auth
+ * - API calls using Retrofit are adapted from resources such as:
+ *   - Supabase Documentation: https://supabase.com/docs
+ *   - Retrofit Documentation: https://square.github.io/retrofit/
+ *
+ * This fragment allows users to book test drives by selecting a car and scheduling a time and date.
+ */
+
 // Fragment initialization parameters
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
