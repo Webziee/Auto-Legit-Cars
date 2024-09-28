@@ -28,11 +28,6 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-/* The following date picker code was taken from teachings by Domenic
-Domenic, 2022. Youtube - The Android Factory. [Online]
-Available at: https://www.youtube.com/watch?v=-u4w_-x_3_I
-[Accessed 17 September 2024]. */
-
 // Fragment initialization parameters
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -102,10 +97,12 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val car = car_selected_display.text.toString()
         val loggedInEmail: FirebaseUser? = auth.currentUser
         val email = loggedInEmail?.email
-        val phone = "0812420589"
+        val phone = "0812420589" // Define the phone number properly
         val whatsappMSG = "Good Day Sir/Madam,\nI am interested in your $car which I saw for sale on the app.\nWould you please provide me with more details on the vehicle.\n~ $email"
+
+        // Set onClickListener to open WhatsApp with the defined phone number and message
         whatsappIcon.setOnClickListener {
-            openWhatsappMessage(phone, whatsappMSG)
+            openWhatsappMessage(phone, whatsappMSG) // Pass phone number and message
         }
 
         return view
@@ -179,27 +176,18 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     private fun openWhatsappMessage(phoneNumber: String, message: String) {
         val packageManager = requireContext().packageManager
         try {
-            val whatsappPackage = "com.whatsapp"
-            val whatsappPackageB = "com.whatsapp.w4b"
-            val whatsappInstalled = try {
-                packageManager.getPackageInfo(whatsappPackage, PackageManager.GET_ACTIVITIES)
-                true
-            } catch (e: PackageManager.NameNotFoundException) {
-                try {
-                    packageManager.getPackageInfo(whatsappPackageB, PackageManager.GET_ACTIVITIES)
-                    true
-                } catch (e: PackageManager.NameNotFoundException) {
-                    false
-                }
-            }
-
+            // Format phone number (remove leading 0 and replace it with country code)
             val formatNumber = phoneNumber.removePrefix("0")
-            val encodedMessage = Uri.encode(message)
-            val url = "https://wa.me/27$formatNumber?text=$encodedMessage"
+            val encodedMessage = Uri.encode(message) // Encode the message to handle special characters
+            val url = "https://wa.me/27$formatNumber?text=$encodedMessage" // Correct URL format with dynamic values
 
-            if (whatsappInstalled) {
+            // Check if either WhatsApp or WhatsApp Business is installed
+            val whatsappInstalled = isAppInstalled(packageManager, "com.whatsapp") ||
+                    isAppInstalled(packageManager, "com.whatsapp.w4b")
+
+            if (!whatsappInstalled) {
                 val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url)
+                intent.data = Uri.parse(url) // Set the correct WhatsApp URL
                 startActivity(intent)
             } else {
                 Toast.makeText(requireContext(), "WhatsApp is not installed on your device", Toast.LENGTH_SHORT).show()
@@ -209,6 +197,16 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
             Toast.makeText(requireContext(), "Error: Unable to open WhatsApp", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun isAppInstalled(packageManager: PackageManager, packageName: String): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
 
     companion object {
         @JvmStatic
