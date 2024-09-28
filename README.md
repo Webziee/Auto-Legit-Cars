@@ -52,14 +52,12 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Demonstration Video
 
 ## 5. REPORT ON 'LEGIT AUTO CARS' 
-The development team has started to develop and build the "Legit Auto Cars" application, which is designed for a sole automobile
-company to connect and engage with their clientele. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and 
-WeBuyCars, but is leaning more towards the WeBuyCars idea in which an app is created for a sole company to interact with their clients whereas the
-other 2 apps allow for multiple companies, and potential clients to interact. With the use of 'Legit Auto Cars', 
-users will be able to upload automobiles they want to sell to a company and view the different vehicles that that company has available
-for sale online. This Android app's goal is to provide a smooth and effective user experience by incorporating new and creative features into the 
-fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
-experience while viewing, uploading vehicles and interacting with the company. 
+The development team has started to develop and build the "Legit Auto Cars" application, which is designed to faciliate and ease the process of listing
+and viewing vehicles that are for sale. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and WeBuyCars, but this 
+app is leaning more towards and adopts more ideas from WeBuyCars and AutoTrader. With the use of 'Legit Auto Cars', users will be able to upload automobiles they want 
+to sell and view the different vehicles for sale online all on one app. This Android applications goal is to provide a smooth and effective user experience by incorporating 
+some fundamental functionality from the three popular car apps as well as new and creative/innovative features. These features are intended to improve user 
+engagement and the user's overall experience while viewing, uploading vehicles and interacting with the application.
 
 ### 5.1 Purpose of the 'Legit Auto Cars' Application
 The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
@@ -67,16 +65,18 @@ and communication between and among the company and its clients which is all don
 or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
 WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
-The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars for review, 
+The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars to sell, 
 while also ensuring a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
 #### 5.1.1 Key Things To Note
-- Interactions are between the comapny and client only, one to one relationship.
-- In the view page, customers will only be able to see the cars for sale by the company.
-- When a client uploads a car to sell, only the company will be able to see that vehicle and not other clients. the company can then communicate
-with the client directly about their vehicle if they are interested.
-- Customers can only book a test drive on company cars, hence clients cannot see other clients cars.
-- Our app inherits and implements more ideas from WeBuyCar rather than AutoTrader and Cars.co.za as these two have a many to many relationship
-in which many companies and many clients interact. 
+- Interactions are between the comapny and client only, one to one relationship. Meaning there are no client to client interactions.
+- In the view page, customers will be able to see the cars for sale by the company and other clients. One thing to note is that the company acts as
+the middle man between clinets, so if a client in intrested in a car uploaded by another client, they will have to deal with the company and cannot
+speak to the client directly, Additionally the company implments a 10 percent markup on cars uploaded by clients for services provided. 
+- When a client uploads a car to sell, the company will be able to see that vehicle as well as other clients. the company can then communicate
+with the client directly about their vehicle if they are interested and if other clients are interested, they will have to communicate with the company
+and not the client selling the vehicle. 
+- Customers can book a test drive on any vehicle. The company handles all booking dates, times and place of meetup. 
+- Our app inherits and implements more ideas from Autotrader and WeBuyCars rather than Cars.co.za. 
 
 ### 5.2 Design Considerations
 The main concerns and difficulties the team took into account when creating 'Legit Auto Cars' are reflected in the following Design Considerations.
