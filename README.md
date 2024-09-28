@@ -156,10 +156,13 @@ checks produced, this was essential. This issue was resolved by adding POST_NOTI
 - Errors with the Gradle Daemon: We also came across issues when the Kotlin compile daemon abruptly stopped working. Making sure all configurations in the
 build.gradle.kts files were aligned and set up appropriately solved this issue.
 #### 5.4.3 Screenshots of GitHub Actions Results
-![Alt text](path/to/ReadMeImages/GitHub Actions Issue 01)
-![Alt text](path/to/ReadMeImages/GitHub Actions Issue 02)
-![Alt text](path/to/ReadMeImages/GitHub Actions Issue 03)
-![Alt text](path/to/ReadMeImages/GitHub Actions Suceeded)
+![GitHub Actions Issue 01](https://github.com/user-attachments/assets/99da1152-af86-41ea-b6aa-d971e6669a8e)
+
+![GitHub Actions Issue 02](https://github.com/user-attachments/assets/f2609d2a-a5c8-4d6f-b0d2-3e929b5c4c6f)
+
+![GitHub Actions Issue 03](https://github.com/user-attachments/assets/6ad9da50-6c97-472d-baf5-ec040394a151)
+
+![GitHub Actions Suceeded](https://github.com/user-attachments/assets/71fe2d2b-d64b-4e78-a77c-22fbe7d12a68)
 
 
 ### 5.5 Conclusion
