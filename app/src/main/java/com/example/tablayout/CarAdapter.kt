@@ -1,22 +1,28 @@
 package com.example.tablayout
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import android.util.Base64
-import android.widget.Button
+import fragment_book_test_drive
 
+class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
-class CarAdapter(private var carList: List<Car>, private var onBookClick: (carTitle: String) -> Unit) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
-    
+    private var onTestDriveClickListener: ((Car) -> Unit)? = null
+
+    fun setOnTestDriveClickListener(listener: (Car) -> Unit) {
+        onTestDriveClickListener = listener
+    }
+
     fun updateData(newCars: List<Car>) {
         carList = newCars
         notifyDataSetChanged()  // Notify adapter that data has changed
@@ -30,31 +36,40 @@ class CarAdapter(private var carList: List<Car>, private var onBookClick: (carTi
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
         val car = carList[position]
 
-        // Picasso to load the main image from Firebase Storage URL
-        if (car.maincarimage.isNotEmpty()) {
-            Picasso.get()
-                .load(car.maincarimage)
-                .error(R.drawable.error) // Fallback image in case of error
-                .into(holder.carimage)
-        } else {
-            holder.carimage.setImageResource(R.drawable.error) // Fallback for empty image
-        }
+        // Bind the title
+        holder.carTitle.text = car.title
 
-        holder.buyprice.text = "R${car.price}"
-        holder.carTitle.text = car.year +" "+ car.make +" "+ car.model +" "+ car.special
+        // Bind the price
+        holder.carPrice.text = "R ${car.price}" // Assuming price is in Rands (South African currency)
+
+        // Bind other car details
         holder.carMileage.text = "${car.mileage}km"
         holder.carTransmission.text = car.transmission
         holder.carCondition.text = car.condition
         holder.carDealership.text = car.dealership
         holder.carLocation.text = car.location
 
-        // Setup for nested horizontal RecyclerView for additional images
-        val carImagesAdapter = CarImagesAdapter(car.imageResourceList)
+        // Debug log
+        Log.d("CarAdapter", "Image URL: ${car.maincarimage}")
+
+        // Check if the image URL is not empty
+        if (car.maincarimage.isNotEmpty()) {
+            Picasso.get()
+                .load(car.maincarimage)
+                .error(R.drawable.error)
+                .into(holder.carimage)
+        } else {
+            holder.carimage.setImageResource(R.drawable.error) // Placeholder or error image
+        }
+
+        // Setup for nested horizontal RecyclerView for images
+        val carImagesAdapter = CarImagesAdapter(car.imageresourcelist)
         holder.nestedRecyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
         holder.nestedRecyclerView.adapter = carImagesAdapter
 
-        holder.bookTestDrive.setOnClickListener{
-            onBookClick(car.year +" "+ car.make +" "+ car.model +" "+ car.special)
+        // Bind the test drive button click
+        holder.testDriveButton.setOnClickListener {
+            onTestDriveClickListener?.invoke(car)
         }
     }
 
@@ -63,16 +78,13 @@ class CarAdapter(private var carList: List<Car>, private var onBookClick: (carTi
     class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val carimage: ImageView = itemView.findViewById(R.id.car_image)
         val carTitle: TextView = itemView.findViewById(R.id.car_title)
-        val buyprice: TextView = itemView.findViewById(R.id.buy_price)
         val carMileage: TextView = itemView.findViewById(R.id.car_Mileage)
         val carTransmission: TextView = itemView.findViewById(R.id.car_Transmission)
         val carCondition: TextView = itemView.findViewById(R.id.car_Condition)
         val carDealership: TextView = itemView.findViewById(R.id.car_dealership)
         val carLocation: TextView = itemView.findViewById(R.id.car_location)
+        val carPrice: TextView = itemView.findViewById(R.id.buy_price) // Add this for price
         val nestedRecyclerView: RecyclerView = itemView.findViewById(R.id.nested_recycler_view)
-        val bookTestDrive: Button = itemView.findViewById(R.id.book_test_drive_button)
+        val testDriveButton: Button = itemView.findViewById(R.id.book_test_drive_button) // Add this line
     }
 }
-
-
-

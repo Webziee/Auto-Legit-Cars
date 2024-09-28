@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Response
 import java.util.UUID
 
 class Sell : Fragment() {
@@ -31,14 +33,21 @@ class Sell : Fragment() {
     private lateinit var progressBar: ProgressBar
     private var mainImageUri: Uri? = null
 
-    private val getContent: ActivityResultLauncher<String> = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
-        uris.let {
+    val getContent: ActivityResultLauncher<String> = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
+        if (uris != null && uris.isNotEmpty()) {
             selectedImages.clear()
             selectedImages.addAll(uris)
             imageAdapter.updateImageList(selectedImages)
-            displaySelectedImages() // Update UI after selecting images
+            displaySelectedImages()
+
+            // Optionally, set the first image as the main image if no main image is selected yet
+            if (mainImageUri == null && selectedImages.isNotEmpty()) {
+                mainImageUri = selectedImages[0]
+                displayMainImage(mainImageUri!!)
+            }
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -267,14 +276,18 @@ class Sell : Fragment() {
         val make = view?.findViewById<Spinner>(R.id.sell_car_make)?.selectedItem.toString()
         val model = view?.findViewById<Spinner>(R.id.sell_car_model)?.selectedItem.toString()
         val year = view?.findViewById<Spinner>(R.id.sell_car_year)?.selectedItem.toString()
-        val transmission = view?.findViewById<Spinner>(R.id.sell_car_transmission)?.selectedItem.toString()
+        val transmission =
+            view?.findViewById<Spinner>(R.id.sell_car_transmission)?.selectedItem.toString()
         val fuelType = view?.findViewById<Spinner>(R.id.sell_car_fuel_type)?.selectedItem.toString()
         val bodyType = view?.findViewById<Spinner>(R.id.sell_car_body_type)?.selectedItem.toString()
-        val condition = view?.findViewById<Spinner>(R.id.sell_car_condition)?.selectedItem.toString()
-        val mileage = view?.findViewById<EditText>(R.id.sell_mileage)?.text.toString()
+        val condition =
+            view?.findViewById<Spinner>(R.id.sell_car_condition)?.selectedItem.toString()
+        val mileage =
+            view?.findViewById<EditText>(R.id.sell_mileage)?.text.toString().toIntOrNull() ?: 0
         val location = view?.findViewById<EditText>(R.id.sell_location)?.text.toString()
         val dealership = view?.findViewById<Spinner>(R.id.sell_dealership)?.selectedItem.toString()
-        val price = view?.findViewById<EditText>(R.id.sell_price)?.text.toString()
+        val price =
+            view?.findViewById<EditText>(R.id.sell_price)?.text.toString().toIntOrNull() ?: 0
 
         if (mainImageUri == null || selectedImages.isEmpty()) {
             Toast.makeText(requireContext(), "Please select images", Toast.LENGTH_SHORT).show()
@@ -285,7 +298,8 @@ class Sell : Fragment() {
         // Upload main image and get URL
         uploadImageToFirebaseStorage(mainImageUri!!) { mainImageUrl ->
             if (mainImageUrl == null) {
-                Toast.makeText(requireContext(), "Failed to upload main image", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Failed to upload main image", Toast.LENGTH_SHORT)
+                    .show()
                 showLoading(false)
                 return@uploadImageToFirebaseStorage
             }
@@ -304,44 +318,60 @@ class Sell : Fragment() {
             }
 
             Tasks.whenAllSuccess<String>(uploadTasks).addOnSuccessListener {
-                // Create Car object
-                val car = mapOf(
-                    "make" to make,
-                    "model" to model,
-                    "year" to year,
-                    "transmission" to transmission,
-                    "fuelType" to fuelType,
-                    "bodyType" to bodyType,
-                    "condition" to condition,
-                    "mileage" to mileage.toInt(),
-                    "dealership" to dealership,
-                    "location" to location,
-                    "price" to price.toInt(),
-                    "maincarimage" to mainImageUrl,
-                    "imageResourceList" to imageUrls
+                // Create Car object for Supabase
+                val car = Car(
+                    make = make,
+                    model = model,
+                    year = year.toInt(),
+                    transmission = transmission,
+                    fueltype = fuelType,
+                    bodytype = bodyType,
+                    condition = condition,
+                    mileage = mileage.toInt(),
+                    dealership = dealership,
+                    location = location,
+                    price = price.toInt(),
+                    maincarimage = mainImageUrl,
+                    imageresourcelist = imageUrls,
+                    title = "$make $model"  // Combined make and model as title
                 )
 
-                // Save car data to Firestore
-                firestore.collection("cars")
-                    .add(car)
-                    .addOnSuccessListener {
-                        showCustomToast("Car listed successfully", R.drawable.success)
-                        showLoading(false)
-                        if (isAdded && !isRemoving) {
-                            clearForm()
-                        }
+                // Save car data to Supabase
+                val apiService =
+                    SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+                val call = apiService.addCarToSupabase(car)
 
+                call.enqueue(object : retrofit2.Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if (response.isSuccessful) {
+                            showCustomToast("Car listed successfully", R.drawable.success)
+                            showLoading(false)
+                            if (isAdded && !isRemoving) {
+                                clearForm()
+                            }
+                        } else {
+                            showCustomToast("Failed to list car", R.drawable.error)
+                            showLoading(false)
+                        }
                     }
-                    .addOnFailureListener { e ->
-                        Log.e("SellFragment", "Error listing car", e)
-                        Toast.makeText(requireContext(), "Error listing car: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Log.e("SellFragment", "Error listing car", t)
+                        Toast.makeText(
+                            requireContext(),
+                            "Error: ${t.localizedMessage}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         showLoading(false)
                     }
+                })
             }.addOnFailureListener { e ->
                 Log.e("UploadError", "Failed to upload images", e)
-                Toast.makeText(requireContext(), "Failed to upload images", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Failed to upload images", Toast.LENGTH_SHORT)
+                    .show()
                 showLoading(false)
             }
+
         }
     }
 
