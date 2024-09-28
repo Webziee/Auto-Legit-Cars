@@ -32,7 +32,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     app:shapeAppearance="@style/circular"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="50dp"
                     app:srcCompat="@drawable/dm_settings_icon_100"/>
 
                 <TextView
@@ -83,7 +83,7 @@
 
                     <EditText
                         android:id="@+id/biometric_selection"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="28dp"
                         android:focusable="false"
@@ -99,6 +99,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/Red"
+                        android:textColor="@color/white"
                         android:text="@string/selection_off"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -113,7 +114,7 @@
 
                     <EditText
                         android:id="@+id/theme"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="28dp"
                         android:focusable="false"
@@ -130,6 +131,7 @@
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/Red"
                         android:text="@string/theme_dark"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -143,7 +145,7 @@
 
                     <EditText
                         android:id="@+id/langauge"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="28dp"
                         android:focusable="false"
@@ -159,6 +161,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/Red"
+                        android:textColor="@color/white"
                         android:text="@string/english"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -173,7 +176,7 @@
 
                     <EditText
                         android:id="@+id/push_notifications"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="28dp"
                         android:focusable="false"
@@ -190,6 +193,7 @@
                         android:layout_marginStart="5dp"
                         android:backgroundTint="@color/Red"
                         android:text="@string/selection_off"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
