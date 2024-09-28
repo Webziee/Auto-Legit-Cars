@@ -59,7 +59,7 @@ other 2 apps allow for multiple companies, and potential clients to interact. Wi
 users will be able to upload automobiles they want to sell to a company and view the different vehicles that that company has available
 for sale online. This Android app's goal is to provide a smooth and effective user experience by incorporating new and creative features into the 
 fundamental functionality of three popular car apps. These features are intended to improve user engagement and the user's overall 
-experience while purchasing and selling vehicles.
+experience while viewing, uploading vehicles and interacting with the company. 
 
 ### 5.1 Purpose of the 'Legit Auto Cars' Application
 The 'Legit Auto Cars' application's main goal is to ease the processes of: viewing cars for sale, uploading cars to sell, making bookings, 
@@ -68,7 +68,7 @@ or the company to purchase or sell cars directly (No Money Involved), but rather
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
 WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
 The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars for review, 
-ensures a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
+while also ensuring a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
 #### 5.1.1 Key Things To Note
 - Interactions are between the comapny and client only, one to one relationship.
 - In the view page, customers will only be able to see the cars for sale by the company.
@@ -114,6 +114,7 @@ all of our applications data.
 ##### Whatsapp Integration 
 - It is crucial to guarantee the security of users' private talks when integrating WhatsApp for communication. In order to prevent vulnerabilities, links
 and APIs were used to start conversations are secured as well as encryption of data.
+
 #### 5.2.5 Visual Design
 ##### Identity
 - The apps name (which is essentially the name of the sole company, in this case we used a fictitious name: 'Legit Auto Cars') and branding are
@@ -139,8 +140,39 @@ and any other users to understand the project by providing the names of the deve
 app's goal, design considerations, and use of GitHub and GitHub Actions.
 
 ### 5.4 Utilization of GitHub Actions
+We used GitHub Actions in our project to automate the Android application's creation and testing. This guarantees that our code works reliably
+not just on our local computers but also in various contexts and enviroments.
+#### 5.4.1 Initial Setup 
+- Workflow File Creation: In the.github/workflows folder, we produced a workflow file called android.yml. The procedures needed to build and test
+our application are outlined in this file.
+- JDK Configuration: At first, we encountered a problem with the build process utilising an out-of-date Java version (Java 11). The Android Gradle
+plugin requires Java 17, thus we adjusted the workflow to use that instead.
+#### 5.4.2 Issues Encountered After Testing The Build
+- Dependency Problems: We had trouble downloading dependencies during the initial builds. To fix these problems, we We carefully reviewed and updated
+our Gradle configuration to include all necessary dependencies and repositories.
+- Lint issues: For Android 13 and above especially, lint issues pertaining to notification permissions caused the development process to fail. We discovered
+that the AndroidManifest.xml file required the application to request the POST_NOTIFICATIONS permission. For the purpose of fixing the issue that the lint
+checks produced, this was essential. This issue was resolved by adding POST_NOTIFICATIONS permission to the AndroidManifest.xml to comply with Android 13 requirements.
+- Errors with the Gradle Daemon: We also came across issues when the Kotlin compile daemon abruptly stopped working. Making sure all configurations in the
+build.gradle.kts files were aligned and set up appropriately solved this issue.
+#### 5.4.3 Screenshots of GitHub Actions Results
+![GitHub Actions Issue 01](https://github.com/user-attachments/assets/99da1152-af86-41ea-b6aa-d971e6669a8e)
+
+![GitHub Actions Issue 02](https://github.com/user-attachments/assets/f2609d2a-a5c8-4d6f-b0d2-3e929b5c4c6f)
+
+![GitHub Actions Issue 03](https://github.com/user-attachments/assets/6ad9da50-6c97-472d-baf5-ec040394a151)
+
+![GitHub Actions Suceeded](https://github.com/user-attachments/assets/71fe2d2b-d64b-4e78-a77c-22fbe7d12a68)
 
 
+### 5.5 Conclusion
+Thus far, the "Legit Auto Cars" application has undergone a thorough development process that has placed a strong emphasis on user interaction, efficient procedures, and
+a solid architecture. Our design decisions have been well considered in order to prioritise security and scalability while guaranteeing a flawless user experience.
+Our team's ability to work together more effectively, manage changes more efficiently, and automate testing and building procedures has all improved workflow dependability 
+since we started using GitHub and GitHub Actions. The difficulties we faced—such as handling dependencies and adjusting to Android's permission updates—have improved project
+results and honed our problem-solving abilities.
+In order to maintain the application's value for users, we will continue to develop its features and improve it with the aid of the insights gathered before the publication on 
+the google play store. In addition to fostering teamwork, this experience has laid a solid platform for further improvement and adjustment to the application.
 
 
 
