@@ -130,7 +130,7 @@ class Sell : Fragment() {
         val fuelTypes = arrayOf("Fuel Type","Petrol", "Diesel", "Electric", "Hybrid")
         val bodyTypes = arrayOf("Body Type","Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Wagon", "Truck")
         val conditions = arrayOf("Condition","New", "Used", "Certified Pre-Owned", "Salvage")
-        val dealership = arrayOf("Dealership","Private")
+        val dealership = arrayOf("Dealership","Legit Auto Cars")
 
         val makeSpinner: Spinner = view.findViewById(R.id.sell_car_make)
         val modelSpinner: Spinner = view.findViewById(R.id.sell_car_model)
@@ -289,6 +289,8 @@ class Sell : Fragment() {
         val price =
             view?.findViewById<EditText>(R.id.sell_price)?.text.toString().toIntOrNull() ?: 0
 
+        val newPrice = (price * 0.10) + price
+
         if (mainImageUri == null || selectedImages.isEmpty()) {
             Toast.makeText(requireContext(), "Please select images", Toast.LENGTH_SHORT).show()
             showLoading(false)
@@ -330,7 +332,7 @@ class Sell : Fragment() {
                     mileage = mileage.toInt(),
                     dealership = dealership,
                     location = location,
-                    price = price.toInt(),
+                    price = newPrice.toInt(),
                     maincarimage = mainImageUrl,
                     imageresourcelist = imageUrls,
                     title = "$make $model"  // Combined make and model as title
