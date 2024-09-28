@@ -266,7 +266,7 @@
     </string-array>
 
     <string-array name="car_transmission">
-        <item>Transmission Type</item>
+        <item>Transmission</item>
         <item>Automatic</item>
         <item>Manual</item>
         <item>Semi-Automatic</item>
