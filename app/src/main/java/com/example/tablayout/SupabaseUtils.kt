@@ -7,6 +7,20 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * SupabaseUtils is a utility object to manage the interaction with Supabase, including
+ * adding cars and syncing cars between the app and the Supabase database.
+ *
+ * The following Retrofit code structure has been adapted based on general
+ * tutorials and examples from official documentation, as well as resources from:
+ *
+ * - Supabase Documentation: https://supabase.com/docs
+ * - Retrofit Documentation: https://square.github.io/retrofit/
+ *
+ * The implementation here involves using Retrofit to perform basic CRUD
+ * operations with a Supabase backend, where cars and bookings are managed.
+ */
+
 object SupabaseUtils {
 
     // Add a car directly to Supabase
