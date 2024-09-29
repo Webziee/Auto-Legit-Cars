@@ -12,6 +12,19 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
+/**
+ * The Settings Fragment allows the user to view their email and access various settings options.
+ * The implementation includes Firebase Authentication to display the logged-in user's email.
+ *
+ * The structure of the fragment, including view initialization and button handling, was inspired
+ * by various sources, including:
+ *
+ * - Firebase Authentication setup: Obregon, 2023, FirebaseAuth documentation.
+ * - Fragment and view inflation: Raghunandan, 2013, Android fragment tutorials.
+ * - Toast message implementation inside fragments: Grier, 2020, Android Toast documentation.
+ * - General Firebase and Android resources used in the fragment setup.
+ */
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"

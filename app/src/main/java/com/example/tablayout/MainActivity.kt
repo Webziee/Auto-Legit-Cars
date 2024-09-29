@@ -24,6 +24,20 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
+/**
+ * MainActivity handles user authentication with Firebase, including
+ * email/password login and Google Sign-In integration.
+ *
+ * The following Google Sign-In and Firebase Authentication logic was adapted from:
+ *
+ * - Firebase Authentication Documentation: https://firebase.google.com/docs/auth
+ * - Google Sign-In for Android Documentation: https://developers.google.com/identity/sign-in/android/start
+ *
+ * This implementation checks for an existing authenticated session and navigates to
+ * the HomeScreen if the user is already signed in. The user can also sign up using email
+ * or sign in with Google.
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var signUp: TextView

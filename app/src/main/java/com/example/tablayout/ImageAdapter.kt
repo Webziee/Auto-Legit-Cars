@@ -9,6 +9,20 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
+/**
+ * ImageAdapter is responsible for displaying a list of images in a RecyclerView,
+ * using Picasso to load and display the image URIs.
+ *
+ * The following code structure has been adapted from general Android RecyclerView
+ * tutorials and examples, including Picasso image loading tutorials. Resources
+ * and documentation include:
+ *
+ * - Android Developer Documentation: https://developer.android.com/guide
+ * - Picasso Library: https://square.github.io/picasso/
+ *
+ * The ImageAdapter handles the display of images, the updating of the image list,
+ * and user interactions such as clicking on an image.
+ */
 class ImageAdapter(private var imageUris: List<Uri>, private val onImageClick: (Uri) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -14,6 +14,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
+/**
+ * Profile fragment to display and manage user information.
+ *
+ * The following Firebase and Google Sign-In code structure has been adapted
+ * from general tutorials and examples from the official Firebase and Android
+ * documentation, as well as additional resources from:
+ *
+ * - Firebase Documentation: https://firebase.google.com/docs/auth
+ * - Google Sign-In Documentation: https://developers.google.com/identity/sign-in/android/start
+ *
+ * The implementation involves managing the user’s profile information and
+ * authentication, including signing out the user from both Firebase and Google.
+ */
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
