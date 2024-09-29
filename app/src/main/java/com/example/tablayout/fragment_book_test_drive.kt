@@ -28,6 +28,25 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/*The following code for 1)whatsapp integration, 2)date time pickers and 3) firebase were inspired from the
+following videos/sources:
+Domenic, 2022. Youtube - The Android Factory. [Online]
+Available at: https://www.youtube.com/watch?v=-u4w_-x_3_I
+[Accessed 17 September 2024].
+
+Domenic, 2022. Youtube - The Androif Studio. [Online]
+Available at: https://www.youtube.com/watch?v=339-fxTcrmI
+[Accessed 17 Septermber 2024].
+
+Obregon, A., 2023. Medium. [Online]
+Available at: https://medium.com/@AlexanderObregon/using-kotlin-with-firebase-a-guide-for-android-app-developers-28f3fd2b57bc
+[Accessed 13 September 2024].
+
+Anon., 2020. GeeksforGeeks. [Online]
+Available at: https://www.geeksforgeeks.org/how-to-send-message-on-whatsapp-in-android-using-kotlin/
+[Accessed 18 September 2024].
+*/
+
 // Fragment initialization parameters
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
