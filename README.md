@@ -1,6 +1,6 @@
 # 1. READ ME
 
-This comprehensive read me file will provide you with an overview of our project. It includes key information such as who is in the team, 
+This comprehensive read me file will provide you with an overview of our project. It includes key information such as who is in the team, each team members group rating, 
 the 3 features selected and implememted from the 5 in the planning phase, a checklist of all features/functionalities included in the app,
 a table of contents for this document, details about the app in the form of a report with the following headings: purpose of
 the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, 
@@ -38,25 +38,25 @@ cross next to each feature, indicating whether it is implemented in the applicat
 Below is a checklist of all the features/functionalities and expectations that are to be included and met as per the POE rubric, 
 with a tick or cross indicating if that feature/functionality as been indluded or met:
 
-- App Runs on Mobile Device
-- Feature: SSO Sign-in
-- Feature: Settings Menu
-- Creation of API
-- Implementation of REST API
-- Feature: User Defined 1 (Advanced Searching)
-- Feature: User Defined 2 (Whatsapp Messaging Integration)
-- Feature: User Defined 3 (Book a Test Drive)
-- User Interface
-- Read Me
-- Automated Testing
-- Demonstration Video
+- App Runs on Mobile Device ✓
+- Feature: SSO Sign-in ✓
+- Feature: Settings Menu ✓
+- Creation of API ✓
+- Implementation of REST API ✓
+- Feature: User Defined 1 (Advanced Searching) ✓
+- Feature: User Defined 2 (Whatsapp Messaging Integration) ✓
+- Feature: User Defined 3 (Book a Test Drive) ✓
+- User Interface ✓
+- Read Me ✓
+- Automated Testing ✓
+- Demonstration Video ✓
 
 ## 5. REPORT ON 'LEGIT AUTO CARS' 
 The development team has started to develop and build the "Legit Auto Cars" application, which is designed to faciliate and ease the process of listing
 and viewing vehicles that are for sale. This idea came about after extensive research on other apps like Auto-Trader, Cars.co.za, and WeBuyCars, but this 
 app is leaning more towards and adopts more ideas from WeBuyCars and AutoTrader. With the use of 'Legit Auto Cars', users will be able to upload automobiles they want 
 to sell and view the different vehicles for sale online all on one app. This Android applications goal is to provide a smooth and effective user experience by incorporating 
-some fundamental functionality from the three popular car apps as well as new and creative/innovative features. These features are intended to improve user 
+some fundamental functionality from the three popular car apps as well as new and creative/innovative features. These features are intended to improve the user 
 engagement and the user's overall experience while viewing, uploading vehicles and interacting with the application.
 
 ### 5.1 Purpose of the 'Legit Auto Cars' Application
@@ -69,7 +69,7 @@ The app helps connect the company and its clients by providing a platform where 
 while also ensuring a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
 #### 5.1.1 Key Things To Note
 - Interactions are between the comapny and client only, one to one relationship. Meaning there are no client to client interactions.
-- In the view page, customers will be able to see the cars for sale by the company and other clients. One thing to note is that the company acts as
+- In the buy page, customers will be able to see the cars for sale by the company and other clients. One thing to note is that the company acts as
 the middle man between clinets, so if a client in intrested in a car uploaded by another client, they will have to deal with the company and cannot
 speak to the client directly, Additionally the company implments a 10 percent markup on cars uploaded by clients for services provided. 
 - When a client uploads a car to sell, the company will be able to see that vehicle as well as other clients. the company can then communicate
