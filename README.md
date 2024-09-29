@@ -1,6 +1,6 @@
 # 1. READ ME
 
-This comprehensive read me file will provide you with an overview of our project. It includes key information such as who is in the team, each team members group rating, 
+This comprehensive read me file will provide you with an overview of our project. It includes key information such as who is in the team, each team members group rating, important links, 
 the 3 features selected and implememted from the 5 in the planning phase, a checklist of all features/functionalities included in the app,
 a table of contents for this document, details about the app in the form of a report with the following headings: purpose of
 the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, 
