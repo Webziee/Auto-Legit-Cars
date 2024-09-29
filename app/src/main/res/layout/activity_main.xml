@@ -121,7 +121,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="15dp"
-                android:visibility="gone">
+                >
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -193,7 +193,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="25dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_marginTop="-10dp"
                 >
 
