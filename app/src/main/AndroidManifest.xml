@@ -15,6 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.TabLayout"
         tools:targetApi="31">
+
+        <!-- Add these meta-data tags -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.gms.appinvite.automatic_install"
+            android:value="true" />
+
+        <!-- Existing activities and components -->
         <activity
             android:name=".HomeScreen"
             android:exported="false" />
@@ -24,10 +35,11 @@
             android:theme="@style/Theme.App.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
 
 </manifest>
