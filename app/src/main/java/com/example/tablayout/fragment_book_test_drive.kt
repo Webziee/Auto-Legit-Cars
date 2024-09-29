@@ -98,7 +98,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val loggedInEmail: FirebaseUser? = auth.currentUser
         val email = loggedInEmail?.email
         val phone = "0812420589" // Define the phone number properly
-        val whatsappMSG = "Good Day Sir/Madam,\nI am interested in your $car which I saw for sale on the app.\nWould you please provide me with more details on the vehicle.\n~ $email"
+        val whatsappMSG = "Good Day Legit Auto Cars,\nI am interested in your $car which I saw for sale on the app.\nWould you please provide me with more details on the vehicle.\n~ $email"
 
         // Set onClickListener to open WhatsApp with the defined phone number and message
         whatsappIcon.setOnClickListener {

@@ -181,13 +181,9 @@ class Buy : Fragment() {
                     val cars = response.body()
                     carList.clear()
                     if (cars != null) {
-                        // Filter out cars where the dealership is "Private"
-                        val filteredCars = cars.filter { car -> car.dealership != "Private" }
-                        if (filteredCars.isNotEmpty()) {
-                            carList.addAll(filteredCars)
-                        } else {
-                            Toast.makeText(context, "No cars available to display", Toast.LENGTH_SHORT).show()
-                        }
+                        carList.addAll(cars)  // Add all cars without filtering by dealership
+                    } else {
+                        Toast.makeText(context, "No cars available to display", Toast.LENGTH_SHORT).show()
                     }
                     carAdapter.notifyDataSetChanged()
                 } else {
