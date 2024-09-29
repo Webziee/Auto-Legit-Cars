@@ -120,7 +120,8 @@
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:visibility="gone">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -192,8 +193,9 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="25dp"
-                android:visibility="gone"
-                android:layout_marginTop="-10dp">
+                android:visibility="visible"
+                android:layout_marginTop="-10dp"
+                >
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -329,8 +331,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="20dp">
+                android:gravity="center_vertical">
 
                 <View
                     android:layout_width="0dp"
@@ -344,6 +345,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:text="@string/or_login_with"
                     android:textColor="#474646"
@@ -358,12 +360,11 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:background="@color/white"
@@ -371,7 +372,7 @@
 
                 <com.google.android.gms.common.SignInButton
                     android:id="@+id/googleSignInButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"/>
