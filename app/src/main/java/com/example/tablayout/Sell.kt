@@ -311,7 +311,6 @@ class Sell : Fragment() {
         val dealership = view?.findViewById<Spinner>(R.id.sell_dealership)?.selectedItem.toString()
         val price =
             view?.findViewById<EditText>(R.id.sell_price)?.text.toString().toIntOrNull() ?: 0
-
         val newPrice = (price * 0.10) + price
 
 
