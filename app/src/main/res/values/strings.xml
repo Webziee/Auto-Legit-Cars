@@ -142,14 +142,14 @@
     <string-array name="location_items">
         <item>Location</item>
         <item>Sandton</item>
-        <item>Western Cape</item>
-        <item>Eastern Cape</item>
-        <item>Northern Cape</item>
-        <item>North West</item>
-        <item>KwaZulu Natal</item>
-        <item>Free State</item>
-        <item>Mpumalanga</item>
-        <item>Limpopo</item>
+        <item>Midrand</item>
+        <item>Joburg CBD</item>
+        <item>Pretoria</item>
+        <item>Boxburg</item>
+        <item>Benoni</item>
+        <item>Edenvale</item>
+        <item>Fourways</item>
+        <item>Lynwood</item>
     </string-array>
 
     <string-array name="body_type_items">
