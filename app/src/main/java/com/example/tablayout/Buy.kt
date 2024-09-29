@@ -16,6 +16,21 @@ import retrofit2.Call
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
+/**
+ * Buy fragment to manage car listing and filtering.
+ *
+ * This class allows users to filter through a list of cars and book test drives.
+ * The car data is fetched from Supabase using Retrofit API requests.
+ *
+ * The following implementation was inspired by the following resources:
+ *
+ * - Supabase Documentation: https://supabase.com/docs
+ * - Retrofit Documentation: https://square.github.io/retrofit/
+ * - Android Developer Documentation: https://developer.android.com
+ *
+ * This fragment uses RecyclerView for listing cars and spinners for filtering options.
+ */
+
 class Buy : Fragment() {
 
     private val carList = mutableListOf<Car>()
@@ -166,9 +181,13 @@ class Buy : Fragment() {
                     val cars = response.body()
                     carList.clear()
                     if (cars != null) {
-                        carList.addAll(cars)  // Add all cars without filtering by dealership
-                    } else {
-                        Toast.makeText(context, "No cars available to display", Toast.LENGTH_SHORT).show()
+                        // Filter out cars where the dealership is "Private"
+                        val filteredCars = cars.filter { car -> car.dealership != "Private" }
+                        if (filteredCars.isNotEmpty()) {
+                            carList.addAll(filteredCars)
+                        } else {
+                            Toast.makeText(context, "No cars available to display", Toast.LENGTH_SHORT).show()
+                        }
                     }
                     carAdapter.notifyDataSetChanged()
                 } else {

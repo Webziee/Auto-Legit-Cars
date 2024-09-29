@@ -11,6 +11,20 @@ import androidx.fragment.app.Fragment
 import com.example.tablayout.databinding.ActivityHomeScreen2Binding
 import com.example.tablayout.databinding.ActivityMainBinding
 
+/**
+ * HomeScreen Activity for navigating between different fragments in the app.
+ *
+ * The following code structure has been adapted from common practices used
+ * in Android app development and examples from:
+ *
+ * - Android Developers Documentation: https://developer.android.com/docs
+ * - Fragment Transactions: https://developer.android.com/guide/fragments/fragmentmanager
+ *
+ * The implementation here handles the main screen of the app, which includes
+ * a bottom navigation bar for switching between fragments like Buy, Sell, Profile,
+ * and Settings. It also features a splash screen using Android's SplashScreen API.
+ */
+
 class HomeScreen : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeScreen2Binding
