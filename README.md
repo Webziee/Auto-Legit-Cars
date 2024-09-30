@@ -1,5 +1,5 @@
 # 1. INTRODUCTION : READ ME
-This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) each team members group rating, 
+This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 
 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 
 9) details about the app in the form of a report with the following headings: purpose of
 the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes;
@@ -9,7 +9,7 @@ and 10) a reference list consisting of all references for research and code attr
 1. [Introduction](#introduction)
 2. [Table of Contents](#table-of-contents)
 3. [Team Members](#team-members)
-4. [Group Ratings](#group-ratings)
+4. [Group Ratings & Commit Evidence](#group-ratings)
 5. [Important Links](#important-links)
 6. [Selected Features Implemented](#selected-features-implemented)
 7. [Checklist of Features/Functionalities](#checklist-of-featuresfunctionalities)
@@ -41,8 +41,12 @@ and 10) a reference list consisting of all references for research and code attr
 - Jaiden Naidoo (10218221)
 - Please note that we do not recognise (Faten848), this person is not apart of our group and we have no idea why and how he/she joined our repo link
 
-## 4. Team Member Group Rating
+## 4. TEAM MEMBER GROUP RATING AND COMMIT EVIDENCE
+### 4.1 Group Rating
 ![image](https://github.com/user-attachments/assets/a84ce352-f264-488a-818e-8edc11826bf9)
+### 4.2 Commit Evidence
+![image](https://github.com/user-attachments/assets/e5dde609-b656-4fe9-9168-a3d3b98725a4)
+![image](https://github.com/user-attachments/assets/19a5aa6f-a7b2-4f38-8930-6e0d41ce25d0)
 
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
