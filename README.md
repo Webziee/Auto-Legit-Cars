@@ -39,6 +39,7 @@ and 10) a reference list consisting of all references for research and code attr
 - Ashwin Pillay (ST10088734)
 - Tristan Singh (ST10022401)
 - Jaiden Naidoo (10218221)
+- Please note that we do not recognise (Faten848), this person is not apart of our group and we have no idea why and how he/she joined our repo link
 
 ## 4. Team Member Group Rating
 
