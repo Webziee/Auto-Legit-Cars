@@ -46,7 +46,7 @@ and 10) a reference list consisting of all references for research and code attr
 ![image](https://github.com/user-attachments/assets/a84ce352-f264-488a-818e-8edc11826bf9)
 ### 4.2 Commit Evidence
 ![image](https://github.com/user-attachments/assets/e5dde609-b656-4fe9-9168-a3d3b98725a4)
-![image](https://github.com/user-attachments/assets/19a5aa6f-a7b2-4f38-8930-6e0d41ce25d0)
+![image](https://github.com/user-attachments/assets/cce3ee91-404b-4fdf-8a8d-6f2d2cf86da5)
 
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
