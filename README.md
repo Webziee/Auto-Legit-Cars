@@ -1,4 +1,4 @@
-# 1. READ ME
+# 1. INTRODUCTION : READ ME
 
 This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) each team members group rating, 
 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 
@@ -6,19 +6,35 @@ This comprehensive read me file will provide you with an overview of our project
 the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes;
 and 10) a reference list consisting of all references for research and code attribution.
 
-## 2. Table Of Contents
-1. [READ ME](#read-me)
-2. [TEAM MEMBERS](#group-memers)
-3. [Group Rating](#group-rating)
-4. 
-5. [FEATURES SELECTED](#features)
-6. [CHECKLIST OF FEATURES AND FUNCTIONALITIES](#checklist)
-7. [REPORT ON 'LEGIT AUTO CARS'](#report)
-   - [Purpose](#purpose)
-   - [Design Considerations](#design-considerations)
-   - [Utilization of GitHub](#utilization-github)
-   - [Utilization of GitHub actions](#itilization-git-action)
-   - [Conclusion](#conclution)
+## 2. Table of Contents
+1. [Introduction](#introduction)
+2. [Table of Contents](#table-of-contents)
+3. [Team Members](#team-members)
+4. [Group Ratings](#group-ratings)
+5. [Important Links](#important-links)
+6. [Selected Features Implemented](#selected-features-implemented)
+7. [Checklist of Features/Functionalities](#checklist-of-featuresfunctionalities)
+8. [API Implementation](#api-implementation)
+9. [Report on 'Legit Auto Cars'](#9-report-on-legit-auto-cars)
+   - [9.1 Purpose of the 'Legit Auto Cars' Application](#91-purpose-of-the-legit-auto-cars-application)
+      - [9.1.1 Key Things To Note](#911-key-things-to-note)
+   - [9.2 Design Considerations](#92-design-considerations)
+      - [9.2.1 Focus On User Experience (UX)](#921-focus-on-user-experience-ux)
+      - [9.2.2 Performance and Speed](#922-performance-and-speed)
+      - [9.2.3 Scalability](#923-scalability)
+      - [9.2.4 Security](#924-security)
+      - [9.2.5 Visual Design](#925-visual-design)
+   - [9.3 Utilization of GitHub](#93-utilization-of-github)
+      - [9.3.1 Collaborative Development Process](#931-collaborative-development-process)
+      - [9.3.2 Version Control and Commits](#932-version-control-and-commits)
+      - [9.3.3 Repository Submission](#933-repository-submission)
+      - [9.3.4 Documentation](#934-documentation)
+   - [9.4 Utilization of GitHub Actions](#94-utilization-of-github-actions)
+      - [9.4.1 Initial Setup](#941-initial-setup)
+      - [9.4.2 Issues Encountered After Testing The Build](#942-issues-encountered-after-testing-the-build)
+      - [9.4.3 Screenshots of GitHub Actions Results](#943-screenshots-of-github-actions-results)
+   - [9.5 Conclusion](#95-conclusion)
+10. [Reference List](#reference-list)
 
 ## 3. TEAM MEMBERS
 
@@ -28,6 +44,9 @@ and 10) a reference list consisting of all references for research and code attr
 
 ## 4. Team Member Group Rating
 ## 5. Important Links 
+"Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
+### 5.1 Repo Link
+- 
 
 
 
@@ -144,7 +163,7 @@ history, which made it simple to identify changes, troubleshoot them, and roll b
 #### 9.3.3 Repository Submission 
 - The entire project is stored in the repository and will be sent to our lecturer for review and marking. With the connection to our GitHub
 repository, the lecturer will have complete access to our project and be able to examine our documentation, code, commits and organisation.
-#### 9.3.5 Documentation
+#### 9.3.4 Documentation
 - We worked together to create an extensive README.md file using GitHub as part of documentation. The README makes it simpler for the lecturer
 and any other users to understand the project by providing the names of the developers involved, and a comprehensive explanation regarding the
 app's goal, design considerations, and use of GitHub and GitHub Actions.
