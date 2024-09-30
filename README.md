@@ -1,5 +1,4 @@
 # 1. INTRODUCTION : READ ME
-
 This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) each team members group rating, 
 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 
 9) details about the app in the form of a report with the following headings: purpose of
@@ -37,7 +36,6 @@ and 10) a reference list consisting of all references for research and code attr
 10. [Reference List](#reference-list)
 
 ## 3. TEAM MEMBERS
-
 - Ashwin Pillay (ST10088734)
 - Tristan Singh (ST10022401)
 - Jaiden Naidoo (10218221)
@@ -54,7 +52,6 @@ and 10) a reference list consisting of all references for research and code attr
 ## 6. FEATURES SELECTED AND IMPLEMENTED
 Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
 cross next to each feature, indicating whether it is implemented in the application or not:
-
 - Advanced Searching ✓ 
 - Price Comparism Tool ✗ 
 - Favourites Feature ✗ 
@@ -64,7 +61,6 @@ cross next to each feature, indicating whether it is implemented in the applicat
 ## 7. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
 Below is a checklist of all the features/functionalities and expectations that are to be included and met as per the POE rubric, 
 with a tick or cross indicating if that feature/functionality as been indluded or met:
-
 - App Runs on Mobile Device ✓
 - Feature: SSO Sign-in ✓
 - Feature: Settings Menu ✓
@@ -221,6 +217,86 @@ In order to maintain the application's value for users, we will continue to deve
 the google play store. In addition to fostering teamwork, this experience has laid a solid platform for further improvement and adjustment to the application.
 
 ## 10. REFERENCE LIST
+Anon., 2020. GeeksforGeeks. [Online] 
+Available at: https://www.geeksforgeeks.org/how-to-send-message-on-whatsapp-in-android-using-kotlin/
+[Accessed 18 September 2024].
+
+Domenic, 2022. Youtube - The Android Factory. [Online] 
+Available at: https://www.youtube.com/watch?v=-u4w_-x_3_I
+[Accessed 17 September 2024].
+
+Domenic, 2022. Youtube - The Androif Studio. [Online] 
+Available at: https://www.youtube.com/watch?v=339-fxTcrmI
+[Accessed 17 Septermber 2024].
+
+Evan, 2020. Youtube. [Online] 
+Available at: https://www.youtube.com/watch?v=vj9aY9b5hIg
+[Accessed 18 September 2024].
+
+Grier, M., 2020. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/65504266/kotlin-not-java-how-to-use-maketoast-within-a-fragment-or-make-a-click-work-in
+[Accessed 13 September 2024].
+
+minikate, 2019. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/54784101/firebase-android-get-current-user-email
+[Accessed 13 September 2024].
+
+Mourya, A. K., 2023. Medium. [Online] 
+Available at: https://medium.com/@mr.appbuilder/navigating-android-fragments-with-the-navigation-component-part-1-1d238e000313
+[Accessed 15 September 2024].
+
+Obregon, A., 2023. Medium. [Online] 
+Available at: https://medium.com/@AlexanderObregon/using-kotlin-with-firebase-a-guide-for-android-app-developers-28f3fd2b57bc
+[Accessed 13 September 2024].
+
+Pachigolla, R. k., 2013. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/14619234/how-to-make-toast-message-when-button-is-clicked
+[Accessed 12 September 2024].
+
+Poulopoulos, D., 2015. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/30846973/getting-arguments-from-a-bundle
+[Accessed 17 September 2024].
+
+Raghunandan, 2013. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/17599450/how-to-inflate-view-inside-fragment
+[Accessed 13 September 2024].
+
+ShoutCafe, 2023. [Online] 
+Available at: https://www.youtube.com/watch?v=jWiiL8G4jbo
+[Accessed 15 September 2024].
+
+FirebaseAuth. (2023) Firebase Authentication setup [Online]. Available at: https://firebase.google.com/docs/auth 
+[Accessed: 22 September 2024].
+
+Raghunandan, P. (2013) Android fragment tutorials. [Online]. Available at: https://stackoverflow.com 
+[Accessed: 23 September 2024].
+
+Grier, M. (2020) Android Toast documentation. [Online]. Available at: https://developer.android.com/guide/topics/ui/notifiers/toasts 
+[Accessed: 22 September 2024].
+
+Supabase (n.d.) Supabase Documentation. [Online]. Available at: https://supabase.com/docs 
+[Accessed: 22 September 2024].
+
+Retrofit (n.d.) Retrofit Documentation. [Online]. Available at: https://square.github.io/retrofit/ 
+[Accessed: 22 September 2024].
+
+OkHttp (n.d.) OkHttp Documentation. [Online]. Available at: https://square.github.io/okhttp/ 
+[Accessed: 22 September 2024].
+
+Android Developers (n.d.) Fragment Transactions. [Online]. Available at: https://developer.android.com/guide/fragments/fragmentmanager 
+[Accessed: 22 September 2024].
+
+Google Developers (n.d.) Google Sign-In for Android Documentation. [Online]. Available at: https://developers.google.com/identity/sign-in/android/start 
+[Accessed: 22 September 2024].
+
+Android Developers (n.d.) Picasso Documentation. [Online]. Available at: https://square.github.io/picasso/ 
+[Accessed: 22 September 2024].
+
+StackOverflow (n.d.) Handling multiple images and spinners. [Online]. Available at: https://stackoverflow.com 
+[Accessed: 22 September 2024].
+
+
+
 
 
 
