@@ -42,6 +42,7 @@ and 10) a reference list consisting of all references for research and code attr
 - Please note that we do not recognise (Faten848), this person is not apart of our group and we have no idea why and how he/she joined our repo link
 
 ## 4. Team Member Group Rating
+![image](https://github.com/user-attachments/assets/a84ce352-f264-488a-818e-8edc11826bf9)
 
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
