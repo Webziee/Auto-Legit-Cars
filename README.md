@@ -43,13 +43,13 @@ and 10) a reference list consisting of all references for research and code attr
 - Jaiden Naidoo (10218221)
 
 ## 4. Team Member Group Rating
+
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
 ### 5.1 Repo Link
-- 
-
-
-
+- https://github.com/Webziee/Auto-Legit-Cars.git
+### 5.2 Youtube Link To The Legit Auto Cars Video Demonstration 
+- https://www.youtube.com/watch?v=wskusqSF8sU
 
 ## 6. FEATURES SELECTED AND IMPLEMENTED
 Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
@@ -79,6 +79,23 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Demonstration Video ✓
 
 ## 8. CREATION AND IMPLEMENTATION OF API/REST API
+### 8.1 Supabase Website and Dashboard
+First, we headed over to *supabase.com* to set up our project. Once you sign in, create a new project, which will generate your API URL and keys. This API URL and key will be used to connect your app to Supabase.
+### 8.2 Table Creation
+In Supabase, we created two main tables: cars and bookings. Let’s take a quick look at the cars table structure. It includes fields like id, title, price, make, model, and more. These store key information about the cars in our listing.
+The bookings table is used to store user bookings for test drives. It contains a car_id field, which references the id from the cars table, ensuring relational data integrity.
+### 8.3 Connecting Supabase to the Legit Auto Cars Application
+In the app, we use *Retrofit* to connect with Supabase. In our ApiServices Interface we define our API calls, such as fetching filtered cars and creating new bookings. Notice how we use @POST for adding a booking and @GET for retrieving filtered cars.
+### 8.4 Fetching Cars
+In the Buy.kt fragment where we display the car listings, we made use of Retrofit to fetch data from Supabase.
+Once the cars are fetched, they are displayed in a RecyclerView, allowing users to browse through the available options.
+### 8.5 Filtering Cars
+We also implemented a powerful search functionality where users can filter cars by make, model, year, price, and more. The filtering works by dynamically building query parameters and sending them to Supabase.
+By using filters like minimum price, maximum year, and transmission type, we retrieve only the relevant cars from our database.
+### 8.6 Booking a Test Drive
+Once a user selects a car, they can book a test drive directly from the app. This function submits the booking to Supabase by sending a POST request to the bookings table. Notice how we pass the car_id, date_time, and user_email to complete the booking.
+### 8.7 Closing
+And that’s it! With Supabase and a few lines of code, we’ve successfully built a full-stack car listing app with real-time data management and booking features. Supabase provides an excellent, easy-to-use backend solution, especially when you want to move fast with a scalable database and authentication features.
 
 ## 9. REPORT ON 'LEGIT AUTO CARS' 
 The development team has started to develop and build the "Legit Auto Cars" application, which is designed to faciliate and ease the process of listing
