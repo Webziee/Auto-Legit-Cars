@@ -44,10 +44,12 @@ and 10) a reference list consisting of all references for research and code attr
 
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
-### 5.1 Repo Link
+### 5.1 Legit Auto Parts Repository Link
 - https://github.com/Webziee/Auto-Legit-Cars.git
 ### 5.2 Youtube Link To The Legit Auto Cars Video Demonstration 
 - https://www.youtube.com/watch?v=wskusqSF8sU
+### 5.3 OPSC7312 POE Part 2 Repository Link 
+- https://github.com/IIEWFL/opsc7312-part-2-group-submission-wonder-developers-1.git
 
 ## 6. FEATURES SELECTED AND IMPLEMENTED
 Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
