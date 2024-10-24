@@ -79,4 +79,35 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    /*
+    The following code is used for biometric authentication, this code was inspired from the following video:
+    Lackner, P., 2024. Youtube, How to Implement Biometric Auth in Your Android App. [Online]
+    Available at: https://www.youtube.com/watch?v=_dCRQ9wta-I
+    [Accessed 12 October 2024].*/
+    implementation("androidx.biometric:biometric:1.1.0")
+
+    // Coroutines for Kotlin
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

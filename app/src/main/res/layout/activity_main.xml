@@ -38,6 +38,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/tvPrompt"
                         android:text="@string/go_ahead_and_set_up_your_account"
                         android:textSize="30sp"
                         android:layout_marginTop="20dp"
