@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/values/strings.xml -->
 <resources>
-    <string name="default_web_client_id">691091503664-ref0vcucaqeqcmevvfthftga6ov96omc.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">691091503664-ref0vcucaqeqcmevvfthftga6ov96omc.apps.googleusercontent.com</string>
 </resources>

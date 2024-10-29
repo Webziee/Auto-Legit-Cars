@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+The following multilingual code was inspired from a youtube video demonstrating how to convert my current strings file to
+a different language using a plugin, reference for the video below:
+Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+[Accessed 29 October 2024].
+-->
+<resources>
+    <string name="app_name">Legit Auto Cars</string>
+    <string name="login">Meld aan</string>
+    <string name="log_in">Meld aan</string>
+    <string name="sign_up">Teken in</string>
+    <string name="signup">aanmeld</string>
+    <string name="auto_legit_cars">Auto Legit Cars</string>
+    <string name="email_or_user_name">E-pos</string>
+    <string name="password">Wagwoord</string>
+    <string name="forget_password">Wagwoord vergeet\?</string>
+    <string name="or">Teken in met</string>
+    <string name="sign_in_to_enjoy_the_best_car_experience">Meld aan om die beste motorervaring te geniet</string>
+    <string name="go_ahead_and_set_up_your_account">Gaan voort en stel jou rekening op</string>
+    <string name="confirm_password">Bevestig wagwoord</string>
+    <string name="this_is_a_custom_toast">Dit is \'n persoonlike roosterbrood</string>
+    <string name="or_login_with">Meld aan met</string>
+    <string name="google">Google</string>
+    <string name="google_image">google_beeld</string>
+
+    <string name="hello_blank_fragment">Hallo leë fragment</string>
+    <string name="profile_image">Profielbeeld</string>
+    <string name="edit">Wysig</string>
+    <string name="profile">Profiel</string>
+    <string name="email">E-pos</string>
+    <string name="current_password">Huidige wagwoord</string>
+    <string name="footer_logo">Voetskrif-logo</string>
+    <string name="sign_out">Teken uit</string>
+    <string name="name">Naam</string>
+    <string name="logged_in_email">E-pos aangeteken</string>
+    <string name="logo">logo</string>
+    <string name="search_make_model_and_varient">Soek fabrikaat, model en variëteit</string>
+    <string name="min_price">Min prys</string>
+    <string name="max_price">Maksimum prys</string>
+    <string name="price">Prys</string>
+    <string name="search">soek</string>
+    <string name="reset">Stel terug</string>
+    <string name="result">Resultate</string>
+    <string name="search_make_model_and_variant">Soek volgens fabrikaat, model of variant</string>
+
+    <string name="application_name">LegitAutoCars_ST10088734</string>
+    <string name="biometrics">Biometrie</string>
+    <string name="theme">Tema</string>
+    <string name="language_english">Engels</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="push_notifications">Drukkennisgewings</string>
+
+    <string name="selection_on">AAN</string>
+    <string name="selection_off">AF</string>
+    <string name="theme_light">LIG</string>
+    <string name="theme_dark">DONKER</string>
+    <string name="english">ENG</string>
+    <string name="afrikaans">AFR</string>
+
+    <string name="select_make">Kies Car Make</string>
+    <string name="sell_subheading">Vul die volgende oor jou motor in:</string>
+    <string name="hint_model">Motor model</string>
+    <string name="hint_make">Motor maak</string>
+    <string name="hint_year">Jaar Model</string>
+    <string name="hint_mileage">Kilometers</string>
+    <string name="hint_description">Vertel ons meer oor jou motor</string>
+    <string name="sell">Verkoop</string>
+    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[Deur voort te gaan verstaan en stem ek in met die Legit Auto Parts se bepalings en voorwaardes en privaatheidsbeleid.]]></string>
+    <string name="enter_details_of_the_car_you_want_to_sell">Voer besonderhede in van die motor wat jy wil verkoop</string>
+    <string name="dealership">Handelaarskap</string>
+    <string name="special_edition">Spesiale uitgawe</string>
+    <string name="selling_price">Verkoopprys</string>
+    <string name="upload_main_image">Laai hoofprent op</string>
+    <string name="select_multiple_images">Kies verskeie beelde</string>
+    <string name="capture_image">Vang Beeld</string>
+    <string name="main_image">Hoofbeeld</string>
+    <string name="pick_selling_images">Kies prente</string>
+    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Sodra jy jou prente gekies het, klik op die een wat jy wil hê as jou hoofverkopende prent</string>
+    <string name="car_selected">Motor gekies</string>
+    <string name="select_test_date_time">Kies Toetsdatum en -tyd</string>
+    <string name="click_above">klik_hierbo</string>
+    <string name="submit_booking">Dien bespreking in</string>
+    <string name="whatapp_us">whatApp_Ons</string>
+
+    <string name="settings">Instellings</string>
+
+    <string name="booking">Bespreek toetsrit</string>
+    <string name="book_test_drive">Bespreek toetsrit</string>
+
+    <string name="or_contact_us_by">Of Kontak ons op</string>
+
+    <string-array name="min_price_items">
+        <item>Min prys</item>
+        <item>R50 000</item>
+        <item>R100 000</item>
+        <item>R150 000</item>
+        <item>R200 000</item>
+        <item>R250 000</item>
+        <item>R300 000</item>
+        <item>R350 000</item>
+        <item>R400 000</item>
+        <item>R450 000</item>
+        <item>R500 000</item>
+        <item>R550 000</item>
+        <item>R600 000</item>
+        <item>R650 000</item>
+        <item>R700 000</item>
+        <item>R750 000</item>
+        <item>R800 000</item>
+        <item>R850 000</item>
+        <item>R900 000</item>
+        <item>R950 000</item>
+        <item>R1 000 000</item>
+        <item>R1 250 000</item>
+        <item>R1 500 000</item>
+        <item>R1 750 000</item>
+        <item>R2 000 000</item>
+    </string-array>
+
+    <string-array name="max_price_items">
+        <item>Maksimum prys</item>
+        <item>R50 000</item>
+        <item>R100 000</item>
+        <item>R150 000</item>
+        <item>R200 000</item>
+        <item>R250 000</item>
+        <item>R300 000</item>
+        <item>R350 000</item>
+        <item>R400 000</item>
+        <item>R450 000</item>
+        <item>R500 000</item>
+        <item>R550 000</item>
+        <item>R600 000</item>
+        <item>R650 000</item>
+        <item>R700 000</item>
+        <item>R750 000</item>
+        <item>R800 000</item>
+        <item>R850 000</item>
+        <item>R900 000</item>
+        <item>R950 000</item>
+        <item>R1 000 000</item>
+        <item>R1 250 000</item>
+        <item>R1 500 000</item>
+        <item>R1 750 000</item>
+        <item>R2 000 000</item>
+    </string-array>
+
+    <string-array name="location_items">
+        <item>Ligging</item>
+        <item>Sandton</item>
+        <item>Midrand</item>
+        <item>Johannesburg CBD</item>
+        <item>Pretoria</item>
+        <item>Boxburg</item>
+        <item>Benoni</item>
+        <item>Edenvale</item>
+        <item>Fourways</item>
+        <item>Lynwood</item>
+    </string-array>
+
+    <string-array name="body_type_items">
+        <item>Liggaamstipe</item>
+        <item>Sedan</item>
+        <item>Luikrug</item>
+        <item>Stasiewa</item>
+        <item>SUV</item>
+        <item>Bakkie</item>
+        <item>Coupe</item>
+        <item>Convertible</item>
+    </string-array>
+
+    <string-array name="min_year_items">
+        <item>Min Jaar</item>
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+        <item>2009</item>
+        <item>2008</item>
+        <item>2007</item>
+        <item>2006</item>
+        <item>2005</item>
+        <item>2004</item>
+        <item>2003</item>
+        <item>2002</item>
+        <item>2001</item>
+        <item>1999</item>
+        <item>1998</item>
+        <item>1997</item>
+        <item>1996</item>
+        <item>1995</item>
+        <item>1994</item>
+        <item>1993</item>
+        <item>1992</item>
+        <item>1991</item>
+        <item>1990</item>
+    </string-array>
+
+    <string-array name="max_year_items">
+        <item>Maksimum Jaar</item>
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+        <item>2009</item>
+        <item>2008</item>
+        <item>2007</item>
+        <item>2006</item>
+        <item>2005</item>
+        <item>2004</item>
+        <item>2003</item>
+        <item>2002</item>
+        <item>2001</item>
+        <item>1999</item>
+        <item>1998</item>
+        <item>1997</item>
+        <item>1996</item>
+        <item>1995</item>
+        <item>1994</item>
+        <item>1993</item>
+        <item>1992</item>
+        <item>1991</item>
+        <item>1990</item>
+    </string-array>
+
+    <string-array name="transmisson_items">
+        <item>Transmissie</item>
+        <item>Outomaties</item>
+        <item>Handmatig</item>
+    </string-array>
+
+    <string-array name="max_mileage_items">
+        <item>Maksimum kilometers</item>
+        <item>50km</item>
+        <item>1 500km</item>
+        <item>5 000km</item>
+        <item>10 000km</item>
+        <item>20 000km</item>
+        <item>25 000km</item>
+        <item>30 000km</item>
+        <item>40 000km</item>
+        <item>50 000km</item>
+        <item>60 000km</item>
+        <item>70 000km</item>
+        <item>80 000km</item>
+        <item>90 000km</item>
+        <item>100 000km</item>
+        <item>120 000km</item>
+        <item>150 000km</item>
+    </string-array>
+
+    <string-array name="car_transmission">
+        <item>Transmissie</item>
+        <item>Outomaties</item>
+        <item>Handmatig</item>
+        <item>semi-Outomaties</item>
+    </string-array>
+
+    <string-array name="car_fuel">
+        <item>Tipe Brandstof</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
+        <item>Elektriese</item>
+    </string-array>
+
+    <string-array name="car_body_type">
+        <item>Liggaamstipe</item>
+        <item>Sedan</item>
+        <item>Luikrug</item>
+        <item>Stasiewa</item>
+        <item>SUV</item>
+        <item>Bakkie</item>
+        <item>koepee</item>
+        <item>Omskepbaar</item>
+    </string-array>
+
+    <string-array name="car_condition">
+        <item>Toestand Gradering</item>
+        <item>5 Star - Uitstekend</item>
+        <item>4 Star - Puik</item>
+        <item>3 Star - Goed</item>
+        <item>2 Star - Sleg</item>
+        <item>1 Star -Benodig Werk</item>
+    </string-array>
+
+    <string-array name="car_make">
+        <item>Motor Maak</item>
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Mercedes Benz</item>
+        <item>Toyota</item>
+    </string-array>
+
+    <string-array name="car_model">
+        <item>Motor Model</item>
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Mercedes Benz</item>
+        <item>Toyota</item>
+    </string-array>
+
+    <!-- Other string resources here -->
+    <string name="placeholder">Plekhouer</string>
+    <string name="model">Model</string>
+    <string name="status">Status</string>
+    <string name="mileage">Kilometers</string>
+    <string name="transmission">Transmissie</string>
+    <string name="location">Ligging</string>
+</resources>

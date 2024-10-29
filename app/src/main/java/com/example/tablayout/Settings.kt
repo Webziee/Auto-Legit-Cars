@@ -1,8 +1,5 @@
 package com.example.tablayout
-
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 // Import Firebase Firestore
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.toObject
+
 
 /**
  * The Settings Fragment allows the user to view their email and access various settings options.
@@ -242,9 +239,19 @@ class Settings : Fragment() {
 
     private fun handleLangaugeClick()
     {
-        languageButton.setOnClickListener{
-            //According to Grier (2020), this is how we create a toast message inside of a fragment
-            Toast.makeText(requireContext(),"Feature Currently Unavailable, Coming Soon!", Toast.LENGTH_SHORT).show()
+        languageButton.setOnClickListener {
+            if(language == "ENG")
+            {
+                setAFR()
+            }
+            else if(language == "AFR")
+            {
+                setENG()
+            }
+            else
+            {
+                Toast.makeText(requireContext(), "No Language Settings Found", Toast.LENGTH_LONG).show()
+            }
         }
     }
     private fun handlePushNotificationClick()
@@ -357,6 +364,112 @@ class Settings : Fragment() {
                                     Toast.makeText(
                                         requireContext(),
                                         "Failed To Update Biometric Setting.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed To Load User Settings",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "No User Logged In",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun setENG()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update biometricsEnabled field in Firestore to false
+                            document.reference.update("Language","ENG")
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Language Set To ENG", // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    language = "ENG"
+                                    // Update our button text accordingly
+                                    languageButton.text = "ENG" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Failed To Update Language Setting.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed To Load User Settings",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "No User Logged In",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun setAFR()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update biometricsEnabled field in Firestore to false
+                            document.reference.update("Language","AFR")
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Language Set To AFR", // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    language = "AFR"
+                                    // Update our button text accordingly
+                                    languageButton.text = "AFR" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Failed To Update Language Setting.",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
