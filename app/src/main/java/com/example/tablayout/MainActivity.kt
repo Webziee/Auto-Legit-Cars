@@ -11,7 +11,6 @@ import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
@@ -26,14 +25,14 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.concurrent.Executor
 import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.AuthenticationCallback
 import androidx.biometric.BiometricPrompt.PromptInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
+import android.content.Context
+import android.content.res.Configuration
+import java.util.Locale
 
 class MainActivity : AppCompatActivity()
 {
@@ -56,7 +55,6 @@ class MainActivity : AppCompatActivity()
     private lateinit var googleSignInButton: com.google.android.gms.common.SignInButton
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var promptText: TextView
-
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
