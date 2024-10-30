@@ -85,7 +85,7 @@ class Buy : Fragment() {
                     fetchCarModels(selectedMake)
                 } else {
                     modelList.clear()
-                    modelList.add("Select Model")
+                    modelList.add(getString(R.string.Toast85))
                     modelAdapter.notifyDataSetChanged()
                 }
             }
@@ -209,7 +209,7 @@ class Buy : Fragment() {
                     val cars = response.body()
                     if (cars != null) {
                         makeList.clear()
-                        makeList.add("Select Make") // Add default option
+                        makeList.add(getString(R.string.Toast84)) // Add default option
 
                         val uniqueMakes = cars.map { it.make }.distinct()  // Get unique makes
                         makeList.addAll(uniqueMakes)
@@ -253,7 +253,7 @@ class Buy : Fragment() {
                     val cars = response.body()
                     if (cars != null) {
                         modelList.clear()
-                        modelList.add("Select Model") // Add default option
+                        modelList.add(getString(R.string.Toast85)) // Add default option
 
                         // Extract distinct models for the selected make
                         val uniqueModels = cars.map { it.model }.distinct()  // Get unique models for the selected make
@@ -284,10 +284,10 @@ class Buy : Fragment() {
         val selectedModel = modelSpinner.selectedItem.toString()
 
         // Add make and model to filters if selected
-        if (selectedMake != "Select Make") {
+        if (selectedMake != getString(R.string.Toast84)) {
             filters["make"] = "eq.$selectedMake"
         }
-        if (selectedModel != "Select Model") {
+        if (selectedModel != getString(R.string.Toast85)) {
             filters["model"] = "eq.$selectedModel"
         }
 
