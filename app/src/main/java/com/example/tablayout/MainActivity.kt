@@ -2,7 +2,6 @@
 
 package com.example.tablayout
 
-import android.app.VoiceInteractor.Prompt
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -28,15 +27,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.AuthenticationCallback
 import androidx.biometric.BiometricPrompt.PromptInfo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import android.content.Context
 import android.content.res.Configuration
 import java.util.Locale
 
 class MainActivity : AppCompatActivity()
 {
-    private val scope = CoroutineScope(Dispatchers.Main)
     private lateinit var signUp: TextView
     private lateinit var logIn: TextView
     private lateinit var LoginTextEmail: TextInputEditText
@@ -75,7 +71,11 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-
+        /* The following lines of code gets the user language preference and tells our app to use that, this code
+           was inspired by the following video:
+          Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+          Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+          [Accessed 29 October 2024].*/
         // Retrieve saved language from SharedPreferences and apply it
         val preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE)
         val languageCode = preferences.getString("Language", "en") // Default to English if not set
@@ -115,27 +115,27 @@ class MainActivity : AppCompatActivity()
                         }
                         if(biometricsEnabled == true)
                         {
-                            Toast.makeText(this, "Use Your Biometrics To Login", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, getString(R.string.Toast19), Toast.LENGTH_LONG).show()
                             setupBiometricPrompt()
                         }
                         else if (biometricsEnabled == false)
                         {
-                            Toast.makeText(this, "Enable Biometrics In Settings For Easy Login", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, getString(R.string.Toast20), Toast.LENGTH_LONG).show()
                         }
                         else
                         {
-                            Toast.makeText(this, "Login Error, Please Log In Again", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, getString(R.string.Toast21), Toast.LENGTH_LONG).show()
                         }
                     }
                 }.addOnFailureListener{ exception ->
-                    Toast.makeText(this, "Failed To Load Settings Data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.Toast22), Toast.LENGTH_SHORT).show()
                 }
             setContentView(R.layout.activity_main)
             initializeViews()
         }
         else
         {
-            Toast.makeText(this, "User Not Logged In, Please Log In", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Toast23), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity()
                 } else {
                     // Log the result code to understand if any specific code is being returned
                     Log.e("GoogleSignIn", "Result code: ${result.resultCode}")
-                    Toast.makeText(this, "Google Sign-In canceled", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.Toast24), Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity()
         } catch (e: ApiException) {
             // Handle sign-in failure
             Log.e("GoogleSignIn", "signInResult:failed code=" + e.statusCode)
-            Toast.makeText(this, "Google sign-in failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Toast25) + e.message, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -264,7 +264,7 @@ class MainActivity : AppCompatActivity()
                     // Sign in success
                     val user = auth.currentUser
                     Log.d("FirebaseAuth", "signInWithCredential:success, user: ${user?.email}")
-                    Toast.makeText(this, "Google sign-in successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.Toast26), Toast.LENGTH_SHORT).show()
 
                     // You can now navigate to another screen (HomeScreen or MainActivity)
                     startActivity(Intent(this, HomeScreen::class.java))
@@ -273,8 +273,7 @@ class MainActivity : AppCompatActivity()
                     // Sign in fails
                     Log.e("FirebaseAuth", "signInWithCredential:failure", task.exception)
                     Toast.makeText(
-                        this,
-                        "Firebase authentication failed: ${task.exception?.message}",
+                        this, getString(R.string.Toast27) + task.exception?.message,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -293,28 +292,26 @@ class MainActivity : AppCompatActivity()
                     .addOnCompleteListener(this) { task ->
                         progressBar.visibility = View.GONE
                         if (task.isSuccessful) {
-                            showCustomToast("Registration successful!", R.drawable.success)
+                            showCustomToast(getString(R.string.Toast28), R.drawable.success)
                             SignupTextEmail.text?.clear()
                             SignupTextPassword.text?.clear()
                             signupConfirmPassword.text?.clear()
                         } else {
                             Toast.makeText(
-                                this,
-                                "Authentication failed: ${task.exception?.message}",
+                                this, getString(R.string.Toast29)  + task.exception?.message,
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
             } else {
                 Toast.makeText(
-                    this,
-                    "Passwords do not match. Please try again.",
+                    this, getString(R.string.Toast30),
                     Toast.LENGTH_SHORT
                 ).show()
                 progressBar.visibility = View.GONE
             }
         } else {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Toast31), Toast.LENGTH_SHORT).show()
             progressBar.visibility = View.GONE
         }
     }
@@ -328,19 +325,19 @@ class MainActivity : AppCompatActivity()
                 .addOnCompleteListener(this) { task ->
                     progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
-                        showCustomToast("Login Successful", R.drawable.success)
+                        showCustomToast(getString(R.string.Toast32), R.drawable.success)
                         val intent = Intent(applicationContext, HomeScreen::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         showCustomToast(
-                            "Authentication failed: ${task.exception?.message}",
+                            getString(R.string.Toast33) + task.exception?.message,
                             R.drawable.error
                         )
                     }
                 }
         } else {
-            showCustomToast("Fill in the required fields", R.drawable.error)
+            showCustomToast(getString(R.string.Toast34), R.drawable.error)
             progressBar.visibility = View.GONE
         }
     }
@@ -374,7 +371,7 @@ class MainActivity : AppCompatActivity()
             object : AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(this@MainActivity, "Authentication Error", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, getString(R.string.Toast35), Toast.LENGTH_SHORT)
                         .show()
                 }
 
@@ -382,7 +379,7 @@ class MainActivity : AppCompatActivity()
                     super.onAuthenticationSucceeded(result)
                     Toast.makeText(
                         this@MainActivity,
-                        "Authentication Successful, Welcome",
+                        getString(R.string.Toast36),
                         Toast.LENGTH_LONG
                     ).show()
                     //If auth successful then log the user in (proceed to main home screen)
@@ -392,18 +389,22 @@ class MainActivity : AppCompatActivity()
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(this@MainActivity, "Authentication Failed", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, getString(R.string.Toast33), Toast.LENGTH_SHORT)
                         .show()
                 }
             })
         promptInfo = PromptInfo.Builder()
-            .setTitle("Biometric Authentication")
-            .setSubtitle("Login Using Your Biometric Credential")
-            .setNegativeButtonText("Cancel")
+            .setTitle(getString(R.string.Toast37))
+            .setSubtitle(getString(R.string.Toast38))
+            .setNegativeButtonText(getString(R.string.Toast39))
             .build()
         biometricPrompt.authenticate(promptInfo)
     }
 
+    /* The following method sets the apps language preference, this code was inspired by the following video:
+      Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+      Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+      [Accessed 29 October 2024].*/
     fun setLocale(context: Context, lanCode: String)
     {
         val locale = Locale(lanCode)

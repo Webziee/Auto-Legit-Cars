@@ -82,7 +82,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
             if (carId != 0) {
                 submitBooking(carId)  // Pass car_id to booking function
             } else {
-                Toast.makeText(requireContext(), "Car ID not available", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.Toast10), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -140,9 +140,9 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val loggedInEmail: FirebaseUser? = auth.currentUser
 
         if (dateTime.isEmpty()) {
-            Toast.makeText(requireContext(), "Please Select A Booking Date And Time!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.Toast11), Toast.LENGTH_LONG).show()
         } else if (loggedInEmail?.email.isNullOrEmpty()) {
-            Toast.makeText(requireContext(), "User Email Not Available!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.Toast12), Toast.LENGTH_LONG).show()
         } else {
             val email = loggedInEmail?.email
 
@@ -157,18 +157,18 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
                 apiService.createBooking(booking).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(requireContext(), "Booking Created Successfully!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.Toast13), Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(requireContext(), "Failed to create booking", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.Toast14), Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<Void>, t: Throwable) {
-                        Toast.makeText(requireContext(), "Error Creating Booking: ${t.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.Toast15) + t.message, Toast.LENGTH_SHORT).show()
                     }
                 })
             } else {
-                Toast.makeText(requireContext(), "User is not logged in!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.Toast16), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -190,11 +190,11 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
                 intent.data = Uri.parse(url) // Set the correct WhatsApp URL
                 startActivity(intent)
             } else {
-                Toast.makeText(requireContext(), "WhatsApp is not installed on your device", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.Toast17), Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(requireContext(), "Error: Unable to open WhatsApp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.Toast18), Toast.LENGTH_SHORT).show()
         }
     }
 

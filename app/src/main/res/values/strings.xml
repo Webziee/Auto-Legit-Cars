@@ -1,4 +1,77 @@
 <resources>
+
+    <!--based on recent multilanguage incorporation we have to put all our toast messages in our strings.xml file
+        instead of hardcoding it-->
+    <string name="Toast1">Please Select A Car To Book A Test Drive</string>
+    <string name="Toast2">No Cars Available To Display</string>
+    <string name="Toast3">Failed To Load Cars</string>
+    <string name="Toast4">Error Fetching Cars:</string>
+    <string name="Toast5">No Models Found For The Selected Make</string>
+
+    <string name="Toast6">Car(s) Found: </string>
+    <string name="Toast7">No Cars Found With The Given Filters</string>
+    <string name="Toast8">Failed To Retrieve Data From API</string>
+
+    <string name="Toast9">Search Failed: </string>
+    <string name="Toast10">Car ID Not Available</string>
+    <string name="Toast11">Please Select A Booking Date And Time!</string>
+
+    <string name="Toast12">User Email Not Available!</string>
+    <string name="Toast13">Booking Created Successfully!</string>
+    <string name="Toast14">Failed To Create Booking</string>
+
+    <string name="Toast15">Error Creating Booking: </string>
+    <string name="Toast16">User Is Not Logged In!</string>
+    <string name="Toast17">WhatsApp Is Not Installed On Your Device</string>
+    <string name="Toast18">Error: Unable To Open WhatsApp</string>
+
+    <string name="Toast19">Use Your Biometrics To Login</string>
+    <string name="Toast20">Enable Biometrics In Settings For Easy Login</string>
+    <string name="Toast21">Login Error, Please Log In Again</string>
+    <string name="Toast22">Failed To Load Settings Data</string>
+
+
+    <string name="Toast23">User Not Logged In, Please Log In</string>
+    <string name="Toast24">Google Sign-In Canceled</string>
+    <string name="Toast25">Google Sign-In Failed:</string>
+    <string name="Toast26">Google Sign-In Successful</string>
+
+    <string name="Toast27">Firebase Authentication Failed: </string>
+    <string name="Toast28">Registration Successful!</string>
+    <string name="Toast29">Authentication Failed: </string>
+    <string name="Toast30">Passwords Do Not Match. Please Try Again.</string>
+    <string name="Toast31">Please Fill In All Fields</string>
+    <string name="Toast32">Login Successful</string>
+
+
+    <string name="Toast33">Authentication Failed: </string>
+    <string name="Toast34">Fill In The Required Fields</string>
+    <string name="Toast35">Authentication Error</string>
+    <string name="Toast36">Authentication Successful, Welcome</string>
+    <string name="Toast37">Biometric Authentication</string>
+    <string name="Toast38">Login Using Your Biometric Credential</string>
+    <string name="Toast39">Cancel</string>
+    <string name="Toast40"></string>
+    <string name="Toast41"></string>
+    <string name="Toast42"></string>
+    <string name="Toast43"></string>
+    <string name="Toast44"></string>
+
+
+    <string name="Toast33"></string>
+    <string name="Toast34"></string>
+    <string name="Toast35"></string>
+    <string name="Toast36"></string>
+    <string name="Toast37"></string>
+    <string name="Toast38"></string>
+    <string name="Toast39"></string>
+    <string name="Toast40"></string>
+    <string name="Toast41"></string>
+    <string name="Toast42"></string>
+    <string name="Toast43"></string>
+    <string name="Toast44"></string>
+
+
     <string name="app_name">Legit Auto Cars</string>
     <string name="login">Sign in</string>
     <string name="log_in">Sign in</string>
