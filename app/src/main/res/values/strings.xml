@@ -102,6 +102,8 @@
     <string name="Toast81">Language Set To ENG</string>
     <string name="Toast82">Failed To Update Language Setting</string>
     <string name="Toast83">Language Set To AFR</string>
+    <string name="Toast84">Select Make</string>
+    <string name="Toast85">Select Model</string>
 
 
     <string name="app_name">Legit Auto Cars</string>

@@ -110,6 +110,9 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="Toast81">Taal gestel na ENG</string>
     <string name="Toast82">Kon nie taalinstelling opdateer nie</string>
     <string name="Toast83">Taal ingestel op AFR</string>
+    <string name="Toast84">Kies maak</string>
+    <string name="Toast85">Kies Model</string>
+
 
 
     <string name="app_name">Legit Auto Cars</string>
@@ -117,45 +120,45 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="log_in">Meld aan</string>
     <string name="sign_up">Teken in</string>
     <string name="signup">aanmeld</string>
-    <string name="auto_legit_cars">Auto Legit Motors</string>
+    <string name="auto_legit_cars">Auto Legit Cars</string>
     <string name="email_or_user_name">E-pos</string>
     <string name="password">Wagwoord</string>
     <string name="forget_password">Wagwoord vergeet\?</string>
     <string name="or">Teken in met</string>
-    <string name="sign_in_to_enjoy_the_best_car_experience">Meld aan om die beste motorervaring te geniet</string>
-    <string name="go_ahead_and_set_up_your_account">Gaan voort en stel jou rekening op</string>
-    <string name="confirm_password">Bevestig wagwoord</string>
-    <string name="this_is_a_custom_toast">Dit is \'n persoonlike roosterbrood</string>
-    <string name="or_login_with">Meld aan met</string>
+    <string name="sign_in_to_enjoy_the_best_car_experience">Meld Aan Om Die Beste Motorervaring Te Geniet</string>
+    <string name="go_ahead_and_set_up_your_account">Gaan Voort En Stel Jou Rekening Op</string>
+    <string name="confirm_password">Bevestig Wagwoord</string>
+    <string name="this_is_a_custom_toast">Dit Is \'n Persoonlike Roosterbrood</string>
+    <string name="or_login_with">Meld Aan Met</string>
     <string name="google">Google</string>
-    <string name="google_image">google_beeld</string>
+    <string name="google_image">Google_Beeld</string>
 
-    <string name="hello_blank_fragment">Hallo leë fragment</string>
+    <string name="hello_blank_fragment">Hallo Leë Fragment</string>
     <string name="profile_image">Profielbeeld</string>
     <string name="edit">Wysig</string>
     <string name="profile">Profiel</string>
-    <string name="email">E-pos</string>
-    <string name="current_password">Huidige wagwoord</string>
-    <string name="footer_logo">Voetskrif-logo</string>
-    <string name="sign_out">Teken uit</string>
+    <string name="email">E-Pos</string>
+    <string name="current_password">Huidige Wagwoord</string>
+    <string name="footer_logo">Voetskrif-Logo</string>
+    <string name="sign_out">Teken Uit</string>
     <string name="name">Naam</string>
     <string name="logged_in_email">E-pos aangeteken</string>
-    <string name="logo">logo</string>
+    <string name="logo">Logo</string>
     <string name="search_make_model_and_varient">Soek fabrikaat, model en variëteit</string>
-    <string name="min_price">Min prys</string>
-    <string name="max_price">Maksimum prys</string>
+    <string name="min_price">Min Prys</string>
+    <string name="max_price">Maksimum Prys</string>
     <string name="price">Prys</string>
-    <string name="search">soek</string>
-    <string name="reset">Stel terug</string>
-    <string name="result">Results</string>
-    <string name="search_make_model_and_variant">Search by make, model, or variant</string>
+    <string name="search">Soek</string>
+    <string name="reset">Stel Terug</string>
+    <string name="result">Resultate</string>
+    <string name="search_make_model_and_variant">Soek volgens maak, model of variant</string>
 
-    <string name="application_name">LegitAutoCars_ST10088734</string>
-    <string name="biometrics">Biometrics</string>
-    <string name="theme">Theme</string>
-    <string name="language_english">Language</string>
+    <string name="application_name" translatable="false">LegitAutoCars_ST10088734</string>
+    <string name="biometrics">Biometrie</string>
+    <string name="theme">Tema</string>
+    <string name="language_english">Taal</string>
     <string name="language_afrikaans">Afrikaans</string>
-    <string name="push_notifications">Push Notifications</string>
+    <string name="push_notifications">Drukkennisgewings</string>
 
     <string name="selection_on">ON</string>
     <string name="selection_off">OFF</string>
@@ -164,37 +167,37 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="english">ENG</string>
     <string name="afrikaans">AFR</string>
 
-    <string name="select_make">Select Car Make</string>
-    <string name="sell_subheading">Fill In The Following About Your Car:</string>
+    <string name="select_make">Kies Car Maak</string>
+    <string name="sell_subheading">Vul die volgende oor jou motor in:</string>
     <string name="hint_model">Motor model</string>
     <string name="hint_make">Motor maak</string>
-    <string name="hint_year">Year Model</string>
-    <string name="hint_mileage">Mileage</string>
-    <string name="hint_description">Tell Us More About Your Car</string>
-    <string name="sell">Sell</string>
-    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing I understand and agree with the Legit auto parts Terms & conditions and privacy policy.]]></string>
-    <string name="enter_details_of_the_car_you_want_to_sell">Enter details of the car you would like to sell</string>
+    <string name="hint_year">Jaar Model</string>
+    <string name="hint_mileage">Kilometers</string>
+    <string name="hint_description">Vertel ons meer van jou motor</string>
+    <string name="sell">Verkoop</string>
+    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy">Deur voort te gaan verstaan en stem ek in met die Legit-motoronderdele se bepalings en voorwaardes en privaatheidsbeleid.</string>
+    <string name="enter_details_of_the_car_you_want_to_sell">Voer besonderhede in van die motor wat jy wil verkoop</string>
     <string name="dealership">Handelaarskap</string>
-    <string name="special_edition">Special edition</string>
-    <string name="selling_price">Selling Price</string>
-    <string name="upload_main_image">Upload Main Image</string>
-    <string name="select_multiple_images">Select multiple images</string>
-    <string name="capture_image">Capture Image</string>
-    <string name="main_image">Main Image</string>
-    <string name="pick_selling_images">Pick Images</string>
-    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Once you have selected your images, click on the one you want as your main selling image</string>
-    <string name="car_selected">Car Selected</string>
-    <string name="select_test_date_time">Select Test Date &amp; Time</string>
-    <string name="click_above">click_above</string>
-    <string name="submit_booking">Submit Booking</string>
-    <string name="whatapp_us">whatApp_Us</string>
+    <string name="special_edition">Spesiale uitgawe</string>
+    <string name="selling_price">Verkoopprys</string>
+    <string name="upload_main_image">Laai hoofprent op</string>
+    <string name="select_multiple_images">Kies verskeie beelde</string>
+    <string name="capture_image">Vang Beeld</string>
+    <string name="main_image">MHoofbeeld</string>
+    <string name="pick_selling_images">Kies prente</string>
+    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Sodra jy jou beelde gekies het, klik op die een wat jy wil hê as jou hoofverkoopbeeld</string>
+    <string name="car_selected">Motor gekies</string>
+    <string name="select_test_date_time">Kies Toetsdatum en tyd</string>
+    <string name="click_above">Klik hierbo</string>
+    <string name="submit_booking">Dien bespreking in</string>
+    <string name="whatapp_us">WhatsApp ons</string>
 
-    <string name="settings">Settings</string>
+    <string name="settings">Instellings</string>
 
-    <string name="booking">Book Test Drive</string>
-    <string name="book_test_drive">Book test drive</string>
+    <string name="booking">Bespreek toetsrit</string>
+    <string name="book_test_drive">Bespreek toetsrit</string>
 
-    <string name="or_contact_us_by">Or Contact us on</string>
+    <string name="or_contact_us_by">Of Kontak ons op</string>
 
     <string-array name="min_price_items">
         <item>Min Prys</item>
@@ -268,12 +271,12 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string-array name="body_type_items">
         <item>Liggaamstipe</item>
         <item>Sedan</item>
-        <item>Luikrug</item>
-        <item>Stasiewa</item>
+        <item>Hatchback</item>
+        <item>Station Wagon</item>
         <item>SUV</item>
         <item>Bakkie</item>
         <item>Coupe</item>
-        <item>Omskepbaar</item>
+        <item>Convertible</item>
     </string-array>
 
     <string-array name="min_year_items">
@@ -354,8 +357,8 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
 
     <string-array name="transmisson_items">
         <item>Oordrag</item>
-        <item>Outomatiese</item>
-        <item>Handleiding</item>
+        <item>Automatic</item>
+        <item>Manual</item>
     </string-array>
 
     <string-array name="max_mileage_items">
@@ -380,27 +383,27 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
 
     <string-array name="car_transmission">
         <item>Oordrag</item>
-        <item>Outomatiese</item>
-        <item>Handleiding</item>
-        <item>Semi-Outomatiese</item>
+        <item>Automatic</item>
+        <item>Manual</item>
+        <item>Semi-Automatic</item>
     </string-array>
 
     <string-array name="car_fuel">
         <item>Brandstof tipe</item>
         <item>Petrol</item>
         <item>Diesel</item>
-        <item>Elektries</item>
+        <item>Electric</item>
     </string-array>
 
     <string-array name="car_body_type">
         <item>Liggaamstipe</item>
         <item>Sedan</item>
-        <item>Luikrug</item>
-        <item>Stasiewa</item>
+        <item>Hatchback</item>
+        <item>Station Wagon</item>
         <item>SUV</item>
         <item>Bakkie</item>
         <item>Coupe</item>
-        <item>Omskepbaar</item>
+        <item>Convertible</item>
     </string-array>
 
     <string-array name="car_condition">
