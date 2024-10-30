@@ -86,10 +86,6 @@ dependencies {
     Available at: https://www.youtube.com/watch?v=_dCRQ9wta-I
     [Accessed 12 October 2024].*/
     implementation("androidx.biometric:biometric:1.1.0")
-
-    // Coroutines for Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 }
 
 
