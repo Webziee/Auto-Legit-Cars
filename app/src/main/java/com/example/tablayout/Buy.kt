@@ -140,7 +140,7 @@ class Buy : Fragment() {
                     .addToBackStack(null)
                     .commit()
             } else {
-                Toast.makeText(requireContext(), "Please select a car to book a test drive", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.Toast1), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -183,16 +183,16 @@ class Buy : Fragment() {
                     if (cars != null) {
                         carList.addAll(cars)  // Add all cars without filtering by dealership
                     } else {
-                        Toast.makeText(context, "No cars available to display", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
                     }
                     carAdapter.notifyDataSetChanged()
                 } else {
-                    Toast.makeText(context, "Failed to load cars", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Toast.makeText(context, "Error fetching cars: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.Toast4)+": "+ t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -260,7 +260,7 @@ class Buy : Fragment() {
                         modelList.addAll(uniqueModels)
                         modelAdapter.notifyDataSetChanged()
                     } else {
-                        Toast.makeText(context, "No models found for the selected make", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Toast5), Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Log.w("Supabase", "Failed to retrieve models from Supabase")
@@ -355,17 +355,17 @@ class Buy : Fragment() {
                     if (!filteredCars.isNullOrEmpty()) {
                         carList.addAll(filteredCars)
                         carAdapter.notifyDataSetChanged()
-                        Toast.makeText(context, "${filteredCars.size} car(s) found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Toast6) + filteredCars.size, Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "No cars found with the given filters", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Toast7), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Failed to retrieve data from API", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.Toast8), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Toast.makeText(context, "Search failed: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,getString(R.string.Toast9) + t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -421,16 +421,22 @@ class Settings : Fragment() {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-                                    // Save the language preference locally in SharedPreferences
+                                    /*The below multilingual support code was inspired from the following video:
+                                    Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+                                    Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+                                    [Accessed 29 October 2024].
+                                    */
+                                    // Save the language preference locally in SharedPreferences for login purposes
                                     val preferences = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE)
                                     val editor = preferences.edit()
-                                    editor.putString("Language", "en") // Save English as 'en'
+                                    editor.putString("Language", "en")
                                     editor.apply()
                                     // Update our local language variable to ENG
                                     language = "ENG"
                                     // Update our button text accordingly
                                     languageButton.text = "ENG"
-                                    //Now we make the changes directly in this fragment and recreate the activity
+
+                                    //Now we make the changes directly in this fragment and recreate the activity (Malhotra, 2024)
                                     setLocale(requireContext(), "en")
                                     // Restart the activity to apply language changes immediately
                                     val intent = requireActivity().intent
@@ -495,8 +501,11 @@ class Settings : Fragment() {
                                         "Language Set To AFR", // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    /*The following multilanguage code was inspired from the following video:
-                                    * */
+                                    /*The below multilingual support code was inspired from the following video:
+                                     Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+                                     Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+                                     [Accessed 29 October 2024].
+                                     */
                                     // Save the language preference locally in SharedPreferences for login purposes
                                     val preferences = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE)
                                     val editor = preferences.edit()
@@ -507,13 +516,12 @@ class Settings : Fragment() {
                                     // Update our button text accordingly
                                     languageButton.text = "AFR"
 
-                                    //Now we make the changes directly in this fragment and recreate the activity
+                                    //Now we make the changes directly in this fragment and recreate the activity (Malhotra, 2024)
                                     setLocale(requireContext(), "af")
                                     // Restart the activity to apply language changes immediately
                                     val intent = requireActivity().intent
                                     requireActivity().finish()
                                     startActivity(intent)
-
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
@@ -541,6 +549,10 @@ class Settings : Fragment() {
         }
     }
 
+    /* The following method sets the apps language preference, this code was inspired by the following video:
+      Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
+      Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+      [Accessed 29 October 2024].*/
     fun setLocale(context: Context, lanCode: String)
     {
         val locale = Locale(lanCode)

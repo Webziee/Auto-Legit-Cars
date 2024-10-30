@@ -7,6 +7,11 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
 [Accessed 29 October 2024].
 -->
 <resources>
+
+    <!--based on recent multilanguage incorporation we have to put all our toast messages in our strings.xml file
+    instead of hardcoding it-->
+    <string name="Toast1">Legit Auto Cars</string>
+
     <string name="app_name">Legit Auto Cars</string>
     <string name="login">Meld aan</string>
     <string name="log_in">Meld aan</string>
