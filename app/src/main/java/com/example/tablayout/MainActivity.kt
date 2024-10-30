@@ -130,13 +130,13 @@ class MainActivity : AppCompatActivity()
                 }.addOnFailureListener{ exception ->
                     Toast.makeText(this,getString(R.string.Toast22), Toast.LENGTH_SHORT).show()
                 }
-            setContentView(R.layout.activity_main)
-            initializeViews()
         }
         else
         {
             Toast.makeText(this, getString(R.string.Toast23), Toast.LENGTH_SHORT).show()
         }
+        setContentView(R.layout.activity_main)
+        initializeViews()
     }
 
     private fun initializeViews()
