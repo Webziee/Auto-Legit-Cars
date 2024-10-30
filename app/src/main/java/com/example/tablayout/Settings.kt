@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDialog
 import androidx.biometric.BiometricManager
 // According to Obregon (2023), the following imports are needed when integrating firebase into the application
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 // Import Firebase Firestore
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Locale
+import android.content.res.Configuration
+import android.content.Context
+import androidx.core.app.ActivityCompat.recreate
 
 
 /**
@@ -385,6 +391,11 @@ class Settings : Fragment() {
         }
     }
 
+    /*The following method enables the users English Language preference in firestore, this code was inspired from the following video:
+      The following code was inspired from the following youtube video:
+      Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+      Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+      [Accessed 12 October 2024].*/
     private fun setENG()
     {
         // Initialize Firestore
@@ -401,7 +412,7 @@ class Settings : Fragment() {
                 .addOnSuccessListener { documents ->
                     if (!documents.isEmpty) {
                         for (document in documents) {
-                            // Update biometricsEnabled field in Firestore to false
+                            // Update Language field in Firestore accordingly
                             document.reference.update("Language","ENG")
                                 .addOnSuccessListener {
                                     Toast.makeText(
@@ -409,10 +420,22 @@ class Settings : Fragment() {
                                         "Language Set To ENG", // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    // Update our local biometricsEnabled variable to false
+
+                                    // Save the language preference locally in SharedPreferences
+                                    val preferences = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE)
+                                    val editor = preferences.edit()
+                                    editor.putString("Language", "en") // Save English as 'en'
+                                    editor.apply()
+                                    // Update our local language variable to ENG
                                     language = "ENG"
                                     // Update our button text accordingly
-                                    languageButton.text = "ENG" // Set button text to OFF
+                                    languageButton.text = "ENG"
+                                    //Now we make the changes directly in this fragment and recreate the activity
+                                    setLocale(requireContext(), "en")
+                                    // Restart the activity to apply language changes immediately
+                                    val intent = requireActivity().intent
+                                    requireActivity().finish()
+                                    startActivity(intent)
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
@@ -429,7 +452,9 @@ class Settings : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-        } else {
+        }
+        else
+        {
             Toast.makeText(
                 requireContext(),
                 "No User Logged In",
@@ -438,6 +463,11 @@ class Settings : Fragment() {
         }
     }
 
+    /*The following method enables the users Afrikaans Language preference in firestore, this code was inspired from the following video:
+      The following code was inspired from the following youtube video:
+      Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+      Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+      [Accessed 12 October 2024].*/
     private fun setAFR()
     {
         // Initialize Firestore
@@ -448,24 +478,42 @@ class Settings : Fragment() {
         val user: FirebaseUser? = auth.currentUser
         val email = user?.email
 
-        if (email != null) {
+        if (email != null)
+        {
             val settingsRef = db.collection("Settings")
             settingsRef.whereEqualTo("Email", email).get()
                 .addOnSuccessListener { documents ->
-                    if (!documents.isEmpty) {
-                        for (document in documents) {
-                            // Update biometricsEnabled field in Firestore to false
+                    if (!documents.isEmpty)
+                    {
+                        for (document in documents)
+                        {
+                            // Update language field in Firestore accordingly
                             document.reference.update("Language","AFR")
-                                .addOnSuccessListener {
+                                .addOnSuccessListener{
                                     Toast.makeText(
                                         requireContext(),
                                         "Language Set To AFR", // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    // Update our local biometricsEnabled variable to false
+                                    /*The following multilanguage code was inspired from the following video:
+                                    * */
+                                    // Save the language preference locally in SharedPreferences for login purposes
+                                    val preferences = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE)
+                                    val editor = preferences.edit()
+                                    editor.putString("Language", "af")
+                                    editor.apply()
+                                    // Update our local language variable to AFR
                                     language = "AFR"
                                     // Update our button text accordingly
-                                    languageButton.text = "AFR" // Set button text to OFF
+                                    languageButton.text = "AFR"
+
+                                    //Now we make the changes directly in this fragment and recreate the activity
+                                    setLocale(requireContext(), "af")
+                                    // Restart the activity to apply language changes immediately
+                                    val intent = requireActivity().intent
+                                    requireActivity().finish()
+                                    startActivity(intent)
+
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
@@ -482,13 +530,24 @@ class Settings : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-        } else {
+        }
+        else
+        {
             Toast.makeText(
                 requireContext(),
                 "No User Logged In",
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    fun setLocale(context: Context, lanCode: String)
+    {
+        val locale = Locale(lanCode)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 
     companion object {

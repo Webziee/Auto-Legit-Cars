@@ -76,6 +76,11 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
 
+        // Retrieve saved language from SharedPreferences and apply it
+        val preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val languageCode = preferences.getString("Language", "en") // Default to English if not set
+        setLocale(this, languageCode ?: "en")  // Set the locale
+
         installSplashScreen()
 
         // Initialize FirebaseAuth
@@ -125,13 +130,13 @@ class MainActivity : AppCompatActivity()
                 }.addOnFailureListener{ exception ->
                     Toast.makeText(this, "Failed To Load Settings Data", Toast.LENGTH_SHORT).show()
                 }
+            setContentView(R.layout.activity_main)
+            initializeViews()
         }
         else
         {
             Toast.makeText(this, "User Not Logged In, Please Log In", Toast.LENGTH_SHORT).show()
         }
-        setContentView(R.layout.activity_main)
-        initializeViews()
     }
 
     private fun initializeViews()
@@ -397,6 +402,15 @@ class MainActivity : AppCompatActivity()
             .setNegativeButtonText("Cancel")
             .build()
         biometricPrompt.authenticate(promptInfo)
+    }
+
+    fun setLocale(context: Context, lanCode: String)
+    {
+        val locale = Locale(lanCode)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 }
 
