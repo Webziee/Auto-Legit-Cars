@@ -94,7 +94,7 @@ class Sell : Fragment() {
         imageAdapter = ImageAdapter(selectedImages) { selectedUri ->
             mainImageUri = selectedUri
             displayMainImage(selectedUri)
-            showCustomToast("Main image selected", R.drawable.success)
+            showCustomToast(getString(R.string.Toast41), R.drawable.success)
         }
 
         recyclerView.adapter = imageAdapter
@@ -117,7 +117,7 @@ class Sell : Fragment() {
 
     private fun setupSpinners(view: View) {
         val carMakes = arrayOf(
-            "Car Make",
+            getString(R.string.Toast42),
             "Audi", "BMW", "Mercedes", "Ford", "Toyota",
             "Honda", "Chevrolet", "Volkswagen", "Nissan", "Hyundai",
             "Kia", "Mazda", "Lexus", "Jaguar", "Volvo",
@@ -125,7 +125,7 @@ class Sell : Fragment() {
         )
 
         val modelsMap = mapOf(
-            "Car Make" to arrayOf("Car Model"),
+            getString(R.string.Toast42) to arrayOf(getString(R.string.Toast43)),
             "Audi" to arrayOf("A4", "Q7", "R8", "A3", "Q5", "RSQ8"),
             "BMW" to arrayOf("X5", "3 Series", "i8", "5 Series", "X3"),
             "Mercedes" to arrayOf("C-Class", "E-Class", "S-Class", "GLA", "GLE"),
@@ -148,12 +148,12 @@ class Sell : Fragment() {
             "Tesla" to arrayOf("Model S", "Model X", "Model 3", "Model Y", "Cybertruck")
         )
 
-        val years = arrayOf("Year","2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015")
-        val transmissions = arrayOf("Transmission","Automatic", "Manual", "CVT", "Dual-clutch")
-        val fuelTypes = arrayOf("Fuel Type","Petrol", "Diesel", "Electric", "Hybrid")
-        val bodyTypes = arrayOf("Body Type","Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Wagon", "Truck")
-        val conditions = arrayOf("Condition","New", "Used", "Certified Pre-Owned", "Salvage")
-        val dealership = arrayOf("Dealership","Legit Auto Cars")
+        val years = arrayOf(getString(R.string.Toast59),"2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015")
+        val transmissions = arrayOf(getString(R.string.Toast60),"Automatic", "Manual", "CVT", "Dual-clutch")
+        val fuelTypes = arrayOf(getString(R.string.Toast61),"Petrol", "Diesel", "Electric", "Hybrid")
+        val bodyTypes = arrayOf(getString(R.string.Toast62),"Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Wagon", "Truck")
+        val conditions = arrayOf(getString(R.string.Toast63),"New", "Used", "Certified Pre-Owned", "Salvage")
+        val dealership = arrayOf(getString(R.string.Toast64),"Legit Auto Cars")
 
         val makeSpinner: Spinner = view.findViewById(R.id.sell_car_make)
         val modelSpinner: Spinner = view.findViewById(R.id.sell_car_model)
@@ -245,42 +245,42 @@ class Sell : Fragment() {
         val conditionSpinner: Spinner = view?.findViewById(R.id.sell_car_condition) ?: return false
         val dealershipSpinner : Spinner = view?.findViewById(R.id.sell_dealership) ?: return false
 
-        if (makeSpinner.selectedItem == "Car Make") {
-            showCustomToast("Please select a car make", R.drawable.error)
+        if (makeSpinner.selectedItem == getString(R.string.Toast42)) {
+            showCustomToast(getString(R.string.Toast44), R.drawable.error)
             return false
         }
 
-        if (modelSpinner.selectedItem == "Car Model") {
-            showCustomToast("Please select a car model", R.drawable.error)
+        if (modelSpinner.selectedItem == getString(R.string.Toast43)) {
+            showCustomToast(getString(R.string.Toast45), R.drawable.error)
             return false
         }
 
-        if (yearSpinner.selectedItem == "Year") {
-            showCustomToast("Please select a year", R.drawable.error)
+        if (yearSpinner.selectedItem == getString(R.string.Toast59)) {
+            showCustomToast(getString(R.string.Toast46), R.drawable.error)
             return false
         }
 
-        if (transmissionSpinner.selectedItem == "Transmission") {
-            showCustomToast("Please select a transmission", R.drawable.error)
+        if (transmissionSpinner.selectedItem == getString(R.string.Toast60)) {
+            showCustomToast(getString(R.string.Toast47), R.drawable.error)
             return false
         }
 
-        if (fuelTypeSpinner.selectedItem == "Fuel Type") {
-            showCustomToast("Please select a fuel type", R.drawable.error)
+        if (fuelTypeSpinner.selectedItem == getString(R.string.Toast61)) {
+            showCustomToast(getString(R.string.Toast48), R.drawable.error)
             return false
         }
 
-        if (bodyTypeSpinner.selectedItem == "Body Type") {
-            showCustomToast("Please select a body type", R.drawable.error)
+        if (bodyTypeSpinner.selectedItem == getString(R.string.Toast62)) {
+            showCustomToast(getString(R.string.Toast49), R.drawable.error)
             return false
         }
 
-        if (conditionSpinner.selectedItem == "Condition") {
-            showCustomToast("Please select a condition", R.drawable.error)
+        if (conditionSpinner.selectedItem == getString(R.string.Toast63)) {
+            showCustomToast(getString(R.string.Toast50), R.drawable.error)
             return false
         }
-        if (dealershipSpinner.selectedItem == "Dealership") {
-            showCustomToast("Please select a Dealership", R.drawable.error)
+        if (dealershipSpinner.selectedItem == getString(R.string.Toast64)) {
+            showCustomToast(getString(R.string.Toast51), R.drawable.error)
             return false
         }
 
@@ -315,7 +315,7 @@ class Sell : Fragment() {
 
 
         if (mainImageUri == null || selectedImages.isEmpty()) {
-            Toast.makeText(requireContext(), "Please select images", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.Toast52), Toast.LENGTH_SHORT).show()
             showLoading(false)
             return
         }
@@ -323,7 +323,7 @@ class Sell : Fragment() {
         // Upload main image and get URL
         uploadImageToFirebaseStorage(mainImageUri!!) { mainImageUrl ->
             if (mainImageUrl == null) {
-                Toast.makeText(requireContext(), "Failed to upload main image", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), getString(R.string.Toast53), Toast.LENGTH_SHORT)
                     .show()
                 showLoading(false)
                 return@uploadImageToFirebaseStorage
@@ -369,22 +369,21 @@ class Sell : Fragment() {
                 call.enqueue(object : retrofit2.Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
-                            showCustomToast("Car listed successfully", R.drawable.success)
+                            showCustomToast(getString(R.string.Toast54), R.drawable.success)
                             showLoading(false)
                             if (isAdded && !isRemoving) {
                                 clearForm()
                             }
                         } else {
-                            showCustomToast("Failed to list car", R.drawable.error)
+                            showCustomToast(getString(R.string.Toast55), R.drawable.error)
                             showLoading(false)
                         }
                     }
 
                     override fun onFailure(call: Call<Void>, t: Throwable) {
-                        Log.e("SellFragment", "Error listing car", t)
+                        Log.e("SellFragment", "Error Listing Car", t)
                         Toast.makeText(
-                            requireContext(),
-                            "Error: ${t.localizedMessage}",
+                            requireContext(),getString(R.string.Toast56) + t.localizedMessage,
                             Toast.LENGTH_SHORT
                         ).show()
                         showLoading(false)
@@ -392,7 +391,7 @@ class Sell : Fragment() {
                 })
             }.addOnFailureListener { e ->
                 Log.e("UploadError", "Failed to upload images", e)
-                Toast.makeText(requireContext(), "Failed to upload images", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), getString(R.string.Toast57), Toast.LENGTH_SHORT)
                     .show()
                 showLoading(false)
             }
@@ -422,7 +421,7 @@ class Sell : Fragment() {
             Log.d("ClearForm", "Form cleared successfully")
         } catch (e: Exception) {
             Log.e("ClearFormError", "Error clearing form: ${e.localizedMessage}", e)
-            Toast.makeText(requireContext(), "Error clearing form", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.Toast58), Toast.LENGTH_SHORT).show()
         }
     }
 
