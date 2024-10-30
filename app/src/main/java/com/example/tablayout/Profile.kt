@@ -123,7 +123,7 @@ class Profile : Fragment() {
     private fun navigateTestDrive()
     {
         //Below i will have a toast message telling the user what to do in order to book (Grier 2020)
-        val toast = Toast.makeText(requireContext(), "Please Select A Car From Buy Page To Make A Booking",Toast.LENGTH_LONG)
+        val toast = Toast.makeText(requireContext(), getString(R.string.Toast40),Toast.LENGTH_LONG)
         toast.show()
         // Creating an instance of the fragment that i want to navigate to
         val buyFragement = Buy()

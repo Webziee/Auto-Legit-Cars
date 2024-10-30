@@ -7,12 +7,117 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
 [Accessed 29 October 2024].
 -->
 <resources>
+
+    <!--based on recent multilanguage incorporation we have to put all our toast messages in our strings.xml file
+        instead of hardcoding it-->
+    <string name="Toast1">Kies asseblief \'n motor om \'n toetsrit te bespreek</string>
+    <string name="Toast2">Geen motors beskikbaar om te vertoon nie</string>
+    <string name="Toast3">Kon nie motors laai nie</string>
+    <string name="Toast4">Kon nie motors haal nie: </string>
+    <string name="Toast5">Geen modelle gevind vir die geselekteerde fabrikaat nie</string>
+
+    <string name="Toast6">Motor(s) gevind: </string>
+    <string name="Toast7">Geen motors gevind met die gegewe filters nie</string>
+    <string name="Toast8">Kon nie data van API af haal nie</string>
+
+    <string name="Toast9">Soek het misluk: </string>
+    <string name="Toast10">Motor ID nie beskikbaar nie</string>
+    <string name="Toast11">Kies asseblief \'n besprekingsdatum en tyd!</string>
+
+    <string name="Toast12">Gebruikers-e-pos nie beskikbaar nie!</string>
+    <string name="Toast13">Bespreking is suksesvol geskep!</string>
+    <string name="Toast14">Kon nie bespreking skep nie</string>
+
+    <string name="Toast15">Fout met die skep van bespreking: </string>
+    <string name="Toast16">Gebruiker is nie aangemeld nie!</string>
+    <string name="Toast17">WhatsApp is nie op jou toestel geïnstalleer nie</string>
+    <string name="Toast18">Fout: Kan nie WhatsApp oopmaak nie</string>
+
+    <string name="Toast19">Gebruik jou biometrie om aan te meld</string>
+    <string name="Toast20">Aktiveer biometrie in instellings vir maklike aanmelding</string>
+    <string name="Toast21">Aantekenfout, meld asseblief weer aan</string>
+    <string name="Toast22">Kon nie instellingsdata laai nie</string>
+
+
+    <string name="Toast23">Gebruiker nie aangemeld nie, meld asseblief aan</string>
+    <string name="Toast24">Google-aanmelding is gekanselleer</string>
+    <string name="Toast25">Google-aanmelding het misluk: </string>
+    <string name="Toast26">Google-aanmelding suksesvol</string>
+
+    <string name="Toast27">Firebase-stawing het misluk: </string>
+    <string name="Toast28">Registrasie suksesvol!</string>
+    <string name="Toast29">Stawing het misluk: </string>
+    <string name="Toast30">Wagwoorde stem nie ooreen nie. Probeer asseblief weer</string>
+    <string name="Toast31">Vul asseblief alle velde in</string>
+    <string name="Toast32">Aanmelding suksesvol</string>
+
+
+    <string name="Toast33">Stawing het misluk: </string>
+    <string name="Toast34">Vul die vereiste velde in</string>
+    <string name="Toast35">Stawingsfout</string>
+    <string name="Toast36">Stawing suksesvol, welkom</string>
+    <string name="Toast37">Biometriese verifikasie</string>
+    <string name="Toast38">Teken in met jou biometriese geloofsbriewe</string>
+    <string name="Toast39">Kanselleer</string>
+    <string name="Toast40">Kies asseblief \'n motor vanaf koopbladsy om \'n bespreking te maak</string>
+    <string name="Toast41">Hoofprent gekies</string>
+    <string name="Toast42">Motor maak</string>
+    <string name="Toast43">Motor model</string>
+    <string name="Toast44">Kies asseblief \'n motorfabrikant</string>
+
+
+    <string name="Toast45">Kies asseblief \'n motormodel</string>
+    <string name="Toast46">Kies asseblief \'n jaar</string>
+    <string name="Toast47">Kies asseblief \'n oordrag</string>
+    <string name="Toast48">Kies asseblief \'n brandstoftipe</string>
+    <string name="Toast49">Kies asseblief \'n Liggaamstipe</string>
+    <string name="Toast50">Kies asseblief \'n voorwaarde</string>
+    <string name="Toast51">Kies asseblief \'n handelaarskap</string>
+    <string name="Toast52">Kies asseblief prente</string>
+    <string name="Toast53">Kon nie hoofprent oplaai nie</string>
+    <string name="Toast54">Motor suksesvol gelys</string>
+    <string name="Toast55">Kon nie motor lys nie</string>
+
+    <string name="Toast56">Fout: </string>
+    <string name="Toast57">Kon nie prente oplaai nie</string>
+    <string name="Toast58">Kon nie vorm skoonmaak nie</string>
+
+    <string name="Toast59">Jaar</string>
+    <string name="Toast60">Oordrag</string>
+    <string name="Toast61">Brandstof tipe</string>
+    <string name="Toast62">Liggaamstipe</string>
+    <string name="Toast63">Toestand</string>
+    <string name="Toast64">Handelaarskap</string>
+
+    <string name="Toast65">Instellingsdata is suksesvol gelaai</string>
+    <string name="Toast66">Geen data vir gebruiker nie, probeer om verstekinstellings te skep: </string>
+    <string name="Toast67">Verstek instellings geskep vir: </string>
+    <string name="Toast68">Kon nie verstekinstellings skep vir: </string>
+
+    <string name="Toast69">Kon nie instellingsdata laai nie</string>
+    <string name="Toast70">Biometriese verifikasie word nie ondersteun nie</string>
+    <string name="Toast71">Biometriese hardeware is tans nie beskikbaar nie</string>
+    <string name="Toast72">Biometrie nie gestel nie, stel asseblief in fooninstellings</string>
+    <string name="Toast73">Onverwagte fout het voorgekom. Probeer asseblief weer</string>
+    <string name="Toast74">Geen taalinstellings gevind nie</string>
+    <string name="Toast75">Kenmerk tans nie beskikbaar nie, kom binnekort!</string>
+    <string name="Toast76">Biometrie is suksesvol geaktiveer</string>
+    <string name="Toast77">Kon nie biometriese instelling opdateer nie</string>
+    <string name="Toast78">Kon nie gebruikerinstellings laai nie</string>
+    <string name="Toast79">Geen gebruiker aangemeld nie</string>
+    <string name="Toast80">Biometrie is suksesvol gedeaktiveer</string>
+
+    <string name="Toast81">Taal gestel na ENG</string>
+    <string name="Toast82">Kon nie taalinstelling opdateer nie</string>
+    <string name="Toast83">Taal ingestel op AFR</string>
+
+
     <string name="app_name">Legit Auto Cars</string>
     <string name="login">Meld aan</string>
     <string name="log_in">Meld aan</string>
     <string name="sign_up">Teken in</string>
     <string name="signup">aanmeld</string>
-    <string name="auto_legit_cars">Auto Legit Cars</string>
+    <string name="auto_legit_cars">Auto Legit Motors</string>
     <string name="email_or_user_name">E-pos</string>
     <string name="password">Wagwoord</string>
     <string name="forget_password">Wagwoord vergeet\?</string>
@@ -42,57 +147,57 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="price">Prys</string>
     <string name="search">soek</string>
     <string name="reset">Stel terug</string>
-    <string name="result">Resultate</string>
-    <string name="search_make_model_and_variant">Soek volgens fabrikaat, model of variant</string>
+    <string name="result">Results</string>
+    <string name="search_make_model_and_variant">Search by make, model, or variant</string>
 
     <string name="application_name">LegitAutoCars_ST10088734</string>
-    <string name="biometrics">Biometrie</string>
-    <string name="theme">Tema</string>
-    <string name="language_english">Engels</string>
+    <string name="biometrics">Biometrics</string>
+    <string name="theme">Theme</string>
+    <string name="language_english">Language</string>
     <string name="language_afrikaans">Afrikaans</string>
-    <string name="push_notifications">Drukkennisgewings</string>
+    <string name="push_notifications">Push Notifications</string>
 
-    <string name="selection_on">AAN</string>
-    <string name="selection_off">AF</string>
-    <string name="theme_light">LIG</string>
-    <string name="theme_dark">DONKER</string>
+    <string name="selection_on">ON</string>
+    <string name="selection_off">OFF</string>
+    <string name="theme_light">LIGHT</string>
+    <string name="theme_dark">DARK</string>
     <string name="english">ENG</string>
     <string name="afrikaans">AFR</string>
 
-    <string name="select_make">Kies Car Make</string>
-    <string name="sell_subheading">Vul die volgende oor jou motor in:</string>
+    <string name="select_make">Select Car Make</string>
+    <string name="sell_subheading">Fill In The Following About Your Car:</string>
     <string name="hint_model">Motor model</string>
     <string name="hint_make">Motor maak</string>
-    <string name="hint_year">Jaar Model</string>
-    <string name="hint_mileage">Kilometers</string>
-    <string name="hint_description">Vertel ons meer oor jou motor</string>
-    <string name="sell">Verkoop</string>
-    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[Deur voort te gaan verstaan en stem ek in met die Legit Auto Parts se bepalings en voorwaardes en privaatheidsbeleid.]]></string>
-    <string name="enter_details_of_the_car_you_want_to_sell">Voer besonderhede in van die motor wat jy wil verkoop</string>
+    <string name="hint_year">Year Model</string>
+    <string name="hint_mileage">Mileage</string>
+    <string name="hint_description">Tell Us More About Your Car</string>
+    <string name="sell">Sell</string>
+    <string name="by_continuing_i_understand_and_agree_with_the_legit_auto_parts_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing I understand and agree with the Legit auto parts Terms & conditions and privacy policy.]]></string>
+    <string name="enter_details_of_the_car_you_want_to_sell">Enter details of the car you would like to sell</string>
     <string name="dealership">Handelaarskap</string>
-    <string name="special_edition">Spesiale uitgawe</string>
-    <string name="selling_price">Verkoopprys</string>
-    <string name="upload_main_image">Laai hoofprent op</string>
-    <string name="select_multiple_images">Kies verskeie beelde</string>
-    <string name="capture_image">Vang Beeld</string>
-    <string name="main_image">Hoofbeeld</string>
-    <string name="pick_selling_images">Kies prente</string>
-    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Sodra jy jou prente gekies het, klik op die een wat jy wil hê as jou hoofverkopende prent</string>
-    <string name="car_selected">Motor gekies</string>
-    <string name="select_test_date_time">Kies Toetsdatum en -tyd</string>
-    <string name="click_above">klik_hierbo</string>
-    <string name="submit_booking">Dien bespreking in</string>
-    <string name="whatapp_us">whatApp_Ons</string>
+    <string name="special_edition">Special edition</string>
+    <string name="selling_price">Selling Price</string>
+    <string name="upload_main_image">Upload Main Image</string>
+    <string name="select_multiple_images">Select multiple images</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="main_image">Main Image</string>
+    <string name="pick_selling_images">Pick Images</string>
+    <string name="once_you_have_selected_your_images_click_on_the_one_you_want_as_your_main_selling_image">Once you have selected your images, click on the one you want as your main selling image</string>
+    <string name="car_selected">Car Selected</string>
+    <string name="select_test_date_time">Select Test Date &amp; Time</string>
+    <string name="click_above">click_above</string>
+    <string name="submit_booking">Submit Booking</string>
+    <string name="whatapp_us">whatApp_Us</string>
 
-    <string name="settings">Instellings</string>
+    <string name="settings">Settings</string>
 
-    <string name="booking">Bespreek toetsrit</string>
-    <string name="book_test_drive">Bespreek toetsrit</string>
+    <string name="booking">Book Test Drive</string>
+    <string name="book_test_drive">Book test drive</string>
 
-    <string name="or_contact_us_by">Of Kontak ons op</string>
+    <string name="or_contact_us_by">Or Contact us on</string>
 
     <string-array name="min_price_items">
-        <item>Min prys</item>
+        <item>Min Prys</item>
         <item>R50 000</item>
         <item>R100 000</item>
         <item>R150 000</item>
@@ -120,7 +225,7 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     </string-array>
 
     <string-array name="max_price_items">
-        <item>Maksimum prys</item>
+        <item>Maks Pryse</item>
         <item>R50 000</item>
         <item>R100 000</item>
         <item>R150 000</item>
@@ -151,7 +256,7 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
         <item>Ligging</item>
         <item>Sandton</item>
         <item>Midrand</item>
-        <item>Johannesburg CBD</item>
+        <item>Joburg CBD</item>
         <item>Pretoria</item>
         <item>Boxburg</item>
         <item>Benoni</item>
@@ -168,7 +273,7 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
         <item>SUV</item>
         <item>Bakkie</item>
         <item>Coupe</item>
-        <item>Convertible</item>
+        <item>Omskepbaar</item>
     </string-array>
 
     <string-array name="min_year_items">
@@ -210,7 +315,7 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     </string-array>
 
     <string-array name="max_year_items">
-        <item>Maksimum Jaar</item>
+        <item>Maks Jaar</item>
         <item>2024</item>
         <item>2023</item>
         <item>2022</item>
@@ -248,13 +353,13 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     </string-array>
 
     <string-array name="transmisson_items">
-        <item>Transmissie</item>
-        <item>Outomaties</item>
-        <item>Handmatig</item>
+        <item>Oordrag</item>
+        <item>Outomatiese</item>
+        <item>Handleiding</item>
     </string-array>
 
     <string-array name="max_mileage_items">
-        <item>Maksimum kilometers</item>
+        <item>Maks Kilometers</item>
         <item>50km</item>
         <item>1 500km</item>
         <item>5 000km</item>
@@ -274,17 +379,17 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     </string-array>
 
     <string-array name="car_transmission">
-        <item>Transmissie</item>
-        <item>Outomaties</item>
-        <item>Handmatig</item>
-        <item>semi-Outomaties</item>
+        <item>Oordrag</item>
+        <item>Outomatiese</item>
+        <item>Handleiding</item>
+        <item>Semi-Outomatiese</item>
     </string-array>
 
     <string-array name="car_fuel">
-        <item>Tipe Brandstof</item>
+        <item>Brandstof tipe</item>
         <item>Petrol</item>
         <item>Diesel</item>
-        <item>Elektriese</item>
+        <item>Elektries</item>
     </string-array>
 
     <string-array name="car_body_type">
@@ -294,17 +399,17 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
         <item>Stasiewa</item>
         <item>SUV</item>
         <item>Bakkie</item>
-        <item>koepee</item>
+        <item>Coupe</item>
         <item>Omskepbaar</item>
     </string-array>
 
     <string-array name="car_condition">
-        <item>Toestand Gradering</item>
-        <item>5 Star - Uitstekend</item>
+        <item>Toestand Gradering </item>
+        <item>5 Star - Uitstekende </item>
         <item>4 Star - Puik</item>
         <item>3 Star - Goed</item>
-        <item>2 Star - Sleg</item>
-        <item>1 Star -Benodig Werk</item>
+        <item>2 Star - Swak</item>
+        <item>1 Star - Benodig Werk</item>
     </string-array>
 
     <string-array name="car_make">
@@ -328,6 +433,6 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="model">Model</string>
     <string name="status">Status</string>
     <string name="mileage">Kilometers</string>
-    <string name="transmission">Transmissie</string>
+    <string name="transmission">Oordrag</string>
     <string name="location">Ligging</string>
 </resources>

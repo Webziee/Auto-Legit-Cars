@@ -148,12 +148,12 @@ class Settings : Fragment() {
                             pushNotificationButton.text = string
                         }
                         Toast.makeText(requireContext(),
-                            "Settings Data Successfully Loaded", Toast.LENGTH_SHORT).show()
+                            getString(R.string.Toast65), Toast.LENGTH_SHORT).show()
                     }
                     else
                     {
                         val email = user.email
-                        Toast.makeText(requireContext(), "No Data For User, Attempting To Creating Default Settings: ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.Toast66), Toast.LENGTH_SHORT).show()
                         // No data found, create default settings
                         val defaultSettings = hashMapOf(
                             "BiometricsEnabled" to false,
@@ -163,13 +163,13 @@ class Settings : Fragment() {
                             "Email" to email)
 
                         settingsRef.add(defaultSettings).addOnSuccessListener {
-                            Toast.makeText(requireContext(), "Default Settings Created For: $email", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.Toast67) + email, Toast.LENGTH_SHORT).show()
                         }.addOnFailureListener{
-                            Toast.makeText(requireContext(), "Failed To Create Default Settings For: $email", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.Toast68) + email, Toast.LENGTH_SHORT).show()
                         }
                     }
             }.addOnFailureListener{ exception ->
-                    Toast.makeText(requireContext(), "Failed To Load Settings Data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.Toast69), Toast.LENGTH_SHORT).show()
                 }
         }
         else
@@ -211,24 +211,24 @@ class Settings : Fragment() {
                         }
                         BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->{
                             // Device does not have biometric hardware
-                            Toast.makeText(requireActivity(), "Biometric Authentication Not Supported.",
+                            Toast.makeText(requireActivity(), getString(R.string.Toast70),
                                 Toast.LENGTH_LONG).show()
                         }
                         BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->{
                             // Devices hardware is currently unavailable
-                            Toast.makeText(requireContext(), "Biometric Hardware Is Currently Unavailable.",
+                            Toast.makeText(requireContext(), getString(R.string.Toast71),
                                 Toast.LENGTH_LONG).show()
                         }
                         BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->{
                             // Devices supports biometrics but user has now set it up yet
-                            Toast.makeText(requireContext(), "Biometrics Not Set, Please Set In Phone Settings",
+                            Toast.makeText(requireContext(), getString(R.string.Toast72),
                                 Toast.LENGTH_LONG).show()
                         }
                         else ->{
                             // Unknown error
                             Toast.makeText(
                                 requireContext(),
-                                "Unexpected Error Occurred. Please Try Again.",
+                                getString(R.string.Toast73),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -256,7 +256,7 @@ class Settings : Fragment() {
             }
             else
             {
-                Toast.makeText(requireContext(), "No Language Settings Found", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.Toast74), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -264,14 +264,14 @@ class Settings : Fragment() {
     {
         pushNotificationButton.setOnClickListener{
             //According to Grier (2020), this is how we create a toast message inside of a fragment
-            Toast.makeText(requireContext(),"Feature Currently Unavailable, Coming Soon!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),getString(R.string.Toast75), Toast.LENGTH_SHORT).show()
         }
     }
     private fun handleThemeClick()
     {
         themeButton.setOnClickListener{
             //According to Grier (2020), this is how we create a toast message inside of a fragment
-            Toast.makeText(requireContext(),"Feature Currently Unavailable, Coming Soon!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),getString(R.string.Toast75), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -301,7 +301,7 @@ class Settings : Fragment() {
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Biometrics Enabled Successfully", // Update success message
+                                        getString(R.string.Toast76), // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     // Update our local biometricsEnabled variable to false
@@ -311,7 +311,7 @@ class Settings : Fragment() {
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Failed To Update Biometric Setting.",
+                                        getString(R.string.Toast77),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -320,14 +320,14 @@ class Settings : Fragment() {
                 }.addOnFailureListener {
                     Toast.makeText(
                         requireContext(),
-                        "Failed To Load User Settings",
+                        getString(R.string.Toast78),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
         } else {
             Toast.makeText(
                 requireContext(),
-                "No User Logged In",
+                getString(R.string.Toast79),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -359,7 +359,7 @@ class Settings : Fragment() {
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Biometrics Disabled Successfully", // Update success message
+                                        getString(R.string.Toast80), // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     // Update our local biometricsEnabled variable to false
@@ -369,7 +369,7 @@ class Settings : Fragment() {
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Failed To Update Biometric Setting.",
+                                        getString(R.string.Toast77),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -378,14 +378,14 @@ class Settings : Fragment() {
                 }.addOnFailureListener {
                     Toast.makeText(
                         requireContext(),
-                        "Failed To Load User Settings",
+                        getString(R.string.Toast78),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
         } else {
             Toast.makeText(
                 requireContext(),
-                "No User Logged In",
+                getString(R.string.Toast79),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -417,7 +417,7 @@ class Settings : Fragment() {
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Language Set To ENG", // Update success message
+                                        getString(R.string.Toast81), // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
 
@@ -445,7 +445,7 @@ class Settings : Fragment() {
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Failed To Update Language Setting.",
+                                        getString(R.string.Toast82),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -454,7 +454,7 @@ class Settings : Fragment() {
                 }.addOnFailureListener {
                     Toast.makeText(
                         requireContext(),
-                        "Failed To Load User Settings",
+                        getString(R.string.Toast78),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -463,7 +463,7 @@ class Settings : Fragment() {
         {
             Toast.makeText(
                 requireContext(),
-                "No User Logged In",
+                getString(R.string.Toast79),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -498,7 +498,7 @@ class Settings : Fragment() {
                                 .addOnSuccessListener{
                                     Toast.makeText(
                                         requireContext(),
-                                        "Language Set To AFR", // Update success message
+                                        getString(R.string.Toast83), // Update success message
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     /*The below multilingual support code was inspired from the following video:
@@ -525,7 +525,7 @@ class Settings : Fragment() {
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Failed To Update Language Setting.",
+                                        getString(R.string.Toast82),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -534,7 +534,7 @@ class Settings : Fragment() {
                 }.addOnFailureListener {
                     Toast.makeText(
                         requireContext(),
-                        "Failed To Load User Settings",
+                        getString(R.string.Toast78),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -543,7 +543,7 @@ class Settings : Fragment() {
         {
             Toast.makeText(
                 requireContext(),
-                "No User Logged In",
+                getString(R.string.Toast79),
                 Toast.LENGTH_SHORT
             ).show()
         }

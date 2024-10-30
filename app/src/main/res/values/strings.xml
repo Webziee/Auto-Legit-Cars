@@ -51,25 +51,57 @@
     <string name="Toast37">Biometric Authentication</string>
     <string name="Toast38">Login Using Your Biometric Credential</string>
     <string name="Toast39">Cancel</string>
-    <string name="Toast40"></string>
-    <string name="Toast41"></string>
-    <string name="Toast42"></string>
-    <string name="Toast43"></string>
-    <string name="Toast44"></string>
+    <string name="Toast40">Please Select A Car From Buy Page To Make A Booking</string>
+    <string name="Toast41">Main Image Selected</string>
+    <string name="Toast42">Car Make</string>
+    <string name="Toast43">Car Model</string>
+    <string name="Toast44">Please Select A Car Make</string>
 
 
-    <string name="Toast33"></string>
-    <string name="Toast34"></string>
-    <string name="Toast35"></string>
-    <string name="Toast36"></string>
-    <string name="Toast37"></string>
-    <string name="Toast38"></string>
-    <string name="Toast39"></string>
-    <string name="Toast40"></string>
-    <string name="Toast41"></string>
-    <string name="Toast42"></string>
-    <string name="Toast43"></string>
-    <string name="Toast44"></string>
+    <string name="Toast45">Please Select A Car Model</string>
+    <string name="Toast46">Please Select A Year</string>
+    <string name="Toast47">Please Select A Transmission</string>
+    <string name="Toast48">Please Select A Fuel Type</string>
+    <string name="Toast49">Please Select A Body Type</string>
+    <string name="Toast50">Please Select A Condition</string>
+    <string name="Toast51">Please Select A Dealership</string>
+    <string name="Toast52">Please Select Images</string>
+    <string name="Toast53">Failed To Upload Main Image</string>
+    <string name="Toast54">Car Listed Successfully</string>
+    <string name="Toast55">Failed To List Car</string>
+
+    <string name="Toast56">Error: </string>
+    <string name="Toast57">Failed To Upload Images</string>
+    <string name="Toast58">Error Clearing Form</string>
+
+    <string name="Toast59">Year</string>
+    <string name="Toast60">Transmission</string>
+    <string name="Toast61">Fuel Type</string>
+    <string name="Toast62">Body Type</string>
+    <string name="Toast63">Condition</string>
+    <string name="Toast64">Dealership</string>
+
+    <string name="Toast65">Settings Data Successfully Loaded</string>
+    <string name="Toast66">No Data For User, Attempting To Creating Default Settings: </string>
+    <string name="Toast67">Default Settings Created For: </string>
+    <string name="Toast68">Failed To Create Default Settings For: </string>
+
+    <string name="Toast69">Failed To Load Settings Data</string>
+    <string name="Toast70">Biometric Authentication Not Supported</string>
+    <string name="Toast71">Biometric Hardware Is Currently Unavailable</string>
+    <string name="Toast72">Biometrics Not Set, Please Set In Phone Settings</string>
+    <string name="Toast73">Unexpected Error Occurred. Please Try Again.</string>
+    <string name="Toast74">No Language Settings Found</string>
+    <string name="Toast75">Feature Currently Unavailable, Coming Soon!</string>
+    <string name="Toast76">Biometrics Enabled Successfully</string>
+    <string name="Toast77">Failed To Update Biometric Setting.</string>
+    <string name="Toast78">Failed To Load User Settings</string>
+    <string name="Toast79">No User Logged In</string>
+    <string name="Toast80">Biometrics Disabled Successfully</string>
+
+    <string name="Toast81">Language Set To ENG</string>
+    <string name="Toast82">Failed To Update Language Setting</string>
+    <string name="Toast83">Language Set To AFR</string>
 
 
     <string name="app_name">Legit Auto Cars</string>
@@ -110,7 +142,7 @@
     <string name="result">Results</string>
     <string name="search_make_model_and_variant">Search by make, model, or variant</string>
 
-    <string name="application_name">LegitAutoCars_ST10088734</string>
+    <string name="application_name" translatable="false">LegitAutoCars_ST10088734</string>
     <string name="biometrics">Biometrics</string>
     <string name="theme">Theme</string>
     <string name="language_english">Language</string>
