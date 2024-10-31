@@ -3,6 +3,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.util.Calendar
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -41,6 +42,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     private lateinit var booking_date_time: TextView
     private lateinit var submitButton: Button
     private lateinit var whatsappIcon: ImageView
+    private lateinit var favourites: ImageView
     private var carId: Int = 0  // Initialize carId
 
     private lateinit var auth: FirebaseAuth  // FirebaseAuth for user authentication
@@ -66,6 +68,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         submitButton = view.findViewById(R.id.book_test_drive)
         car_selected_display = view.findViewById(R.id.booking_car_selected)
         whatsappIcon = view.findViewById(R.id.whatsapp_icon)
+        favourites = view.findViewById(R.id.favourites)
 
         // Display the car title, or a fallback message if not available
         if (carTitle.isNullOrBlank()) {
@@ -206,6 +209,12 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
             false
         }
     }
+
+    private fun handleFavouritesClick()
+    {
+
+    }
+
 
 
     companion object {
