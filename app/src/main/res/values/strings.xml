@@ -124,6 +124,7 @@
     <string name="google">Google</string>
     <string name="google_image">google_image</string>
 
+    <string name="favourites">Add Car To Favourites</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
     <string name="edit">Edit</string>

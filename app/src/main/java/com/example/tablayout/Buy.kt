@@ -122,7 +122,7 @@ class Buy : Fragment() {
         searchButton.setOnClickListener { performSearch() }
 
         // Initialize Test Drive Button (inside RecyclerView car items)
-        // Assuming you're handling it inside the adapter, add a listener to handle test drive booking
+        // im handling it inside the adapter, hence i must add a listener to handle test drive booking
         carAdapter.setOnTestDriveClickListener { selectedCar ->
             if (selectedCar != null) {
                 val carId = selectedCar.id ?: 0  // Use carId; default to 0 if null
