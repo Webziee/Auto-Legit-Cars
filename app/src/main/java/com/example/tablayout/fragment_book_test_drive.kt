@@ -3,6 +3,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.util.Calendar
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,7 @@ import com.example.tablayout.R
 import com.example.tablayout.SupabaseUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,6 +43,9 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     private lateinit var booking_date_time: TextView
     private lateinit var submitButton: Button
     private lateinit var whatsappIcon: ImageView
+    //Declaring my firestore db variable
+    private lateinit var db:FirebaseFirestore
+    private lateinit var favourites: ImageView
     private var carId: Int = 0  // Initialize carId
 
     private lateinit var auth: FirebaseAuth  // FirebaseAuth for user authentication
@@ -66,6 +71,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         submitButton = view.findViewById(R.id.book_test_drive)
         car_selected_display = view.findViewById(R.id.booking_car_selected)
         whatsappIcon = view.findViewById(R.id.whatsapp_icon)
+        favourites = view.findViewById(R.id.favourites)
 
         // Display the car title, or a fallback message if not available
         if (carTitle.isNullOrBlank()) {
@@ -105,8 +111,15 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
             openWhatsappMessage(phone, whatsappMSG) // Pass phone number and message
         }
 
+        // Now we are going to Initialize FirebaseAuth (Obregon, 2023)
+        auth = FirebaseAuth.getInstance()
+
+        //Initialise firestore (Obregon, 2023)
+        db = FirebaseFirestore.getInstance()
+        handleEmptyFavourites()
         return view
     }
+    // end
 
     private fun showDatePickerDialog() {
         // Launch date picker dialog
@@ -206,6 +219,65 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
             false
         }
     }
+
+    private fun handleEmptyFavourites()
+    {
+        val loggedInEmail: FirebaseUser? = auth.currentUser
+        val email = loggedInEmail?.email
+        if(email != null)
+        {
+            val favouritesRef = db.collection("Favourites")
+            favouritesRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if(!documents.isEmpty)
+                    {
+                        //now lets search through the document to see if the user has added any favourites or not
+                        val document = documents.first()
+                        var count = 0
+
+                        val carIDFields = listOf("CarID1", "CarID2", "CarID3", "CarID4","CarID5")
+                        carIDFields.forEach { field ->
+                            val carID = document.getString(field)
+                            if(!carID.isNullOrEmpty())
+                            {
+                                count++
+                            }
+                        }
+                        Log.d("Favourites", "Non-empty CarID count: $count")
+                        if(count == 5)
+                        {
+                            Toast.makeText(requireContext(), getString(R.string.Toast87), Toast.LENGTH_LONG).show()
+                        }
+                        else if(count < 5)
+                        {
+                            Toast.makeText(requireContext(), getString(R.string.Toast88) + count, Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    else
+                    {
+                       val defaultFav = hashMapOf(
+                           "Email" to email,
+                           "CarID1" to null,
+                           "CarID2" to null,
+                           "CarID3" to null,
+                           "CarID4" to null,
+                           "CarID5" to null
+                       )
+                    }
+                }
+        }
+        else
+        {
+            Toast.makeText(requireContext(), getString(R.string.Toast79), Toast.LENGTH_LONG).show()
+        }
+    }
+
+
+    private fun addToFavourites()
+    {
+
+    }
+
 
 
     companion object {

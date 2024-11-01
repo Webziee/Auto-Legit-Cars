@@ -7,7 +7,6 @@
     tools:context="fragment_book_test_drive"
     android:background="@color/DarkMode">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,6 +118,32 @@
                 android:backgroundTint="@color/auto_red"
                 android:textColor="@color/textColor"
                 android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favourites"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Red"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="10dp"/>
+
+                <ImageView
+                    android:id="@+id/favourites"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-125dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/favourites"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
 
@@ -164,8 +189,6 @@
             android:orientation="horizontal"
             android:background="@color/white"
             android:weightSum="2">
-
-
         </LinearLayout>
 
         <ImageView
@@ -181,6 +204,7 @@
             android:padding="5dp"
             android:src="@drawable/whatsapp_logo"
             tools:ignore="SpeakableTextPresentCheck" />
+
 
     </LinearLayout>
 

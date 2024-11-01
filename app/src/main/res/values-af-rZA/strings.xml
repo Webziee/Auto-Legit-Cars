@@ -114,7 +114,12 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="Toast85">Kies Model</string>
 
 
+    <!--New strings-->
+    <string name="Toast86">No Favourites</string>
+    <string name="Toast87">Maximum Favourites Reached</string>
+    <string name="Toast88">Your Number Of Favourites (Max 5): </string>
 
+    <string name="favourites">Voeg Motor By Gunstelinge</string>
     <string name="app_name">Legit Auto Cars</string>
     <string name="login">Meld aan</string>
     <string name="log_in">Meld aan</string>

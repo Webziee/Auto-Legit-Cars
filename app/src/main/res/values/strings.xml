@@ -111,6 +111,11 @@
     <string name="Toast84">Select Make</string>
     <string name="Toast85">Select Model</string>
 
+<!--New strings-->
+    <string name="Toast86">No Favourites</string>
+    <string name="Toast87">Maximum Favourites Reached</string>
+    <string name="Toast88">Your Number Of Favourites (Max 5): </string>
+
 
     <string name="app_name">Legit Auto Cars</string>
     <string name="login">Sign in</string>
@@ -130,6 +135,7 @@
     <string name="google">Google</string>
     <string name="google_image">google_image</string>
 
+    <string name="favourites">Add Car To Favourites</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
     <string name="edit">Edit</string>
