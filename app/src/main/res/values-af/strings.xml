@@ -50,6 +50,11 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="Toast31">Vul asseblief alle velde in</string>
     <string name="Toast32">Aanmelding suksesvol</string>
 
+    <string name="theme_dark">Donker Modus</string>
+    <string name="theme_light">Lig Modus</string>
+    <string name="Toast_theme_updated">Tema suksesvol opgedateer</string>
+    <string name="Toast_theme_update_failed">Tema-opdatering het misluk</string>
+
 
     <string name="Toast33">Stawing het misluk: </string>
     <string name="Toast34">Vul die vereiste velde in</string>
@@ -161,8 +166,6 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
 
     <string name="selection_on">ON</string>
     <string name="selection_off">OFF</string>
-    <string name="theme_light">LIGHT</string>
-    <string name="theme_dark">DARK</string>
     <string name="english">ENG</string>
     <string name="afrikaans">AFR</string>
 

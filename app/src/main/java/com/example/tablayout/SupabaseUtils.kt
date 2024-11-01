@@ -6,6 +6,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 
 /**
  * SupabaseUtils is a utility object to manage the interaction with Supabase, including
@@ -93,5 +96,12 @@ object SupabaseUtils {
             }
             return retrofit!!.create(ApiServices::class.java)
         }
+    }
+
+    fun isOnline(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return activeNetwork.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 }
