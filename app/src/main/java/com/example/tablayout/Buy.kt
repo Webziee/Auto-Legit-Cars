@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import fragment_book_test_drive
 import retrofit2.Call
 import java.net.URLEncoder
@@ -48,6 +49,7 @@ class Buy : Fragment() {
     private lateinit var maxMileageSpinner: Spinner
     private lateinit var resetFilter: TextView
     private lateinit var searchButton: Button
+    private lateinit var viewFavButton: Button
     private lateinit var makeList: MutableList<String>
     private lateinit var modelList: MutableList<String>
     private lateinit var makeAdapter: ArrayAdapter<String>
@@ -124,6 +126,13 @@ class Buy : Fragment() {
         searchButton = view.findViewById(R.id.btnSearch)
         searchButton.setOnClickListener { performSearch() }
 
+        //View Favourites Button Logic
+        viewFavButton = view.findViewById(R.id.btnFavSearch)
+
+        viewFavButton.setOnClickListener{
+            displayFavourites()
+        }
+
         // Initialize Test Drive Button (inside RecyclerView car items)
         // im handling it inside the adapter, hence i must add a listener to handle test drive booking
         carAdapter.setOnTestDriveClickListener { selectedCar ->
@@ -142,7 +151,9 @@ class Buy : Fragment() {
                     .replace(R.id.frame_layout, fragment)
                     .addToBackStack(null)
                     .commit()
-            } else {
+            }
+            else
+            {
                 Toast.makeText(requireContext(), getString(R.string.Toast1), Toast.LENGTH_SHORT).show()
             }
         }
@@ -386,5 +397,48 @@ class Buy : Fragment() {
             ContextCompat.getDrawable(requireContext(), R.drawable.rounded_dropdown_background)
         )
         spinner.background = ContextCompat.getDrawable(requireContext(), R.drawable.spinner_border)
+    }
+
+    private fun displayFavourites()
+    {
+        //Lets first get the favourites from firebase
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        // List to store non-zero car IDs
+        val carIDs = mutableListOf<Int>()
+
+        if(userEmail != null)
+        {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("Favourites").whereEqualTo("Email", userEmail).get()
+                .addOnSuccessListener { documents ->
+                    for(document in documents)
+                    {
+                        // Retrieve each CarID and add to list if it's not zero
+                        listOf(
+                            document.getLong("CarID1")?.toInt() ?: 0,
+                            document.getLong("CarID2")?.toInt() ?: 0,
+                            document.getLong("CarID3")?.toInt() ?: 0,
+                            document.getLong("CarID4")?.toInt() ?: 0,
+                            document.getLong("CarID5")?.toInt() ?: 0
+                        ).filter { it != 0 }.forEach { carIDs.add(it) }
+                    }
+
+                    if(carIDs.isNotEmpty())
+                    {
+
+                    }
+                    else
+                    {
+                        Toast.makeText(requireContext(), getString(R.string.Toast93), Toast.LENGTH_SHORT).show()
+                    }
+                }.addOnFailureListener{
+                    Toast.makeText(requireContext(), getString(R.string.Toast92), Toast.LENGTH_LONG).show()
+                }
+        }
+        else
+        {
+            Toast.makeText(requireContext(), getString(R.string.Toast79), Toast.LENGTH_LONG).show()
+        }
     }
 }

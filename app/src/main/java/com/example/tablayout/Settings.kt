@@ -109,7 +109,7 @@ class Settings : Fragment() {
             Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
             [Accessed 12 October 2024].
             */
-            emailValue.setText(user.email)// if user logged then show their email
+            emailValue.setText(user.email)
             val email = user.email
             val settingsRef = db.collection("Settings")
             settingsRef.whereEqualTo("Email", email).get()
