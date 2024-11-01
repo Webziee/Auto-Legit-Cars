@@ -1,4 +1,5 @@
 plugins {
+    id("kotlin-kapt")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
@@ -90,6 +91,21 @@ dependencies {
     // Coroutines for Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+
+    // Offline mode
+    implementation("androidx.room:room-runtime:2.4.1")
+    kapt("androidx.room:room-compiler:2.4.1")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
+
+    // Lifecycle dependencies
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1") // for LiveData support
+
+    // Fragment KTX
+    implementation("androidx.fragment:fragment-ktx:1.3.6") // or latest version
+
+    // Gson
+    implementation("com.google.code.gson:gson:2.8.9")
 }
 
 
