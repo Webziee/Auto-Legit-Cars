@@ -97,7 +97,6 @@ class Settings : Fragment() {
 
         /*Now we are going to get the current users email address and display it in this settings fragment
           According to minikate (2019), the following needs to be done to achieve this objective: */
-
         // store current users email in the user variable
         val user: FirebaseUser? = auth.currentUser
         //declaring val to handle else
