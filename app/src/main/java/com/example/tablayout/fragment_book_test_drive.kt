@@ -297,15 +297,21 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         }
     }
 
-
-    private fun addToFavourites(carID: Int?) {
-        if (carID == null || carID == 0) {  // Updated to check for null and 0
-            Log.e("Firestore", "Car ID is null or zero.")
+    /*The following method adds the current car to the users favourites collection, but checks are done first
+     to see if their is space to add a favourite. This firebase manipulation code comes from the following video:
+      Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+      Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+      [Accessed 12 October 2024].*/
+    private fun addToFavourites(carID: Int?)
+    {
+        if (carID == null || carID == 0)
+        {  // check for null or 0, meaning no car id found
+            Toast.makeText(requireContext(), getString(R.string.Toast89), Toast.LENGTH_LONG).show()
             return
         }
 
-        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: run {
-            Log.e("Firestore", "User email not found.")
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: run{
+            Toast.makeText(requireContext(), getString(R.string.Toast79), Toast.LENGTH_LONG).show()
             return
         }
 
@@ -320,28 +326,33 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
                     val carSlots = listOf("CarID1", "CarID2", "CarID3", "CarID4", "CarID5")
                     val emptySlot = carSlots.firstOrNull { document.getLong(it) == 0L } // Check for zero
 
-                    if (emptySlot != null) {
+                    if (emptySlot != null)
+                    {
                         // Update the document with the car ID in the first available slot
                         favRef.document(document.id).update(emptySlot, carID.toLong()) // Convert carID to Long
                             .addOnSuccessListener {
-                                Log.d("Firestore", "Car added to $emptySlot successfully.")
+                                //Show message on Success
+                                Toast.makeText(requireContext(), getString(R.string.Toast90), Toast.LENGTH_LONG).show()
                             }
                             .addOnFailureListener { e ->
-                                Log.e("Firestore", "Error adding car to favourites", e)
+                                //show message on failure
+                                Toast.makeText(requireContext(), getString(R.string.Toast91), Toast.LENGTH_LONG).show()
                             }
-                    } else {
-                        Log.d("Firestore", "All favorite slots are full.")
                     }
-                } else {
-                    Log.d("Firestore", "No document found for user.")
+                    else
+                    {
+                        Toast.makeText(requireContext(), getString(R.string.Toast87), Toast.LENGTH_LONG).show()
+                    }
+                }
+                else
+                {
+                    Toast.makeText(requireContext(), getString(R.string.Toast72), Toast.LENGTH_LONG).show()
                 }
             }
             .addOnFailureListener { exception ->
-                Log.e("Firestore", "Error querying user document", exception)
+                Toast.makeText(requireContext(), getString(R.string.Toast72), Toast.LENGTH_LONG).show()
             }
     }
-
-
 
     companion object {
         @JvmStatic
