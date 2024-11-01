@@ -115,6 +115,13 @@
     <string name="Toast86">No Favourites</string>
     <string name="Toast87">Maximum Favourites Reached</string>
     <string name="Toast88">Your Number Of Favourites (Max 5): </string>
+    <string name="Toast89">No Car ID Found</string>
+    <string name="Toast90">Car Added To Favourites Successfully</string>
+    <string name="Toast91">Error Adding Car To Favourites</string>
+    <string name="Toast92">Failed To Load Favourites</string>
+    <string name="Toast93">No Favourites Found</string>
+    <string name="fav_search">View Favourites</string>
+    <string name="price_compare">Compare Prices</string>
 
 
     <string name="app_name">Legit Auto Cars</string>
