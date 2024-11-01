@@ -119,6 +119,10 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="Toast89">Geen motor-ID gevind nie</string>
     <string name="Toast90">Motor is suksesvol by gunstelinge gevoeg</string>
     <string name="Toast91">Kon nie motor by gunstelinge voeg nie</string>
+    <string name="Toast92">Kon nie gunstelinge laai nie</string>
+    <string name="Toast93">Geen gunstelinge gevind nie</string>
+    <string name="fav_search">Bekyk gunstelinge</string>
+    <string name="price_compare">Vergelyk pryse</string>
 
     <string name="favourites">Voeg Motor By Gunstelinge</string>
     <string name="app_name">Legit Auto Cars</string>

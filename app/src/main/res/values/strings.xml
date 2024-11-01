@@ -112,6 +112,8 @@
     <string name="Toast89">No Car ID Found</string>
     <string name="Toast90">Car Added To Favourites Successfully</string>
     <string name="Toast91">Error Adding Car To Favourites</string>
+    <string name="Toast92">Failed To Load Favourites</string>
+    <string name="Toast93">No Favourites Found</string>
     <string name="fav_search">View Favourites</string>
     <string name="price_compare">Compare Prices</string>
 
