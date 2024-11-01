@@ -139,7 +139,9 @@ class Buy : Fragment() {
                     .replace(R.id.frame_layout, fragment)
                     .addToBackStack(null)
                     .commit()
-            } else {
+            }
+            else
+            {
                 Toast.makeText(requireContext(), getString(R.string.Toast1), Toast.LENGTH_SHORT).show()
             }
         }

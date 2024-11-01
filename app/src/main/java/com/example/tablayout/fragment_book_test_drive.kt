@@ -116,8 +116,11 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
 
         //Initialise firestore (Obregon, 2023)
         db = FirebaseFirestore.getInstance()
+
+        //Before allowing user to add favourites first handle issues with regards to them having the collection or if their document is full
         handleEmptyFavourites()
 
+        //Set an onclick for the favourites icon and call the addtofavourites method
         favourites.setOnClickListener{
             addToFavourites(carId)
         }
