@@ -117,6 +117,10 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         //Initialise firestore (Obregon, 2023)
         db = FirebaseFirestore.getInstance()
         handleEmptyFavourites()
+
+        favourites.setOnClickListener{
+            addToFavourites(carId)
+        }
         return view
     }
     // end
@@ -220,50 +224,71 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         }
     }
 
+    /*The following method checks to see how many favourite slots the current user has open and displays toast messages
+      accordingly it also creating default vals if no items found, this firebase manipulation code comes from the following video:
+      Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+      Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+      [Accessed 12 October 2024].*/
     private fun handleEmptyFavourites()
     {
-        val loggedInEmail: FirebaseUser? = auth.currentUser
-        val email = loggedInEmail?.email
-        if(email != null)
+        val loggedInEmail = auth.currentUser?.email
+        if (loggedInEmail != null)
         {
+            // Referencing the Favourites collection in Firestore
             val favouritesRef = db.collection("Favourites")
-            favouritesRef.whereEqualTo("Email", email).get()
+
+            // querying the collection to find the document that matches the user's email
+            favouritesRef.whereEqualTo("Email", loggedInEmail).get()
                 .addOnSuccessListener { documents ->
-                    if(!documents.isEmpty)
-                    {
-                        //now lets search through the document to see if the user has added any favourites or not
+                    // Checking if the document exists
+                    if (!documents.isEmpty) {
+                        // Search the document to see if the user has added any favourites
                         val document = documents.first()
                         var count = 0
 
-                        val carIDFields = listOf("CarID1", "CarID2", "CarID3", "CarID4","CarID5")
+                        // creating a list of car ID fields to check
+                        val carIDFields = listOf("CarID1", "CarID2", "CarID3", "CarID4", "CarID5")
                         carIDFields.forEach { field ->
-                            val carID = document.getString(field)
-                            if(!carID.isNullOrEmpty())
-                            {
+                            // get the car ID from the document
+                            val carID = document.getLong(field)
+                            // count the number of non-empty car IDs
+                            if (carID != null && carID != 0L) {
                                 count++
                             }
                         }
-                        Log.d("Favourites", "Non-empty CarID count: $count")
-                        if(count == 5)
+
+                        if (count == 5)
                         {
                             Toast.makeText(requireContext(), getString(R.string.Toast87), Toast.LENGTH_LONG).show()
                         }
-                        else if(count < 5)
+                        else
                         {
                             Toast.makeText(requireContext(), getString(R.string.Toast88) + count, Toast.LENGTH_LONG).show()
                         }
                     }
                     else
                     {
-                       val defaultFav = hashMapOf(
-                           "Email" to email,
-                           "CarID1" to null,
-                           "CarID2" to null,
-                           "CarID3" to null,
-                           "CarID4" to null,
-                           "CarID5" to null
-                       )
+                        // else Create a default favourite document if none exists for the user
+                        val defaultFav = hashMapOf(
+                            "Email" to loggedInEmail,
+                            "CarID1" to 0,
+                            "CarID2" to 0,
+                            "CarID3" to 0,
+                            "CarID4" to 0,
+                            "CarID5" to 0
+                        )
+                        // adding the default favourites document to Firestore
+                        favouritesRef.add(defaultFav)
+                            .addOnSuccessListener {
+                                Log.d("Favourites", "Default favourites document created.")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Favourites", "Error creating default favourites document", e)
+                            }
                     }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), getString(R.string.Toast73), Toast.LENGTH_LONG).show()
                 }
         }
         else
@@ -273,9 +298,47 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     }
 
 
-    private fun addToFavourites()
-    {
+    private fun addToFavourites(carID: Int?) {
+        if (carID == null || carID == 0) {  // Updated to check for null and 0
+            Log.e("Firestore", "Car ID is null or zero.")
+            return
+        }
 
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: run {
+            Log.e("Firestore", "User email not found.")
+            return
+        }
+
+        val favRef = FirebaseFirestore.getInstance().collection("Favourites")
+
+        // Query for the document where Email matches userEmail
+        favRef.whereEqualTo("Email", userEmail).get()
+            .addOnSuccessListener { querySnapshot ->
+                val document = querySnapshot.documents.firstOrNull()
+                if (document != null) {
+                    // Find the first empty CarID slot
+                    val carSlots = listOf("CarID1", "CarID2", "CarID3", "CarID4", "CarID5")
+                    val emptySlot = carSlots.firstOrNull { document.getLong(it) == 0L } // Check for zero
+
+                    if (emptySlot != null) {
+                        // Update the document with the car ID in the first available slot
+                        favRef.document(document.id).update(emptySlot, carID.toLong()) // Convert carID to Long
+                            .addOnSuccessListener {
+                                Log.d("Firestore", "Car added to $emptySlot successfully.")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Firestore", "Error adding car to favourites", e)
+                            }
+                    } else {
+                        Log.d("Firestore", "All favorite slots are full.")
+                    }
+                } else {
+                    Log.d("Firestore", "No document found for user.")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("Firestore", "Error querying user document", exception)
+            }
     }
 
 
