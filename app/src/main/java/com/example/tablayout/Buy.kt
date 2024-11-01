@@ -15,6 +15,7 @@ import fragment_book_test_drive
 import retrofit2.Call
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import androidx.fragment.app.viewModels
 
 /**
  * Buy fragment to manage car listing and filtering.
@@ -51,6 +52,8 @@ class Buy : Fragment() {
     private lateinit var modelList: MutableList<String>
     private lateinit var makeAdapter: ArrayAdapter<String>
     private lateinit var modelAdapter: ArrayAdapter<String>
+    private lateinit var carViewModel: CarViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
