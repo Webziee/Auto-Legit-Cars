@@ -18,8 +18,6 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * Buy fragment to manage car listing and filtering.
@@ -129,18 +127,6 @@ class Buy : Fragment() {
         searchButton = view.findViewById(R.id.btnSearch)
         searchButton.setOnClickListener { performSearch() }
 
-        // Initialize ViewModel using ViewModelProvider
-        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
-
-        // Observe local data from SQLite and update the RecyclerView
-        carViewModel.allCars.observe(viewLifecycleOwner) { cars ->
-            carList.clear()
-            carList.addAll(cars)
-            carAdapter.notifyDataSetChanged()
-            Log.d("BuyFragment", "Loaded ${cars.size} cars from local database.")
-        }
-
-
         //View Favourites Button Logic
         viewFavButton = view.findViewById(R.id.btnFavSearch)
 
@@ -193,6 +179,7 @@ class Buy : Fragment() {
 
 
     private fun resetFilters() {
+        // Reset all filter spinners to their default positions
         makeSpinner.setSelection(0)
         modelSpinner.setSelection(0)
         minPriceSpinner.setSelection(0)
@@ -203,7 +190,19 @@ class Buy : Fragment() {
         maxYearSpinner.setSelection(0)
         transmissionSpinner.setSelection(0)
         maxMileageSpinner.setSelection(0)
-        fetchCarsFromSupabase()
+
+        // Clear the car list and refresh adapter
+        carList.clear()
+        carAdapter.notifyDataSetChanged()
+
+        // Fetch data depending on network connectivity
+        if (carViewModel.isOnline()) {
+            fetchCarsFromSupabase()  // Online fetch from Supabase
+        } else {
+            val allLocalCars = carViewModel.getAllCarsFromLocalDatabase()  // Offline fetch from SQLite
+            carList.addAll(allLocalCars)
+            carAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun fetchCarsFromSupabase() {
@@ -214,26 +213,25 @@ class Buy : Fragment() {
             condition = null, dealership = null, fuelType = null
         )
 
-        call.enqueue(object : Callback<List<Car>> {
-            override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
                 if (response.isSuccessful) {
                     val cars = response.body()
-                    carList.clear()
+                    carList.clear()  // Clear current data
                     if (!cars.isNullOrEmpty()) {
-                        carList.addAll(cars)
-                        carViewModel.updateLocalDatabase(cars) // Store in SQLite for offline access
+                        carList.addAll(cars)  // Add all cars to the list
+                        carViewModel.updateLocalDatabase(cars)  // Store in SQLite for offline access
                         carAdapter.notifyDataSetChanged()
-                        Log.d("BuyFragment", "Fetched ${cars.size} cars from Supabase.")
                     } else {
-                        Log.d("BuyFragment", "No cars received from Supabase.")
+                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Log.e("BuyFragment", "Failed to retrieve cars from Supabase.")
+                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Log.e("BuyFragment", "Error fetching cars from Supabase: ${t.message}")
+                Toast.makeText(context, getString(R.string.Toast4) + ": " + t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -242,28 +240,28 @@ class Buy : Fragment() {
     // Fetch unique car makes from Supabase
     private fun fetchCarMakes() {
         val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+
         val call = apiService.getFilteredCars(null, null, null, null, null, null, null, null, null, null, null)
 
-        call.enqueue(object : Callback<List<Car>> {
-            override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
                 if (response.isSuccessful) {
                     val cars = response.body()
-                    if (!cars.isNullOrEmpty()) {
+                    if (cars != null) {
                         makeList.clear()
                         makeList.add(getString(R.string.Toast84)) // Add default option
-                        val uniqueMakes = cars.map { it.make }.distinct()
+
+                        val uniqueMakes = cars.map { it.make }.distinct()  // Get unique makes
                         makeList.addAll(uniqueMakes)
                         makeAdapter.notifyDataSetChanged()
-                    } else {
-                        Log.w("BuyFragment", "No makes found from Supabase response.")
                     }
                 } else {
-                    Log.w("BuyFragment", "Failed to retrieve makes from Supabase.")
+                    Log.w("Supabase", "Failed to retrieve makes from Supabase")
                 }
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Log.e("BuyFragment", "Error fetching car makes: ${t.message}")
+                Log.e("Supabase", "Error fetching car makes: ${t.message}")
             }
         })
     }
@@ -271,6 +269,8 @@ class Buy : Fragment() {
     // Fetch car models for the selected make from Supabase
     private fun fetchCarModels(selectedMake: String) {
         val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+
+        // Correct filter format: make=eq.<value>
         val encodedMake = URLEncoder.encode("eq.$selectedMake", StandardCharsets.UTF_8.toString())
 
         val call = apiService.getFilteredCars(
@@ -287,47 +287,38 @@ class Buy : Fragment() {
             fuelType = null
         )
 
-        call.enqueue(object : Callback<List<Car>> {
-            override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
                 if (response.isSuccessful) {
                     val cars = response.body()
-                    if (!cars.isNullOrEmpty()) {
+                    if (cars != null) {
                         modelList.clear()
-                        modelList.add(getString(R.string.Toast85))
-                        val uniqueModels = cars.map { it.model }.distinct()
+                        modelList.add(getString(R.string.Toast85)) // Add default option
+
+                        // Extract distinct models for the selected make
+                        val uniqueModels = cars.map { it.model }.distinct()  // Get unique models for the selected make
                         modelList.addAll(uniqueModels)
                         modelAdapter.notifyDataSetChanged()
                     } else {
-                        Log.w("BuyFragment", "No models found for make: $selectedMake")
+                        Toast.makeText(context, getString(R.string.Toast5), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Log.w("BuyFragment", "Failed to retrieve models for make: $selectedMake")
+                    Log.w("Supabase", "Failed to retrieve models from Supabase")
                 }
             }
 
             override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Log.e("BuyFragment", "Error fetching car models: ${t.message}")
+                Log.e("Supabase", "Error fetching car models: ${t.message}")
             }
         })
     }
 
     private fun performSearch() {
-        // Create a map for query parameters
         val filters = mutableMapOf<String, String?>()
 
-        // Get selected make and model
+        // Retrieve selected filters
         val selectedMake = makeSpinner.selectedItem.toString()
         val selectedModel = modelSpinner.selectedItem.toString()
-
-        // Add make and model to filters if selected
-        if (selectedMake != getString(R.string.Toast84)) {
-            filters["make"] = "eq.$selectedMake"
-        }
-        if (selectedModel != getString(R.string.Toast85)) {
-            filters["model"] = "eq.$selectedModel"
-        }
-
-        // Get other filter criteria
         val minPrice = minPriceSpinner.selectedItem.toString().toDoubleOrNull()
         val maxPrice = maxPriceSpinner.selectedItem.toString().toDoubleOrNull()
         val location = locationSpinner.selectedItem.toString()
@@ -337,73 +328,56 @@ class Buy : Fragment() {
         val transmission = transmissionSpinner.selectedItem.toString()
         val maxMileage = maxMileageSpinner.selectedItem.toString().toIntOrNull()
 
-        // Add year range to filters
-        if (minYear != null) {
-            filters["year"] = "gte.$minYear"  // Greater than or equal to min year
-        }
-        if (maxYear != null) {
-            filters["year"] = "lte.$maxYear"  // Less than or equal to max year
-        }
+        // Populate filter map
+        if (selectedMake != getString(R.string.Toast84)) filters["make"] = "eq.$selectedMake"
+        if (selectedModel != getString(R.string.Toast85)) filters["model"] = "eq.$selectedModel"
+        if (minPrice != null) filters["price.gte"] = minPrice.toString()
+        if (maxPrice != null) filters["price.lte"] = maxPrice.toString()
+        if (location.isNotEmpty()) filters["location"] = "eq.$location"
+        if (bodytype.isNotEmpty()) filters["bodytype"] = "eq.$bodytype"
+        if (minYear != null) filters["year.gte"] = minYear.toString()
+        if (maxYear != null) filters["year.lte"] = maxYear.toString()
+        if (transmission.isNotEmpty()) filters["transmission"] = "eq.$transmission"
+        if (maxMileage != null) filters["mileage.lte"] = maxMileage.toString()
 
-        // Add price range to filters
-        if (minPrice != null) {
-            filters["price"] = "gte.$minPrice"  // Greater than or equal to min price
-        }
-        if (maxPrice != null) {
-            filters["price"] = "lte.$maxPrice"  // Less than or equal to max price
-        }
+        if (carViewModel.isOnline()) {
+            // Online filtering with Supabase API
+            val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+            val call = apiService.getFilteredCars(
+                make = filters["make"], model = filters["model"], year = filters["year"],
+                mileage = filters["mileage"], transmission = filters["transmission"],
+                price = filters["price"], location = filters["location"], bodytype = filters["bodytype"],
+                condition = null, dealership = null, fuelType = null
+            )
 
-        // Add transmission, location, bodytype to filters if selected
-        if (transmission.isNotEmpty()) {
-            filters["transmission"] = "eq.$transmission"
-        }
-        if (location.isNotEmpty()) {
-            filters["location"] = "eq.$location"
-        }
-        if (bodytype.isNotEmpty()) {
-            filters["bodytype"] = "eq.$bodytype"
-        }
-
-        // Initialize Retrofit API service for Supabase
-        val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
-
-        // Call the API with dynamic filters
-        val call = apiService.getFilteredCars(
-            make = filters["make"],
-            model = filters["model"],
-            year = filters["year"],
-            mileage = maxMileage?.let { "lte.$it" },
-            transmission = filters["transmission"],
-            price = filters["price"],
-            location = filters["location"],
-            bodytype = filters["bodytype"],
-            condition = null,
-            dealership = null,
-            fuelType = null
-        )
-
-        // Handle the API response
-        call.enqueue(object : retrofit2.Callback<List<Car>> {
-            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
-                if (response.isSuccessful) {
-                    val filteredCars = response.body()
-                    carList.clear()
-                    if (!filteredCars.isNullOrEmpty()) {
-                        carList.addAll(filteredCars)
-                        carAdapter.notifyDataSetChanged()
-                        Toast.makeText(context, getString(R.string.Toast6) + filteredCars.size, Toast.LENGTH_SHORT).show()
+            call.enqueue(object : retrofit2.Callback<List<Car>> {
+                override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
+                    if (response.isSuccessful) {
+                        val filteredCars = response.body()
+                        carList.clear()
+                        if (!filteredCars.isNullOrEmpty()) {
+                            carList.addAll(filteredCars)
+                            carViewModel.updateLocalDatabase(filteredCars)  // Update SQLite for offline access
+                            carAdapter.notifyDataSetChanged()
+                        } else {
+                            Toast.makeText(context, getString(R.string.Toast7), Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        Toast.makeText(context, getString(R.string.Toast7), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Toast8), Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    Toast.makeText(context, getString(R.string.Toast8), Toast.LENGTH_SHORT).show()
                 }
-            }
 
-            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Toast.makeText(context,getString(R.string.Toast9) + t.message, Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                    Toast.makeText(context, getString(R.string.Toast9) + t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            // Offline filtering using SQLite database
+            val localFilteredCars = carViewModel.getFilteredCarsOffline(filters)
+            carList.clear()
+            carList.addAll(localFilteredCars)
+            carAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun setupSpinner(spinner: Spinner, arrayId: Int) {
@@ -420,22 +394,15 @@ class Buy : Fragment() {
         spinner.background = ContextCompat.getDrawable(requireContext(), R.drawable.spinner_border)
     }
 
-    private fun displayFavourites()
-    {
-        //Lets first get the favourites from firebase
+    private fun displayFavourites() {
         val userEmail = FirebaseAuth.getInstance().currentUser?.email
-
-        // List to store non-zero car IDs
         val carIDs = mutableListOf<Int>()
 
-        if(userEmail != null)
-        {
+        if (userEmail != null) {
             val db = FirebaseFirestore.getInstance()
             db.collection("Favourites").whereEqualTo("Email", userEmail).get()
                 .addOnSuccessListener { documents ->
-                    for(document in documents)
-                    {
-                        // Retrieving each CarID and adding them to la ist if it's not zero
+                    for (document in documents) {
                         listOf(
                             document.getLong("CarID1")?.toInt() ?: 0,
                             document.getLong("CarID2")?.toInt() ?: 0,
@@ -445,33 +412,27 @@ class Buy : Fragment() {
                         ).filter { it != 0 }.forEach { carIDs.add(it) }
                     }
 
-                    if(carIDs.isNotEmpty())
-                    {
-                        Toast.makeText(requireContext(), "Car IDs: $carIDs", Toast.LENGTH_LONG).show()
-                        fetchFavCarsFromSupabase(carIDs)
-                    }
-                    else
-                    {
+                    if (carIDs.isNotEmpty()) {
+                        if (carViewModel.isOnline()) {
+                            fetchFavCarsFromSupabase(carIDs)
+                        } else {
+                            val favoriteCars = carViewModel.getFavoritesFromLocalDatabase(carIDs)
+                            carList.clear()
+                            carList.addAll(favoriteCars)
+                            carAdapter.notifyDataSetChanged()
+                        }
+                    } else {
                         Toast.makeText(requireContext(), getString(R.string.Toast93), Toast.LENGTH_SHORT).show()
                     }
-                }.addOnFailureListener{
+                }.addOnFailureListener {
                     Toast.makeText(requireContext(), getString(R.string.Toast92), Toast.LENGTH_LONG).show()
                 }
-        }
-        else
-        {
+        } else {
             Toast.makeText(requireContext(), getString(R.string.Toast79), Toast.LENGTH_LONG).show()
         }
     }
 
-    /*Now lets fetch the favourite cars from superbase based on the Car ID and display them to the user
-      This method was achieved with the help of the following video:
-      Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online]
-      Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
-      [Accessed 01 November 2024].*/
-    private fun fetchFavCarsFromSupabase(carIds: List<Int>)
-    {
-        // Use Supabase API to fetch car list
+    private fun fetchFavCarsFromSupabase(carIds: List<Int>) {
         val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
         val call = apiService.getFilteredCars(
             make = null, model = null, year = null, mileage = null,
@@ -485,7 +446,6 @@ class Buy : Fragment() {
                     val cars = response.body()
                     carList.clear()
                     if (cars != null) {
-                        // Filter cars by IDs in the provided carIds list
                         val filteredCars = cars.filter { carIds.contains(it.id) }
                         carList.addAll(filteredCars)
                     } else {
@@ -502,4 +462,6 @@ class Buy : Fragment() {
             }
         })
     }
+
+
 }

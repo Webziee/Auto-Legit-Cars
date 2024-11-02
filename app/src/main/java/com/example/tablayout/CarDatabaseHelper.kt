@@ -121,4 +121,72 @@ class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         db.delete(TABLE_CARS, null, null)
         db.close()
     }
+
+    // Method to retrieve cars based on filters from local database
+    fun getFilteredCars(filters: Map<String, String?>): List<Car> {
+        val cars = mutableListOf<Car>()
+        val db = readableDatabase
+
+        val query = StringBuilder("SELECT * FROM $TABLE_CARS WHERE 1=1")
+        filters.forEach { (key, value) ->
+            value?.let { query.append(" AND $key LIKE ?") }
+        }
+
+        val args = filters.values.filterNotNull().toTypedArray()
+        val cursor = db.rawQuery(query.toString(), args)
+        while (cursor.moveToNext()) {
+            val car = Car(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE)),
+                maincarimage = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGE)),
+                condition = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONDITION)),
+                mileage = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_MILEAGE)),
+                price = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRICE)),
+                bodytype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BODY_TYPE)),
+                make = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MAKE)),
+                model = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MODEL)),
+                year = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_YEAR)),
+                fueltype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FUEL_TYPE)),
+                dealership = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DEALERSHIP)),
+                location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION)),
+                transmission = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSMISSION))
+            )
+            cars.add(car)
+        }
+        cursor.close()
+        db.close()
+        return cars
+    }
+
+    // Method to retrieve favorite cars based on car IDs from local database
+    fun getFavoriteCars(carIds: List<Int>): List<Car> {
+        val cars = mutableListOf<Car>()
+        val db = readableDatabase
+
+        val query = "SELECT * FROM $TABLE_CARS WHERE $COLUMN_ID IN (${carIds.joinToString(",")})"
+        val cursor = db.rawQuery(query, null)
+        while (cursor.moveToNext()) {
+            val car = Car(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE)),
+                maincarimage = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGE)),
+                condition = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONDITION)),
+                mileage = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_MILEAGE)),
+                price = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRICE)),
+                bodytype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BODY_TYPE)),
+                make = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MAKE)),
+                model = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MODEL)),
+                year = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_YEAR)),
+                fueltype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FUEL_TYPE)),
+                dealership = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DEALERSHIP)),
+                location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION)),
+                transmission = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSMISSION))
+            )
+            cars.add(car)
+        }
+        cursor.close()
+        db.close()
+        return cars
+    }
+
 }

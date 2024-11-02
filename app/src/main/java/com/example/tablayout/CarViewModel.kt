@@ -61,7 +61,7 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // Check if the device is online
-    private fun isOnline(): Boolean {
+    public fun isOnline(): Boolean {
         val connectivityManager =
             getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork ?: return false
@@ -105,4 +105,19 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
             retrofit.create(SupabaseApiService::class.java)
         }
     }
+
+    fun getFilteredCarsOffline(filters: Map<String, String?>): List<Car> {
+        return carDatabaseHelper.getFilteredCars(filters)
+    }
+
+    fun getFavoritesFromLocalDatabase(carIds: List<Int>): List<Car> {
+        return carDatabaseHelper.getFavoriteCars(carIds)
+    }
+
+    // Fetch all cars from the local SQLite database
+    fun getAllCarsFromLocalDatabase(): List<Car> {
+        return carDatabaseHelper.getAllCars()
+    }
+
+
 }
