@@ -46,7 +46,6 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
     //Declaring my firestore db variable
     private lateinit var db:FirebaseFirestore
     private lateinit var favourites: ImageView
-    private var carId: Int = 0  // Initialize carId
 
     private lateinit var auth: FirebaseAuth  // FirebaseAuth for user authentication
 
@@ -62,7 +61,7 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val view = inflater.inflate(R.layout.fragment_book_test_drive, container, false)
 
         // Retrieve arguments passed from the previous fragment
-        carId = arguments?.getInt("car_id", 0) ?: 0
+        val carId = arguments?.getInt("car_id", 0) ?: 0
         val carTitle = arguments?.getString("carTitle")
         val message = "Car ID: " +carId
         Toast.makeText(requireContext(), "$carTitle: $message", Toast.LENGTH_LONG).show()

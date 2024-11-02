@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.tablayout.Car
 
 class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -63,6 +64,7 @@ class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         try {
             for (car in cars) {
                 val values = ContentValues().apply {
+                    put(COLUMN_ID, car.id)
                     put(COLUMN_TITLE, car.title)
                     put(COLUMN_IMAGE, car.maincarimage)
                     put(COLUMN_CONDITION, car.condition)
@@ -77,6 +79,8 @@ class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                     put(COLUMN_LOCATION, car.location)
                     put(COLUMN_TRANSMISSION, car.transmission)
                 }
+                val id = db.insert(TABLE_CARS, null, values)
+                Log.d("CarDatabaseHelper", "Inserted Car With ID: $id")
                 db.insert(TABLE_CARS, null, values)
             }
             db.setTransactionSuccessful()
@@ -108,6 +112,7 @@ class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION)),
                 transmission = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSMISSION))
             )
+
             cars.add(car)
         }
         cursor.close()
