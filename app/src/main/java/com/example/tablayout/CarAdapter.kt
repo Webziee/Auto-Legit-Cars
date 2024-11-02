@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fragment_book_test_drive
+import kotlin.math.log
 
 /**
  * CarAdapter class to bind and display car data in a RecyclerView.
@@ -51,7 +52,6 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
         val car = carList[position]
-
         // Bind the title
         holder.carTitle.text = car.title
 
@@ -85,7 +85,9 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
 
         // Bind the test drive button click
         holder.testDriveButton.setOnClickListener {
+            Log.d("CarAdapter", "Car selected for test drive: $car")
             onTestDriveClickListener?.invoke(car)
+            Log.d("CarAdapter", "Car selected for test drive: $car")
         }
     }
 

@@ -64,6 +64,8 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         // Retrieve arguments passed from the previous fragment
         carId = arguments?.getInt("car_id", 0) ?: 0
         val carTitle = arguments?.getString("carTitle")
+        val message = "Car ID: " +carId
+        Toast.makeText(requireContext(), "$carTitle: $message", Toast.LENGTH_LONG).show()
 
         // Initialize views
         booking_date_time_display = view.findViewById(R.id.booking_date_time)
@@ -119,7 +121,6 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
 
         //Before allowing user to add favourites first handle issues with regards to them having the collection or if their document is full
         handleEmptyFavourites()
-
         //Set an onclick for the favourites icon and call the addtofavourites method
         favourites.setOnClickListener{
             addToFavourites(carId)
