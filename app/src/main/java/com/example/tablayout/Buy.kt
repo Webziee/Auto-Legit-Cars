@@ -16,6 +16,8 @@ import fragment_book_test_drive
 import retrofit2.Call
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 
 /**
  * Buy fragment to manage car listing and filtering.
@@ -53,6 +55,8 @@ class Buy : Fragment() {
     private lateinit var modelList: MutableList<String>
     private lateinit var makeAdapter: ArrayAdapter<String>
     private lateinit var modelAdapter: ArrayAdapter<String>
+    private lateinit var carViewModel: CarViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -154,6 +158,17 @@ class Buy : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.Toast1), Toast.LENGTH_SHORT).show()
             }
         }
+
+        // Initialize ViewModel using ViewModelProvider
+        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
+
+        // Observe local data from SQLite and update the RecyclerView
+        carViewModel.allCars.observe(viewLifecycleOwner) { cars ->
+            carAdapter.updateData(cars)
+        }
+
+        // Sync data with Supabase when online
+        carViewModel.syncCarsWithSupabase()
 
 
         // Fetch default car list from Supabase

@@ -99,6 +99,12 @@
     <string name="Toast79">No User Logged In</string>
     <string name="Toast80">Biometrics Disabled Successfully</string>
 
+    <string name="theme_dark">Dark Mode</string>
+    <string name="theme_light">Light Mode</string>
+    <string name="Toast_theme_updated">Theme updated successfully</string>
+    <string name="Toast_theme_update_failed">Failed to update theme</string>
+
+
     <string name="Toast81">Language Set To ENG</string>
     <string name="Toast82">Failed To Update Language Setting</string>
     <string name="Toast83">Language Set To AFR</string>
@@ -166,8 +172,7 @@
 
     <string name="selection_on">ON</string>
     <string name="selection_off">OFF</string>
-    <string name="theme_light">LIGHT</string>
-    <string name="theme_dark">DARK</string>
+
     <string name="english">ENG</string>
     <string name="afrikaans">AFR</string>
 

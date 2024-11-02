@@ -51,6 +51,7 @@ class Settings : Fragment() {
     private lateinit var emailValue: EditText
     private lateinit var biometricButton: Button
     private lateinit var themeButton: Button
+
     private lateinit var languageButton: Button
     private lateinit var pushNotificationButton: Button
     //Below i am declaring my auth variable (Obregon, 2023)
