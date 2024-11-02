@@ -51,11 +51,13 @@ class Buy : Fragment() {
     private lateinit var resetFilter: TextView
     private lateinit var searchButton: Button
     private lateinit var viewFavButton: Button
+    private lateinit var favImageView: ImageView
     private lateinit var makeList: MutableList<String>
     private lateinit var modelList: MutableList<String>
     private lateinit var makeAdapter: ArrayAdapter<String>
     private lateinit var modelAdapter: ArrayAdapter<String>
     private lateinit var carViewModel: CarViewModel
+
 
 
     override fun onCreateView(
@@ -448,10 +450,11 @@ class Buy : Fragment() {
   [Accessed 01 November 2024].*/
     private fun fetchFavCarsFromSupabase(carIds: List<Int>)
     {
+        favImageView.visibility = View.VISIBLE
         // Ensure the provided carIds list is not empty
         if (carIds.isEmpty())
         {
-            Toast.makeText(context, "No car IDs provided.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.Toast89), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -478,18 +481,19 @@ class Buy : Fragment() {
                             carList.addAll(filteredCars) // Add filtered cars to the list
                             carViewModel.updateLocalDatabase(filteredCars)
                             carAdapter.notifyDataSetChanged() // Notify the adapter of data changes
-                            Toast.makeText(requireContext(), "Adapter must change", Toast.LENGTH_LONG).show()
                         }
                         else
                         {
-                            Toast.makeText(context, "No favorite cars found.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, getString(R.string.Toast93), Toast.LENGTH_SHORT).show()
                         }
                     }
                     else
                     {
                         Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
                     }
-                } else {
+                }
+                else
+                {
                     Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
                 }
             }

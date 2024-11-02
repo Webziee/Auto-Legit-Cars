@@ -64,7 +64,6 @@ class fragment_book_test_drive : Fragment(), DatePickerDialog.OnDateSetListener,
         val carId = arguments?.getInt("car_id", 0) ?: 0
         val carTitle = arguments?.getString("carTitle")
         val message = "Car ID: " +carId
-        Toast.makeText(requireContext(), "$carTitle: $message", Toast.LENGTH_LONG).show()
 
         // Initialize views
         booking_date_time_display = view.findViewById(R.id.booking_date_time)
