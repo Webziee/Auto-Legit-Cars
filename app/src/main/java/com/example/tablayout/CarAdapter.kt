@@ -31,7 +31,8 @@ import kotlin.math.log
  * a test drive.
  */
 
-class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
+class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>()
+{
 
     private var onTestDriveClickListener: ((Car) -> Unit)? = null
 
@@ -85,9 +86,12 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
 
         // Bind the test drive button click
         holder.testDriveButton.setOnClickListener {
-            Log.d("CarAdapter", "Car selected for test drive: $car")
+            Log.d("CarAdapter", "Car ID passed for test drive: ${car.id}")  // Log the car ID
+            val bundle = Bundle().apply {
+                putInt("car_id", car.id ?:0)
+                putString("car_title", car.title)
+            }
             onTestDriveClickListener?.invoke(car)
-            Log.d("CarAdapter", "Car selected for test drive: $car")
         }
     }
 
