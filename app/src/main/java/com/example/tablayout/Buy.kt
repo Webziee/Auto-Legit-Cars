@@ -205,7 +205,8 @@ class Buy : Fragment() {
         }
     }
 
-    private fun fetchCarsFromSupabase() {
+    private fun fetchCarsFromSupabase()
+    {
         val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
         val call = apiService.getFilteredCars(
             make = null, model = null, year = null, mileage = null,
@@ -414,7 +415,7 @@ class Buy : Fragment() {
                 .addOnSuccessListener { documents ->
                     for(document in documents)
                     {
-                        // Retrieve each CarID and add to list if it's not zero
+                        // Retrieving each CarID and adding them to la ist if it's not zero
                         listOf(
                             document.getLong("CarID1")?.toInt() ?: 0,
                             document.getLong("CarID2")?.toInt() ?: 0,
@@ -423,10 +424,9 @@ class Buy : Fragment() {
                             document.getLong("CarID5")?.toInt() ?: 0
                         ).filter { it != 0 }.forEach { carIDs.add(it) }
                     }
-
                     if(carIDs.isNotEmpty())
                     {
-
+                        fetchFavCarsFromSupabase(carIDs)
                     }
                     else
                     {
@@ -441,5 +441,62 @@ class Buy : Fragment() {
             Toast.makeText(requireContext(), getString(R.string.Toast79), Toast.LENGTH_LONG).show()
         }
     }
+    /*Now lets fetch the favourite cars from superbase based on the Car ID and display them to the user
+  This method was achieved with the help of the following video:
+  Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online]
+  Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
+  [Accessed 01 November 2024].*/
+    //Nani
+    private fun fetchFavCarsFromSupabase(carIds: List<Int>)
+    {
+        // Ensure the provided carIds list is not empty
+        if (carIds.isEmpty())
+        {
+            Toast.makeText(context, "No car IDs provided.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        // Use Supabase API to fetch the complete car list
+        val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+        val call = apiService.getFilteredCars(
+            make = null, model = null, year = null, mileage = null,
+            transmission = null, price = null, location = null, bodytype = null,
+            condition = null, dealership = null, fuelType = null
+        )
+
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
+                if (response.isSuccessful)
+                {
+                    val cars = response.body()
+                    carList.clear() // Clear current data
+                    if (!cars.isNullOrEmpty())
+                    {
+                        // Filter cars by IDs in the provided carIds list
+                        val filteredCars = cars.filter { carIds.contains(it.id) }
+                        if (filteredCars.isNotEmpty())
+                        {
+                            carList.addAll(filteredCars) // Add filtered cars to the list
+                            carViewModel.updateLocalDatabase(filteredCars)
+                            carAdapter.notifyDataSetChanged() // Notify the adapter of data changes
+                            Toast.makeText(requireContext(), "Adapter must change", Toast.LENGTH_LONG).show()
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "No favorite cars found.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                Toast.makeText(context, getString(R.string.Toast4) + ": " + t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
