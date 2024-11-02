@@ -33,6 +33,7 @@ import kotlin.math.log
 
 class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapter.CarViewHolder>()
 {
+    private lateinit var favImageView: ImageView
 
     private var onTestDriveClickListener: ((Car) -> Unit)? = null
 
@@ -108,5 +109,6 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         val carPrice: TextView = itemView.findViewById(R.id.buy_price) // Add this for price
         val nestedRecyclerView: RecyclerView = itemView.findViewById(R.id.nested_recycler_view)
         val testDriveButton: Button = itemView.findViewById(R.id.book_test_drive_button) // Add this line
+        val favImageView: ImageView = itemView.findViewById(R.id.favourites)
     }
 }

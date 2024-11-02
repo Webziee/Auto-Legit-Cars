@@ -51,7 +51,6 @@ class Buy : Fragment() {
     private lateinit var resetFilter: TextView
     private lateinit var searchButton: Button
     private lateinit var viewFavButton: Button
-    private lateinit var favImageView: ImageView
     private lateinit var makeList: MutableList<String>
     private lateinit var modelList: MutableList<String>
     private lateinit var makeAdapter: ArrayAdapter<String>
@@ -450,7 +449,6 @@ class Buy : Fragment() {
   [Accessed 01 November 2024].*/
     private fun fetchFavCarsFromSupabase(carIds: List<Int>)
     {
-        favImageView.visibility = View.VISIBLE
         // Ensure the provided carIds list is not empty
         if (carIds.isEmpty())
         {
@@ -481,6 +479,7 @@ class Buy : Fragment() {
                             carList.addAll(filteredCars) // Add filtered cars to the list
                             carViewModel.updateLocalDatabase(filteredCars)
                             carAdapter.notifyDataSetChanged() // Notify the adapter of data changes
+                            Toast.makeText(requireContext(), getString(R.string.Toast94), Toast.LENGTH_LONG).show()
                         }
                         else
                         {
