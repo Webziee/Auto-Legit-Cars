@@ -1,0 +1,124 @@
+package com.example.tablayout
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import com.example.tablayout.Car
+
+class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
+    companion object {
+        private const val DATABASE_NAME = "legit_auto_cars.db"
+        private const val DATABASE_VERSION = 1
+
+        const val TABLE_CARS = "cars"
+        const val COLUMN_ID = "id"
+        const val COLUMN_TITLE = "title"
+        const val COLUMN_IMAGE = "maincarimage"
+        const val COLUMN_CONDITION = "condition"
+        const val COLUMN_MILEAGE = "mileage"
+        const val COLUMN_PRICE = "price"
+        const val COLUMN_BODY_TYPE = "bodytype"
+        const val COLUMN_MAKE = "make"
+        const val COLUMN_MODEL = "model"
+        const val COLUMN_YEAR = "year"
+        const val COLUMN_FUEL_TYPE = "fueltype"
+        const val COLUMN_DEALERSHIP = "dealership"
+        const val COLUMN_LOCATION = "location"
+        const val COLUMN_TRANSMISSION = "transmission"
+    }
+
+    override fun onCreate(db: SQLiteDatabase?) {
+        val createTableQuery = """
+            CREATE TABLE $TABLE_CARS (
+                $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COLUMN_TITLE TEXT,
+                $COLUMN_IMAGE TEXT,
+                $COLUMN_CONDITION TEXT,
+                $COLUMN_MILEAGE INTEGER,
+                $COLUMN_PRICE INTEGER,
+                $COLUMN_BODY_TYPE TEXT,
+                $COLUMN_MAKE TEXT,
+                $COLUMN_MODEL TEXT,
+                $COLUMN_YEAR INTEGER,
+                $COLUMN_FUEL_TYPE TEXT,
+                $COLUMN_DEALERSHIP TEXT,
+                $COLUMN_LOCATION TEXT,
+                $COLUMN_TRANSMISSION TEXT
+            )
+        """
+        db?.execSQL(createTableQuery)
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_CARS")
+        onCreate(db)
+    }
+
+    // Insert a list of cars into the database
+    fun insertCars(cars: List<Car>) {
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            for (car in cars) {
+                val values = ContentValues().apply {
+                    put(COLUMN_TITLE, car.title)
+                    put(COLUMN_IMAGE, car.maincarimage)
+                    put(COLUMN_CONDITION, car.condition)
+                    put(COLUMN_MILEAGE, car.mileage)
+                    put(COLUMN_PRICE, car.price)
+                    put(COLUMN_BODY_TYPE, car.bodytype)
+                    put(COLUMN_MAKE, car.make)
+                    put(COLUMN_MODEL, car.model)
+                    put(COLUMN_YEAR, car.year)
+                    put(COLUMN_FUEL_TYPE, car.fueltype)
+                    put(COLUMN_DEALERSHIP, car.dealership)
+                    put(COLUMN_LOCATION, car.location)
+                    put(COLUMN_TRANSMISSION, car.transmission)
+                }
+                db.insert(TABLE_CARS, null, values)
+            }
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+            db.close()
+        }
+    }
+
+    // Get all cars from the database
+    fun getAllCars(): List<Car> {
+        val cars = mutableListOf<Car>()
+        val db = readableDatabase
+        val cursor = db.query(TABLE_CARS, null, null, null, null, null, null)
+        while (cursor.moveToNext()) {
+            val car = Car(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE)),
+                maincarimage = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGE)),
+                condition = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONDITION)),
+                mileage = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_MILEAGE)),
+                price = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PRICE)),
+                bodytype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BODY_TYPE)),
+                make = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MAKE)),
+                model = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MODEL)),
+                year = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_YEAR)),
+                fueltype = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FUEL_TYPE)),
+                dealership = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DEALERSHIP)),
+                location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION)),
+                transmission = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TRANSMISSION))
+            )
+            cars.add(car)
+        }
+        cursor.close()
+        db.close()
+        return cars
+    }
+
+    // Delete all cars in the database
+    fun clearDatabase() {
+        val db = writableDatabase
+        db.delete(TABLE_CARS, null, null)
+        db.close()
+    }
+}

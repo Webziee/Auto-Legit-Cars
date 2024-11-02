@@ -43,6 +43,7 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
         notifyDataSetChanged()  // Notify adapter that data has changed
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_car_cards, parent, false)
         return CarViewHolder(view)
