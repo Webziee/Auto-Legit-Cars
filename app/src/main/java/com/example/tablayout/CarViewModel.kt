@@ -30,6 +30,20 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
         _allCars.value = carDatabaseHelper.getAllCars()
     }
 
+    fun updateLocalDatabase(cars: List<Car>) {
+        CoroutineScope(Dispatchers.IO).launch {
+            // Clear the local database and insert the new data
+            carDatabaseHelper.clearDatabase()
+            carDatabaseHelper.insertCars(cars)
+
+            // Load the updated data from the database
+            withContext(Dispatchers.Main) {
+                loadCarsFromDatabase()
+            }
+        }
+    }
+
+
     // Syncs the data with Supabase if there is internet connectivity
     fun syncCarsWithSupabase() {
         CoroutineScope(Dispatchers.IO).launch {
