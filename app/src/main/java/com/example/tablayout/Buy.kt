@@ -144,7 +144,7 @@ class Buy : Fragment() {
         //Compare Prices Button Logic
         comparePricesButton = view.findViewById(R.id.btnPriceCompare)
         comparePricesButton.setOnClickListener {
-
+            comparePrices()
         }
 
 
@@ -598,5 +598,45 @@ class Buy : Fragment() {
             condition = null, dealership = null, fuelType = null
         )
 
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
+                if (response.isSuccessful)
+                {
+                    val cars = response.body()
+                    carList.clear()
+
+                    if (!cars.isNullOrEmpty())
+                    {
+                        // Sort cars by price in ascending order
+                        val sortedCars = cars.sortedBy { it.price }
+                        if(sortedCars.isNotEmpty())
+                        {
+                            carList.addAll(sortedCars)  // Add sorted cars to the list
+                            //carViewModel.updateLocalDatabase(sortedCars)  // Store in SQLite for offline access
+                            Log.d("comparePrices", "Sorted cars count: ${carList.size}")
+                            carList.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
+                            carAdapter.notifyDataSetChanged()
+                            Toast.makeText(requireContext(),getString(R.string.Toast95), Toast.LENGTH_LONG).show()
+                        }
+                        else
+                        {
+                            Toast.makeText(requireContext(), getString(R.string.Toast96), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
+                    }
+                }
+                else
+                {
+                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                Toast.makeText(context, getString(R.string.Toast4) + ": " + t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
