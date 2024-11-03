@@ -266,7 +266,7 @@
                     android:paddingBottom="20dp"
                     android:text="@string/price_compare"
                     android:textColor="@color/textColor"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"/>
             </LinearLayout>
 
         </LinearLayout>
