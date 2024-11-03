@@ -79,9 +79,8 @@ class CarDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                     put(COLUMN_LOCATION, car.location)
                     put(COLUMN_TRANSMISSION, car.transmission)
                 }
-                val id = db.insert(TABLE_CARS, null, values)
+                val id = db.insertWithOnConflict(TABLE_CARS, null, values, SQLiteDatabase.CONFLICT_REPLACE)
                 Log.d("CarDatabaseHelper", "Inserted Car With ID: $id")
-                db.insert(TABLE_CARS, null, values)
             }
             db.setTransactionSuccessful()
         } finally {

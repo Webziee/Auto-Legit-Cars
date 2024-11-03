@@ -126,6 +126,8 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="fav_search">Bekyk gunstelinge</string>
     <string name="price_compare">Vergelyk pryse</string>
     <string name="Toast94">Jou gunsteling voertuie</string>
+    <string name="Toast95">Prysvergelyking toegepas</string>
+    <string name="Toast96">Geen pryse om te vergelyk nie</string>
 
     <string name="favourites">Voeg Motor By Gunstelinge</string>
     <string name="app_name">Legit Auto Cars</string>
