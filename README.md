@@ -41,7 +41,7 @@ This comprehensive read me file will provide you with an overview of our project
 
 ## 4. TEAM MEMBER GROUP RATING AND COMMIT EVIDENCE
 ### 4.1 Group Rating
-![image](https://github.com/user-attachments/assets/a84ce352-f264-488a-818e-8edc11826bf9)
+![Group Rating OPSC POE](https://github.com/user-attachments/assets/66519971-c222-40f2-b1ea-64d9a52bfd3d)
 ### 4.2 Commit Evidence
 ![image](https://github.com/user-attachments/assets/e5dde609-b656-4fe9-9168-a3d3b98725a4)
 ![image](https://github.com/user-attachments/assets/cce3ee91-404b-4fdf-8a8d-6f2d2cf86da5)
