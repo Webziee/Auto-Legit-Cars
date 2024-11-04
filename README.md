@@ -1,11 +1,7 @@
-# OPSC7312 POE
---------------------------------------------------------------------------------------------------------------------------------------------------------
+# OPSC7312 POE FINAL
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. INTRODUCTION : READ ME
-This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 
-5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 
-9) details about the app in the form of a report with the following headings: purpose of
-the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes;
-and 10) a reference list consisting of all references for research and code attribution.
+This comprehensive read me file will provide you with an overview of our project. It includes key information about the app in a report structure. The following headings will be discussed 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 9) details about the app in the form of a report with the following headings: purpose of the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes; and 10) a reference list consisting of all references for research and code attribution.
 
 ## 2. Table of Contents
 1. [Introduction](#introduction)
@@ -61,7 +57,7 @@ and 10) a reference list consisting of all references for research and code attr
 
 ## 6. FEATURES SELECTED AND IMPLEMENTED
 Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
-cross next to each feature, indicating whether it is implemented in the application or not:
+cross next to each feature, indicating whether it is implemented in the Final application or not:
 - Advanced Searching ✓ 
 - Price Comparism Tool ✓ 
 - Favourites Feature ✓ 
@@ -70,8 +66,12 @@ cross next to each feature, indicating whether it is implemented in the applicat
 
 ## 7. CHECKLIST OF FEATURES AND FUNCTIONS INCLUDED
 Below is a checklist of all the features/functionalities and expectations that are to be included and met as per the POE rubric, 
-with a tick or cross indicating if that feature/functionality as been indluded or met:
+with a tick or cross indicating if that feature/functionality as been indluded or met in the final application:
 - App Runs on Mobile Device ✓
+- Feature Biometric Authentication Implemented ✓
+- Feature Offline Mode Implemented ✓
+- Feature Real-Time Notifications Implemented ✓
+- Feature Multi-language Support Implemented ✓
 - Feature: SSO Sign-in ✓
 - Feature: Settings Menu ✓
 - Creation of API ✓
@@ -79,10 +79,13 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Feature: User Defined 1 (Advanced Searching) ✓
 - Feature: User Defined 2 (Whatsapp Messaging Integration) ✓
 - Feature: User Defined 3 (Book a Test Drive) ✓
-- User Interface ✓
+- Feature: User Defined 4 (Price Comparison Tool) ✓
+- Feature: User Defined 5 (Favourites Feature) ✓
+- User-Friendly Interface ✓
 - Read Me ✓
 - Automated Testing ✓
 - Demonstration Video ✓
+- Published on Google Play Store 
 
 ## 8. CREATION AND IMPLEMENTATION OF API/REST API
 ### 8.1 Supabase Website and Dashboard
