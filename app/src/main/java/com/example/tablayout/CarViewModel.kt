@@ -43,7 +43,6 @@ class CarViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
     // Syncs the data with Supabase if there is internet connectivity
     fun syncCarsWithSupabase() {
         CoroutineScope(Dispatchers.IO).launch {

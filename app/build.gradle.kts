@@ -106,6 +106,12 @@ dependencies {
 
     // Gson
     implementation("com.google.code.gson:gson:2.8.9")
+
+    //Push Notifications
+    implementation ("com.google.firebase:firebase-messaging")
+    implementation ("com.google.firebase:firebase-messaging:23.0.8")
+
+
 }
 
 

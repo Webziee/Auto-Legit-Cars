@@ -463,8 +463,7 @@ class Buy : Fragment() {
     Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
     [Accessed 01 November 2024].
     */
-    private fun comparePrices()
-    {
+    private fun comparePrices() {
         val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
         val call = apiService.getFilteredCars(
             make = null, model = null, year = null, mileage = null,
@@ -476,42 +475,30 @@ class Buy : Fragment() {
             override fun onResponse(
                 call: Call<List<Car>>,
                 response: retrofit2.Response<List<Car>>
-            ){
-                if (response.isSuccessful)
-                {
+            ) {
+                if (response.isSuccessful) {
                     val cars = response.body()
-                    carList.clear()
-                    if (!cars.isNullOrEmpty())
-                    {
+                    if (!cars.isNullOrEmpty()) {
                         Log.d("comparePrices", "Original cars list:")
                         cars.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
+
                         // Sort cars by price in ascending order
-                        val sortedCars = cars.sortedBy { it.price }
+                        val sortedCars = cars.filter { it.price != null }.sortedBy { it.price }
+
                         Log.d("comparePrices", "Sorted cars list:")
                         sortedCars.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
-                        if(sortedCars.isNotEmpty())
-                        {
-                            carList.addAll(sortedCars) // Add filtered cars to the list
-                            carViewModel.updateLocalDatabase(sortedCars)
-                            carAdapter.notifyDataSetChanged() // Notify the adapter of data changes
-                            Toast.makeText(
-                                requireContext(),
-                                getString(R.string.Toast95),
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                        else
-                        {
-                            Toast.makeText(requireContext(), getString(R.string.Toast96), Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    else
-                    {
+
+                        // Update adapter with sorted list and notify
+                        carAdapter.updateData(sortedCars)
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.Toast95),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else {
                         Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
                     }
-                }
-                else
-                {
+                } else {
                     Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
                 }
             }
@@ -521,7 +508,6 @@ class Buy : Fragment() {
             }
         })
     }
-
 
     /*Now lets fetch the favourite cars from superbase based on the Car ID and display them to the user
           This method was achieved with the help of the following video:
