@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("com.google.firebase:firebase-auth-ktx") // For Firebase Authentication
+    implementation ("com.google.firebase:firebase-messaging:23.0.8")
 
     // Firestore dependency
     implementation(libs.firebase.firestore.ktx)

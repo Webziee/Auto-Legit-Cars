@@ -1,6 +1,11 @@
 package com.example.tablayout
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +14,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,6 +63,17 @@ class Sell : Fragment() {
     private lateinit var progressBar: ProgressBar
     private var mainImageUri: Uri? = null
 
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            Log.d("NotificationPermission", "Permission granted.")
+        } else {
+            Log.d("NotificationPermission", "Permission denied.")
+            Toast.makeText(requireContext(), "Notification permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     val getContent: ActivityResultLauncher<String> = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
         if (uris != null && uris.isNotEmpty()) {
             selectedImages.clear()
@@ -78,6 +96,49 @@ class Sell : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_sell, container, false)
     }
+
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val postNotificationPermission = "android.permission.POST_NOTIFICATIONS"
+            if (ContextCompat.checkSelfPermission(requireContext(), postNotificationPermission) != PackageManager.PERMISSION_GRANTED) {
+                notificationPermissionLauncher.launch(postNotificationPermission)
+            }
+        }
+    }
+
+    private fun showCarListedNotification(make: String, model: String) {
+        checkAndRequestNotificationPermission()
+
+        val channelId = "car_listing_channel"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                channelId,
+                "Car Listings",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Notifications for car listings"
+            }
+            val notificationManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val postNotificationPermission = "android.permission.POST_NOTIFICATIONS"
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || ContextCompat.checkSelfPermission(requireContext(), postNotificationPermission) == PackageManager.PERMISSION_GRANTED) {
+            val notificationBuilder = NotificationCompat.Builder(requireContext(), channelId)
+                .setSmallIcon(R.drawable.success)
+                .setContentTitle("Car Listed Successfully")
+                .setContentText("$make $model has been listed successfully.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            with(NotificationManagerCompat.from(requireContext())) {
+                notify(1001, notificationBuilder.build())
+            }
+        } else {
+            Log.e("NotificationPermission", "Notification permission not granted.")
+        }
+    }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -370,6 +431,7 @@ class Sell : Fragment() {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
                             showCustomToast(getString(R.string.Toast54), R.drawable.success)
+                            showCarListedNotification(make, model)
                             showLoading(false)
                             if (isAdded && !isRemoving) {
                                 clearForm()

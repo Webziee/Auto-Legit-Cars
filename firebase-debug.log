@@ -1,0 +1,43 @@
+[debug] [2024-11-04T14:00:33.021Z] ----------------------------------------------------------------------
+[debug] [2024-11-04T14:00:33.023Z] Command:       /usr/local/bin/firebase /Users/tristan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
+[debug] [2024-11-04T14:00:33.023Z] CLI Version:   12.5.2
+[debug] [2024-11-04T14:00:33.024Z] Platform:      darwin
+[debug] [2024-11-04T14:00:33.024Z] Node Version:  v16.16.0
+[debug] [2024-11-04T14:00:33.030Z] Time:          Mon Nov 04 2024 16:00:33 GMT+0200 (South Africa Standard Time)
+[debug] [2024-11-04T14:00:33.030Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-11-04T14:00:33.044Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-04T14:00:33.046Z] > authorizing via signed-in user (tristanfrancis.singh2003@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/tristan/AndroidStudioProjects/Auto-Legit-Cars
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-11-04T14:00:52.069Z] > refreshing access token with scopes: []
+[debug] [2024-11-04T14:00:52.077Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-11-04T14:00:52.080Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-11-04T14:00:52.606Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-11-04T14:00:52.608Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-11-04T14:00:52.609Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-11-04T14:00:53.041Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 401
+[debug] [2024-11-04T14:00:53.041Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-11-04T14:00:53.043Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-11-04T14:00:53.467Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (/Users/tristan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/Users/tristan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:285:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.

@@ -51,11 +51,6 @@ Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
     <string name="Toast31">Vul asseblief alle velde in</string>
     <string name="Toast32">Aanmelding suksesvol</string>
 
-    <string name="Toast97">Geen stootkennisgewingsinstellings gevind nie</string>
-    <string name="Toast98">Stootkennisgewings is suksesvol geaktiveer</string>
-    <string name="Toast100">Stootkennisgewings is suksesvol gedeaktiveer</string>
-    <string name="Toast99">Kon nie stootkennisgewings aktiveer nie</string>
-
 
     <string name="Toast33">Stawing het misluk: </string>
     <string name="Toast34">Vul die vereiste velde in</string>
