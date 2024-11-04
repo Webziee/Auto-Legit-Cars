@@ -44,7 +44,7 @@ This comprehensive read me file will provide you with an overview of our project
 ![Group Rating OPSC POE](https://github.com/user-attachments/assets/66519971-c222-40f2-b1ea-64d9a52bfd3d)
 ### 4.2 Commit Evidence
 ![image](https://github.com/user-attachments/assets/9cd60102-183d-4b36-8cf4-84e3b9c15b1b)
-![image](https://github.com/user-attachments/assets/cce3ee91-404b-4fdf-8a8d-6f2d2cf86da5)
+![image](https://github.com/user-attachments/assets/d16f0ea1-0ad1-417d-8e97-f98e309d0ce6)
 
 ## 5. Important Links 
 "Below are key links that provide access to essential resources, including our project repository, documentation, and any external tools or services used throughout the development of the 'Legit Auto Cars' application."
