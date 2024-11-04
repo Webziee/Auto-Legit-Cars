@@ -1,7 +1,7 @@
 # OPSC7312 POE FINAL
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. INTRODUCTION : READ ME
-This comprehensive read me file will provide you with an overview of our project. It includes key information about the app in a report structure. The following headings will be discussed 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 9) details about the app in the form of a report with the following headings: purpose of the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes; and 10) a reference list consisting of all references for research and code attribution.
+This comprehensive read me file will provide you with an overview of our project. It includes key information about the app in a report structure. The following headings will be discussed 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 5) important links, 6) the features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 9) details about the app in the form of a report with the following headings: purpose of the app, design considerations, the manner in which GitHub and GitHub actions were utilized throughout the development processs, and lastly a conclusion that reflects on the project and its outcomes; and 10) a reference list consisting of all references for research and code attribution.
 
 ## 2. Table of Contents
 1. [Introduction](#introduction)
@@ -119,7 +119,7 @@ The 'Legit Auto Cars' application's main goal is to ease the processes of: viewi
 and communication between and among the company and its clients which is all done online and from the app. The application does not allow clients 
 or the company to purchase or sell cars directly (No Money Involved), but rather provides a medium for the 2 primary users to engage, interact and 
 communicate with each other. The app includes features that makes the clients and the company's lives much easier such as viewing, uploading,
-WhatsApp messaging integration, booking a test drive, advanced searching, and to be implemented: a favourites feature and a price comparison tool. 
+WhatsApp messaging integration, booking a test drive, advanced searching, a favourites feature and a price comparison tool. 
 The app helps connect the company and its clients by providing a platform where users can quickly view cars for sale and submit their own cars to sell, 
 while also ensuring a seamless digital experience for users by doing away with the necessity for physical paperwork and in-person company visits.
 #### 9.1.1 Key Things To Note
@@ -130,7 +130,8 @@ speak to the client directly, Additionally the company implments a 10 percent ma
 - When a client uploads a car to sell, the company will be able to see that vehicle as well as other clients. the company can then communicate
 with the client directly about their vehicle if they are interested and if other clients are interested, they will have to communicate with the company
 and not the client selling the vehicle. 
-- Customers can book a test drive on any vehicle. The company handles all booking dates, times and place of meetup. 
+- Customers can book a test drive on any vehicle. The company handles all booking dates, times and place of meetup.
+- Each user will have a limit of 5 vehicles that they can add to their favourites. 
 - Our app inherits and implements more ideas from Autotrader and WeBuyCars rather than Cars.co.za. 
 
 ### 9.2 Design Considerations
@@ -221,12 +222,12 @@ build.gradle.kts files were aligned and set up appropriately solved this issue.
 
 
 ### 9.5 Conclusion
-Thus far, the "Legit Auto Cars" application has undergone a thorough development process that has placed a strong emphasis on user interaction, efficient procedures, and
+The "Legit Auto Cars" application has undergone a thorough development process that has placed a strong emphasis on user interaction, efficient procedures, and
 a solid architecture. Our design decisions have been well considered in order to prioritise security and scalability while guaranteeing a flawless user experience.
 Our team's ability to work together more effectively, manage changes more efficiently, and automate testing and building procedures has all improved workflow dependability 
 since we started using GitHub and GitHub Actions. The difficulties we faced—such as handling dependencies and adjusting to Android's permission updates—have improved project
 results and honed our problem-solving abilities.
-In order to maintain the application's value for users, we will continue to develop its features and improve it with the aid of the insights gathered before the publication on 
+In order to maintain the application's value for users, we will continue to develop its features and improve it with the aid of the insights gathered after the publication of te app on 
 the google play store. In addition to fostering teamwork, this experience has laid a solid platform for further improvement and adjustment to the application.
 
 ## 10. REFERENCE LIST
