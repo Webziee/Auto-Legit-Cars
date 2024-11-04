@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tablayout"
+    namespace = "com.legitautocars.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tablayout"
+        applicationId = "com.legitautocars.app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
