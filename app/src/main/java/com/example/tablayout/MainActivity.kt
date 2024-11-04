@@ -2,7 +2,13 @@
 
 package com.example.tablayout
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +16,8 @@ import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
@@ -24,15 +32,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import androidx.biometric.BiometricPrompt
-import androidx.biometric.BiometricPrompt.AuthenticationCallback
-import androidx.biometric.BiometricPrompt.PromptInfo
-import android.content.Context
-import android.content.res.Configuration
 import java.util.Locale
 
-class MainActivity : AppCompatActivity()
-{
+class MainActivity : AppCompatActivity() {
     private lateinit var signUp: TextView
     private lateinit var logIn: TextView
     private lateinit var LoginTextEmail: TextInputEditText
@@ -50,100 +52,109 @@ class MainActivity : AppCompatActivity()
     private lateinit var loginwithtext: TextView
     private lateinit var googleSignInButton: com.google.android.gms.common.SignInButton
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var promptText: TextView
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var googleSignInLauncher: ActivityResultLauncher<Intent>
 
-    //declaring my variables for the user settings preference
+    // User settings preference variables
     private var biometricsEnabled: Boolean? = null
     private var language: String? = null
     private var pushNotificationsEnabled: Boolean? = null
     private var theme: String? = null
 
-    /*For biometrics we will have a private val promptManager which is made by lazy so that we initialise it
-      as soon as we access it the fist time (Lackner, 2024)*/
-    private val promptManager by lazy {
-        BiometricPromptManager(this)
+    companion object {
+        private const val NOTIFICATION_PERMISSION_REQUEST_CODE = 1001
     }
 
-    // ActivityResultLauncher for Google Sign-In
-    private lateinit var googleSignInLauncher: ActivityResultLauncher<Intent>
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /* The following lines of code gets the user language preference and tells our app to use that, this code
-           was inspired by the following video:
-          Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
-          Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
-          [Accessed 29 October 2024].*/
-        // Retrieve saved language from SharedPreferences and apply it
+
+        // Set up language preference from SharedPreferences
         val preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE)
-        val languageCode = preferences.getString("Language", "en") // Default to English if not set
-        setLocale(this, languageCode ?: "en")  // Set the locale
+        val languageCode = preferences.getString("Language", "en")
+        setLocale(this, languageCode ?: "en")
 
         installSplashScreen()
+        setContentView(R.layout.activity_main)
 
-        // Initialize FirebaseAuth
         auth = FirebaseAuth.getInstance()
+        checkAndRequestNotificationPermission()
+        createNotificationChannel()
+        initializeViews()
+
         val currentUser = auth.currentUser
-
-        // Check if user is already signed in
-        if (currentUser != null)
-        {
-            //Initialise firestore (Obregon, 2023)
-            val db = FirebaseFirestore.getInstance()
-
-            //if user is not null then we get their email and then check their settings preference
-            val email = currentUser.email
-            /*The following code is used to get data/search for data in firebase. This code was inspired from the following youtube video:
-              Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
-              Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
-              [Accessed 12 October 2024].
-             */
-            val settingsRef = db.collection("Settings")
-            settingsRef.whereEqualTo("Email", email).get()
-                .addOnSuccessListener { documents ->
-                    if(!documents.isEmpty)
-                    {
-                        for(document in documents)
-                        {
-                            //Fetch the user settings field directly from the firestore document
-                            biometricsEnabled = document.getBoolean("BiometricsEnabled")
-                            language = document.getString("Language")
-                            pushNotificationsEnabled = document.getBoolean("PushNotificationsEnabled")
-                            theme = document.getString("Theme")
-                        }
-                        if(biometricsEnabled == true)
-                        {
-                            Toast.makeText(this, getString(R.string.Toast19), Toast.LENGTH_LONG).show()
-                            setupBiometricPrompt()
-                        }
-                        else if (biometricsEnabled == false)
-                        {
-                            Toast.makeText(this, getString(R.string.Toast20), Toast.LENGTH_LONG).show()
-                        }
-                        else
-                        {
-                            Toast.makeText(this, getString(R.string.Toast21), Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }.addOnFailureListener{ exception ->
-                    Toast.makeText(this,getString(R.string.Toast22), Toast.LENGTH_SHORT).show()
-                }
-        }
-        else
-        {
+        if (currentUser != null) {
+            retrieveUserSettings(currentUser.email)
+        } else {
             Toast.makeText(this, getString(R.string.Toast23), Toast.LENGTH_SHORT).show()
         }
-        setContentView(R.layout.activity_main)
-        initializeViews()
     }
 
-    private fun initializeViews()
-    {
-        // Initialize views
-        logIn = findViewById(R.id.logIn)
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val postNotificationPermission = "android.permission.POST_NOTIFICATIONS"
+            if (ContextCompat.checkSelfPermission(this, postNotificationPermission) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(postNotificationPermission),
+                    NOTIFICATION_PERMISSION_REQUEST_CODE
+                )
+            }
+        }
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "car_listing_channel",
+                "Car Listings",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Notifications for car listings"
+            }
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun retrieveUserSettings(email: String?) {
+        val db = FirebaseFirestore.getInstance()
+        val settingsRef = db.collection("Settings")
+        settingsRef.whereEqualTo("Email", email).get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    for (document in documents) {
+                        biometricsEnabled = document.getBoolean("BiometricsEnabled")
+                        language = document.getString("Language")
+                        pushNotificationsEnabled = document.getBoolean("PushNotificationsEnabled")
+                        theme = document.getString("Theme")
+                    }
+                    setupBiometricPrompt()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this, getString(R.string.Toast22), Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun initializeViews() {
+        // Initialize UI components and Google Sign-In client
         signUp = findViewById(R.id.singUp)
+        logIn = findViewById(R.id.logIn)
         signUpLayout = findViewById(R.id.signUpLayout)
         logInLayout = findViewById(R.id.logInLayout)
         loginBtn = findViewById(R.id.logInBtn)
@@ -157,61 +168,45 @@ class MainActivity : AppCompatActivity()
         signupwithtext = findViewById(R.id.sign_up_with_text)
         loginwithtext = findViewById(R.id.login_in_with_text)
         googleSignInButton = findViewById(R.id.googleSignInButton)
-        promptText = findViewById(R.id.tvPrompt)
 
+        setupGoogleSignIn()
+        setupLayoutSwitch()
+        setupButtonListeners()
+    }
 
-        // Configure Google Sign-In options
+    private fun setupGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // Ensure this is your client ID
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        googleSignInLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == RESULT_OK) {
-                    val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                    handleSignInResult(task)
-                } else {
-                    // Log the result code to understand if any specific code is being returned
-                    Log.e("GoogleSignIn", "Result code: ${result.resultCode}")
-                    Toast.makeText(this, getString(R.string.Toast24), Toast.LENGTH_SHORT).show()
-                }
+        googleSignInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleSignInResult(task)
+            } else {
+                Log.e("GoogleSignIn", "Result code: ${result.resultCode}")
+                Toast.makeText(this, getString(R.string.Toast24), Toast.LENGTH_SHORT).show()
             }
+        }
 
-        // Set up the Google Sign-In button click listener
         googleSignInButton.setOnClickListener {
             signInWithGoogle()
         }
+    }
 
-        // Handle switching between Log In and Sign Up layouts
+    private fun setupLayoutSwitch() {
         signUp.setOnClickListener {
-            signUp.background = ContextCompat.getDrawable(this, R.drawable.switch_trcks)
-            signUp.setTextColor(ContextCompat.getColor(this, R.color.textColor))
-            logIn.background = null
-            signUpLayout.visibility = View.VISIBLE
-            logInLayout.visibility = View.GONE
-            logIn.setTextColor(ContextCompat.getColor(this, R.color.auto_red))
-            loginBtn.visibility = View.GONE
-            signUpBtn.visibility = View.VISIBLE
-            signupwithtext.visibility = View.VISIBLE
-            loginwithtext.visibility = View.GONE
+            switchToSignUp()
         }
 
         logIn.setOnClickListener {
-            logIn.background = ContextCompat.getDrawable(this, R.drawable.switch_trcks)
-            logIn.setTextColor(ContextCompat.getColor(this, R.color.textColor))
-            signUp.background = null
-            logInLayout.visibility = View.VISIBLE
-            signUpLayout.visibility = View.GONE
-            signUp.setTextColor(ContextCompat.getColor(this, R.color.auto_red))
-            loginBtn.visibility = View.VISIBLE
-            signUpBtn.visibility = View.GONE
-            signupwithtext.visibility = View.GONE
-            loginwithtext.visibility = View.VISIBLE
+            switchToLogIn()
         }
+    }
 
+    private fun setupButtonListeners() {
         signUpBtn.setOnClickListener {
             handleSignUp()
         }
@@ -219,12 +214,32 @@ class MainActivity : AppCompatActivity()
         loginBtn.setOnClickListener {
             handleLogin()
         }
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    private fun switchToSignUp() {
+        signUp.background = ContextCompat.getDrawable(this, R.drawable.switch_trcks)
+        signUp.setTextColor(ContextCompat.getColor(this, R.color.textColor))
+        logIn.background = null
+        signUpLayout.visibility = View.VISIBLE
+        logInLayout.visibility = View.GONE
+        logIn.setTextColor(ContextCompat.getColor(this, R.color.auto_red))
+        loginBtn.visibility = View.GONE
+        signUpBtn.visibility = View.VISIBLE
+        signupwithtext.visibility = View.VISIBLE
+        loginwithtext.visibility = View.GONE
+    }
+
+    private fun switchToLogIn() {
+        logIn.background = ContextCompat.getDrawable(this, R.drawable.switch_trcks)
+        logIn.setTextColor(ContextCompat.getColor(this, R.color.textColor))
+        signUp.background = null
+        logInLayout.visibility = View.VISIBLE
+        signUpLayout.visibility = View.GONE
+        signUp.setTextColor(ContextCompat.getColor(this, R.color.auto_red))
+        loginBtn.visibility = View.VISIBLE
+        signUpBtn.visibility = View.GONE
+        signupwithtext.visibility = View.GONE
+        loginwithtext.visibility = View.VISIBLE
     }
 
     private fun signInWithGoogle() {
@@ -234,166 +249,81 @@ class MainActivity : AppCompatActivity()
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            // Retrieve the Google account
             val account = completedTask.getResult(ApiException::class.java)!!
-            Log.d("GoogleSignIn", "firebaseAuthWithGoogle: " + account.id)
-
-            // Pass the ID token to Firebase authentication
             firebaseAuthWithGoogle(account.idToken!!)
         } catch (e: ApiException) {
-            // Handle sign-in failure
             Log.e("GoogleSignIn", "signInResult:failed code=" + e.statusCode)
             Toast.makeText(this, getString(R.string.Toast25) + e.message, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun firebaseAuthWithGoogle(idToken: String?) {
-        // Ensure the ID token is not null
-        if (idToken == null) {
-            Log.e("FirebaseAuth", "ID token is null, cannot authenticate with Firebase")
-            return
-        }
-
-        // Use the token to create Firebase credentials
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-
-        // Authenticate with Firebase using the Google credentials
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success
-                    val user = auth.currentUser
-                    Log.d("FirebaseAuth", "signInWithCredential:success, user: ${user?.email}")
-                    Toast.makeText(this, getString(R.string.Toast26), Toast.LENGTH_SHORT).show()
-
-                    // You can now navigate to another screen (HomeScreen or MainActivity)
-                    startActivity(Intent(this, HomeScreen::class.java))
-                    finish()
-                } else {
-                    // Sign in fails
-                    Log.e("FirebaseAuth", "signInWithCredential:failure", task.exception)
-                    Toast.makeText(
-                        this, getString(R.string.Toast27) + task.exception?.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                startActivity(Intent(this, HomeScreen::class.java))
+                finish()
+            } else {
+                Toast.makeText(this, getString(R.string.Toast27) + task.exception?.message, Toast.LENGTH_SHORT).show()
             }
+        }
     }
 
     private fun handleSignUp() {
-        progressBar.visibility = View.VISIBLE
         val email = SignupTextEmail.text.toString().trim()
         val password = SignupTextPassword.text.toString().trim()
         val confirmpassword = signupConfirmPassword.text.toString().trim()
-
-        if (email.isNotEmpty() && password.isNotEmpty() && confirmpassword.isNotEmpty()) {
-            if (password == confirmpassword) {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        progressBar.visibility = View.GONE
-                        if (task.isSuccessful) {
-                            showCustomToast(getString(R.string.Toast28), R.drawable.success)
-                            SignupTextEmail.text?.clear()
-                            SignupTextPassword.text?.clear()
-                            signupConfirmPassword.text?.clear()
-                        } else {
-                            Toast.makeText(
-                                this, getString(R.string.Toast29)  + task.exception?.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-            } else {
-                Toast.makeText(
-                    this, getString(R.string.Toast30),
-                    Toast.LENGTH_SHORT
-                ).show()
-                progressBar.visibility = View.GONE
+        if (email.isNotEmpty() && password.isNotEmpty() && confirmpassword.isNotEmpty() && password == confirmpassword) {
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    showCustomToast(getString(R.string.Toast28), R.drawable.success)
+                } else {
+                    Toast.makeText(this, getString(R.string.Toast29) + task.exception?.message, Toast.LENGTH_SHORT).show()
+                }
             }
-        } else {
-            Toast.makeText(this, getString(R.string.Toast31), Toast.LENGTH_SHORT).show()
-            progressBar.visibility = View.GONE
         }
     }
 
     private fun handleLogin() {
-        progressBar.visibility = View.VISIBLE
         val email = LoginTextEmail.text.toString()
         val password = LoginTextPassword.text.toString()
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    progressBar.visibility = View.GONE
-                    if (task.isSuccessful) {
-                        showCustomToast(getString(R.string.Toast32), R.drawable.success)
-                        val intent = Intent(applicationContext, HomeScreen::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        showCustomToast(
-                            getString(R.string.Toast33) + task.exception?.message,
-                            R.drawable.error
-                        )
-                    }
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(applicationContext, HomeScreen::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, getString(R.string.Toast33) + task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
-        } else {
-            showCustomToast(getString(R.string.Toast34), R.drawable.error)
-            progressBar.visibility = View.GONE
+            }
         }
     }
 
-    private fun showCustomToast(message: String, iconResId: Int)
-    {
+    private fun showCustomToast(message: String, iconResId: Int) {
         val inflater = layoutInflater
-        val layout: View =
-            inflater.inflate(R.layout.customtoast, findViewById(R.id.custom_toast_root))
+        val layout: View = inflater.inflate(R.layout.customtoast, findViewById(R.id.custom_toast_root))
         val toastMessage: TextView = layout.findViewById(R.id.toast_message)
         val toastIcon: ImageView = layout.findViewById(R.id.toast_icon)
-
         toastMessage.text = message
         toastIcon.setImageResource(iconResId)
-
-        val toast = Toast(applicationContext)
-        toast.duration = Toast.LENGTH_LONG
-        toast.view = layout
-        toast.show()
+        Toast(applicationContext).apply {
+            duration = Toast.LENGTH_LONG
+            view = layout
+        }.show()
     }
 
-    /*The following biometrics code displays the biometric prompt to the user and contains actions for the various results
-      such as success and failure, this code was inspired by the following video:
-      Lackner, P., 2024. Youtube, How to Implement Biometric Auth in Your Android App. [Online]
-      Available at: https://www.youtube.com/watch?v=_dCRQ9wta-I
-      [Accessed 12 October 2024].*/
-    private fun setupBiometricPrompt()
-    {
-        val executor = ContextCompat.getMainExecutor(this@MainActivity)
-        biometricPrompt = androidx.biometric.BiometricPrompt(this@MainActivity, executor,
-            object : AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(this@MainActivity, getString(R.string.Toast35), Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    Toast.makeText(
-                        this@MainActivity,
-                        getString(R.string.Toast36),
-                        Toast.LENGTH_LONG
-                    ).show()
-                    //If auth successful then log the user in (proceed to main home screen)
-                    startActivity(Intent(this@MainActivity, HomeScreen::class.java))
-                    finish()
-                }
-
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    Toast.makeText(this@MainActivity, getString(R.string.Toast33), Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-        promptInfo = PromptInfo.Builder()
+    private fun setupBiometricPrompt() {
+        val executor = ContextCompat.getMainExecutor(this)
+        biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                startActivity(Intent(this@MainActivity, HomeScreen::class.java))
+                finish()
+            }
+            override fun onAuthenticationFailed() {
+                Toast.makeText(this@MainActivity, getString(R.string.Toast33), Toast.LENGTH_SHORT).show()
+            }
+        })
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle(getString(R.string.Toast37))
             .setSubtitle(getString(R.string.Toast38))
             .setNegativeButtonText(getString(R.string.Toast39))
@@ -401,12 +331,7 @@ class MainActivity : AppCompatActivity()
         biometricPrompt.authenticate(promptInfo)
     }
 
-    /* The following method sets the apps language preference, this code was inspired by the following video:
-      Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online]
-      Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
-      [Accessed 29 October 2024].*/
-    fun setLocale(context: Context, lanCode: String)
-    {
+    fun setLocale(context: Context, lanCode: String) {
         val locale = Locale(lanCode)
         Locale.setDefault(locale)
         val config = Configuration()
@@ -414,4 +339,3 @@ class MainActivity : AppCompatActivity()
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 }
-
