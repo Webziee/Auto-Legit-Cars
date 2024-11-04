@@ -1,3 +1,5 @@
+# OPSC7312 POE
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. INTRODUCTION : READ ME
 This comprehensive read me file will provide you with an overview of our project. It includes key information about the app and report structure such as 2) a table of contents, 3) who is in the team, 4) group rating and commit evidence, 
 5) important link, 6) the 3 features selected and implememted from the 5 in the planning phase, 7) a checklist of all features/functionalities included in the app, 8) an explination of how we created and implemented the API, 
@@ -61,8 +63,8 @@ and 10) a reference list consisting of all references for research and code attr
 Below is a list of the 5 developer defined innovative features to be included in the 'Legit Auto Cars' application with a tick or 
 cross next to each feature, indicating whether it is implemented in the application or not:
 - Advanced Searching ✓ 
-- Price Comparism Tool ✗ 
-- Favourites Feature ✗ 
+- Price Comparism Tool ✓ 
+- Favourites Feature ✓ 
 - Whatsapp Messaging Integration ✓ 
 - Book a Test Drive ✓
 
