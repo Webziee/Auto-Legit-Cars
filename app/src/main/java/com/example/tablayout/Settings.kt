@@ -20,31 +20,7 @@ import android.content.res.Configuration
 import android.content.Context
 import androidx.core.app.ActivityCompat.recreate
 
-
-/**
- * The Settings Fragment allows the user to view their email and access various settings options.
- * The implementation includes Firebase Authentication to display the logged-in user's email.
- *
- * The structure of the fragment, including view initialization and button handling, was inspired
- * by various sources, including:
- *
- * - Firebase Authentication setup: Obregon, 2023, FirebaseAuth documentation.
- * - Fragment and view inflation: Raghunandan, 2013, Android fragment tutorials.
- * - Toast message implementation inside fragments: Grier, 2020, Android Toast documentation.
- * - General Firebase and Android resources used in the fragment setup.
- */
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
 class Settings : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
 
     /*Below i am declaring my Global lateinit variables for my email value and each button that
       will be used in my functions right at the bottom*/
@@ -68,8 +44,6 @@ class Settings : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -147,8 +121,8 @@ class Settings : Fragment() {
                             val string = "OFF"
                             pushNotificationButton.text = string
                         }
-                        Toast.makeText(requireContext(),
-                            getString(R.string.Toast65), Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(requireContext(),
+//                            getString(R.string.Toast65), Toast.LENGTH_SHORT).show()
                     }
                     else
                     {
@@ -560,17 +534,5 @@ class Settings : Fragment() {
         val config = Configuration()
         config.setLocale(locale)
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
-    }
-
-    companion object {
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Settings().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

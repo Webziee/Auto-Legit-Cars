@@ -136,6 +136,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
+            android:gravity="center"
             android:padding="5dp">
 
             <Button
@@ -145,7 +146,6 @@
                 android:backgroundTint="@color/auto_red"
                 android:text="@string/booking"
                 android:textAllCaps="false"
-                android:layout_marginStart="75dp"
                 android:textColor="@color/textColor"
                 android:textSize="17sp"/>
 
