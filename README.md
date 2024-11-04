@@ -87,7 +87,39 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Read Me ✓
 - Automated Testing ✓
 - Demonstration Video ✓
-- Published on Google Play Store 
+- Published on Google Play Store
+# 7.1 Release Notes
+POE Part 1 
+----------
+This part consisted of the comprehensive research, planning and design of our app, including screen designs, features to be implemented and requirementes to meet. in part 2 we started to address all of these items.
+
+POE Part 2
+----------
+The following features/requirements were implemented/met in this part based on the research/ planning and design document.
+- App Runs on Mobile Device ✓
+- Feature: SSO Sign-in ✓
+- Feature: Settings Menu ✓
+- Creation of API ✓
+- Implementation of REST API ✓
+- Feature: User Defined 1 (Advanced Searching) ✓
+- Feature: User Defined 2 (Whatsapp Messaging Integration) ✓
+- Feature: User Defined 3 (Book a Test Drive) ✓
+- User-Friendly Interface ✓
+- Automated Testing ✓
+
+POE Part 3
+----------
+The following features/requirements were implemented/met in this part based on the shortcomings of POE part 2: 
+- App Runs on Mobile Device ✓
+- Feature Biometric Authentication Implemented ✓
+- Feature Offline Mode Implemented ✓
+- Feature Real-Time Notifications Implemented ✓
+- Feature Multi-language Support Implemented ✓
+- Feature: User Defined 4 (Price Comparison Tool) ✓
+- Feature: User Defined 5 (Favourites Feature) ✓
+- User-Friendly Interface ✓
+- Automated Testing ✓
+- Published on Google Play Store
 
 ## 8. CREATION AND IMPLEMENTATION OF API/REST API
 ### 8.1 Supabase Website and Dashboard
@@ -374,27 +406,3 @@ Available at: https://www.youtube.com/watch?v=jWiiL8G4jbo
 Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online] 
 Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
 [Accessed 01 November 2024].
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
