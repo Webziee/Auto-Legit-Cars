@@ -456,6 +456,73 @@ class Buy : Fragment() {
         spinner.background = ContextCompat.getDrawable(requireContext(), R.drawable.spinner_border)
     }
 
+    /*Now lets create a method for the compare prices button, this button will display all the vehicles in an
+    ascending order, so that users can compare the prices of all our vehicles
+    This method was achieved with the help of the following videos:
+    Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online]
+    Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
+    [Accessed 01 November 2024].
+    */
+    private fun comparePrices()
+    {
+        val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
+        val call = apiService.getFilteredCars(
+            make = null, model = null, year = null, mileage = null,
+            transmission = null, price = null, location = null, bodytype = null,
+            condition = null, dealership = null, fuelType = null
+        )
+
+        call.enqueue(object : retrofit2.Callback<List<Car>> {
+            override fun onResponse(
+                call: Call<List<Car>>,
+                response: retrofit2.Response<List<Car>>
+            ){
+                if (response.isSuccessful)
+                {
+                    val cars = response.body()
+                    carList.clear()
+                    if (!cars.isNullOrEmpty())
+                    {
+                        Log.d("comparePrices", "Original cars list:")
+                        cars.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
+                        // Sort cars by price in ascending order
+                        val sortedCars = cars.sortedBy { it.price }
+                        Log.d("comparePrices", "Sorted cars list:")
+                        sortedCars.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
+                        if(sortedCars.isNotEmpty())
+                        {
+                            carList.addAll(sortedCars) // Add filtered cars to the list
+                            carViewModel.updateLocalDatabase(sortedCars)
+                            carAdapter.notifyDataSetChanged() // Notify the adapter of data changes
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.Toast95),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else
+                        {
+                            Toast.makeText(requireContext(), getString(R.string.Toast96), Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
+                    }
+                }
+                else
+                {
+                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                Toast.makeText(context, getString(R.string.Toast4) + ": " + t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
     /*Now lets fetch the favourite cars from superbase based on the Car ID and display them to the user
           This method was achieved with the help of the following video:
           Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online]
@@ -578,64 +645,6 @@ class Buy : Fragment() {
                     getString(R.string.Toast4) + ": " + t.message,
                     Toast.LENGTH_SHORT
                 ).show()
-            }
-        })
-    }
-
-    /*Now lets create a method for the compare prices button, this button will display all the vehicles in an
-    ascending order, so that users can compare the prices of all our vehicles
-    This method was achieved with the help of the following videos:
-    Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online]
-    Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
-    [Accessed 01 November 2024].
-    */
-    private fun comparePrices()
-    {
-        val apiService = SupabaseUtils.RetrofitClient.getApiService("https://odbddwdwklhebnvgvwlv.supabase.co")
-        val call = apiService.getFilteredCars(
-            make = null, model = null, year = null, mileage = null,
-            transmission = null, price = null, location = null, bodytype = null,
-            condition = null, dealership = null, fuelType = null
-        )
-
-        call.enqueue(object : retrofit2.Callback<List<Car>> {
-            override fun onResponse(call: Call<List<Car>>, response: retrofit2.Response<List<Car>>) {
-                if (response.isSuccessful)
-                {
-                    val cars = response.body()
-                    carList.clear()
-
-                    if (!cars.isNullOrEmpty())
-                    {
-                        // Sort cars by price in ascending order
-                        val sortedCars = cars.sortedBy { it.price }
-                        if(sortedCars.isNotEmpty())
-                        {
-                            carList.addAll(sortedCars)  // Add sorted cars to the list
-                            //carViewModel.updateLocalDatabase(sortedCars)  // Store in SQLite for offline access
-                            Log.d("comparePrices", "Sorted cars count: ${carList.size}")
-                            carList.forEach { car -> Log.d("comparePrices", "Car price: ${car.price}") }
-                            carAdapter.notifyDataSetChanged()
-                            Toast.makeText(requireContext(),getString(R.string.Toast95), Toast.LENGTH_LONG).show()
-                        }
-                        else
-                        {
-                            Toast.makeText(requireContext(), getString(R.string.Toast96), Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    else
-                    {
-                        Toast.makeText(context, getString(R.string.Toast2), Toast.LENGTH_SHORT).show()
-                    }
-                }
-                else
-                {
-                    Toast.makeText(context, getString(R.string.Toast3), Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
-                Toast.makeText(context, getString(R.string.Toast4) + ": " + t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
