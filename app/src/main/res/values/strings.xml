@@ -125,6 +125,10 @@
     <string name="Toast94">Your Favourite Vehicles</string>
     <string name="Toast95">Price Comparison Applied</string>
     <string name="Toast96">No Prices To Compare</string>
+    <string name="Toast97">No Push Notifications Settings Found</string>
+    <string name="Toast98">Push Notifications Enabled Successfully</string>
+    <string name="Toast100">Push Notifications Disabled Successfully</string>
+    <string name="Toast99">Error Enabling Push Notifications</string>
 
 
 

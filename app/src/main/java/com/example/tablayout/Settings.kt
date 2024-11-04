@@ -237,8 +237,18 @@ class Settings : Fragment() {
     private fun handlePushNotificationClick()
     {
         pushNotificationButton.setOnClickListener{
-            //According to Grier (2020), this is how we create a toast message inside of a fragment
-            Toast.makeText(requireContext(),getString(R.string.Toast75), Toast.LENGTH_SHORT).show()
+            if(pushNotificationsEnabled == true)
+            {
+                disablePush()
+            }
+            else if (pushNotificationsEnabled == false)
+            {
+                enablePush()
+            }
+            else
+            {
+                Toast.makeText(requireContext(), getString(R.string.Toast97), Toast.LENGTH_LONG).show()
+            }
         }
     }
     private fun handleThemeClick()
@@ -515,6 +525,120 @@ class Settings : Fragment() {
         }
         else
         {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Toast79),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    /*The following method enables the users pushnotifications preference in firestore, this code was inspired from the following video:
+        The following code was inspired from the following youtube video:
+        Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+        Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+        [Accessed 12 October 2024].*/
+    private fun enablePush()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update pushnotifications field in Firestore to true
+                            document.reference.update("PushNotificationsEnabled", true)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast98), // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    pushNotificationsEnabled = true
+                                    // Update our button text accordingly
+                                    pushNotificationButton.text = "ON" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast99),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.Toast78),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Toast79),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    /*The following method disables the users pushnotifications preference in firestore, this code was inspired from the following video:
+        The following code was inspired from the following youtube video:
+        Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+        Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+        [Accessed 12 October 2024].*/
+    private fun disablePush()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update pushnotifications field in Firestore to true
+                            document.reference.update("PushNotificationsEnabled", false)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast100), // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    pushNotificationsEnabled = false
+                                    // Update our button text accordingly
+                                    pushNotificationButton.text = "OFF" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast99),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.Toast78),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.Toast79),
