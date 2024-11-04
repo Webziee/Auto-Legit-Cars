@@ -42,8 +42,11 @@ class CarAdapter(private var carList: List<Car>) : RecyclerView.Adapter<CarAdapt
 
     fun updateData(newCars: List<Car>) {
         carList = newCars
+        Log.d("CarAdapter", "Updated car list in adapter:")
+        carList.forEach { car -> Log.d("CarAdapter", "Car price: ${car.price}") }
         notifyDataSetChanged()  // Notify adapter that data has changed
     }
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
