@@ -120,7 +120,7 @@
     <string name="Toast91">Error Adding Car To Favourites</string>
     <string name="Toast92">Failed To Load Favourites</string>
     <string name="Toast93">No Favourites Found</string>
-    <string name="fav_search">View Favourites</string>
+    <string name="fav_search">Favourites</string>
     <string name="price_compare">Compare Prices</string>
     <string name="Toast94">Your Favourite Vehicles</string>
     <string name="Toast95">Price Comparison Applied</string>

@@ -135,28 +135,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
-
-            <ImageView
-                android:id="@+id/favourites"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="340dp"
-                android:layout_marginTop="5dp"
-                android:visibility="invisible"
-                android:src="@drawable/favourites">
-            </ImageView>
+            android:layout_marginBottom="20dp"
+            android:padding="5dp">
 
             <Button
                 android:id="@+id/book_test_drive_button"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center"
                 android:backgroundTint="@color/auto_red"
-                android:gravity="center"
-                android:layout_marginStart="-280dp"
                 android:text="@string/booking"
                 android:textAllCaps="false"
+                android:layout_marginStart="75dp"
                 android:textColor="@color/textColor"
                 android:textSize="17sp"/>
 
