@@ -311,6 +311,72 @@ Android Developers (n.d.) Picasso Documentation. [Online]. Available at: https:/
 StackOverflow (n.d.) Handling multiple images and spinners. [Online]. Available at: https://stackoverflow.com 
 [Accessed: 22 September 2024].
 
+Anon., 2020. GeeksforGeeks. [Online] 
+Available at: https://www.geeksforgeeks.org/how-to-send-message-on-whatsapp-in-android-using-kotlin/
+[Accessed 18 September 2024].
+
+Domenic, 2022. Youtube - The Android Factory. [Online] 
+Available at: https://www.youtube.com/watch?v=-u4w_-x_3_I
+[Accessed 17 September 2024].
+
+Domenic, 2022. Youtube - The Androif Studio. [Online] 
+Available at: https://www.youtube.com/watch?v=339-fxTcrmI
+[Accessed 17 Septermber 2024].
+
+Evan, 2020. Youtube. [Online] 
+Available at: https://www.youtube.com/watch?v=vj9aY9b5hIg
+[Accessed 18 September 2024].
+
+Grier, M., 2020. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/65504266/kotlin-not-java-how-to-use-maketoast-within-a-fragment-or-make-a-click-work-in
+[Accessed 13 September 2024].
+
+Lackner, P., 2024. Youtube, How to Implement Biometric Auth in Your Android App. [Online] 
+Available at: https://www.youtube.com/watch?v=_dCRQ9wta-I
+[Accessed 12 October 2024].
+
+Malhotra, S., 2024. Youtube, Add Multilingual support (Multiple Languages) to your Android App. [Online] 
+Available at: https://www.youtube.com/watch?v=ObgmK3BywKI&t=134s
+[Accessed 29 October 2024].
+
+minikate, 2019. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/54784101/firebase-android-get-current-user-email
+[Accessed 13 September 2024].
+
+Mourya, A. K., 2023. Medium. [Online] 
+Available at: https://medium.com/@mr.appbuilder/navigating-android-fragments-with-the-navigation-component-part-1-1d238e000313
+[Accessed 15 September 2024].
+
+Obregon, A., 2023. Medium. [Online] 
+Available at: https://medium.com/@AlexanderObregon/using-kotlin-with-firebase-a-guide-for-android-app-developers-28f3fd2b57bc
+[Accessed 13 September 2024].
+
+Pachigolla, R. k., 2013. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/14619234/how-to-make-toast-message-when-button-is-clicked
+[Accessed 12 September 2024].
+
+Poulopoulos, D., 2015. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/30846973/getting-arguments-from-a-bundle
+[Accessed 17 September 2024].
+
+Raghunandan, 2013. Stack Overflow. [Online] 
+Available at: https://stackoverflow.com/questions/17599450/how-to-inflate-view-inside-fragment
+[Accessed 13 September 2024].
+
+Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online] 
+Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+[Accessed 12 October 2024].
+
+ShoutCafe, 2023. [Online] 
+Available at: https://www.youtube.com/watch?v=jWiiL8G4jbo
+[Accessed 15 September 2024].
+
+Shukert, T., 2023. Youtube, Getting started with Android and Supabase. [Online] 
+Available at: https://www.youtube.com/watch?v=_iXUVJ6HTHU
+[Accessed 01 November 2024].
+
+
+
 
 
 
