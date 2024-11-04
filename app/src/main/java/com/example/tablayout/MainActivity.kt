@@ -125,9 +125,9 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.Toast101), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.Toast102), Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -1,5 +1,4 @@
 <resources>
-
     <!--based on recent multilanguage incorporation we have to put all our toast messages in our strings.xml file
         instead of hardcoding it-->
     <string name="Toast1">Please Select A Car To Book A Test Drive</string>
@@ -126,6 +125,13 @@
     <string name="Toast95">Price Comparison Applied</string>
     <string name="Toast96">No Prices To Compare</string>
 
+    <string name="Toast97">No Push Notifications Settings Found</string>
+    <string name="Toast98">Push Notifications Enabled Successfully</string>
+    <string name="Toast100">Push Notifications Disabled Successfully</string>
+    <string name="Toast99">Error Enabling Push Notifications</string>
+
+    <string name="Toast101">Notification permission granted</string>
+    <string name="Toast102">Notification permission denied</string>
 
 
     <string name="app_name">Legit Auto Cars</string>
@@ -451,5 +457,4 @@
     <string name="mileage">Mileage</string>
     <string name="transmission">Transmission</string>
     <string name="location">Location</string>
-
 </resources>

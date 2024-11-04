@@ -142,7 +142,7 @@ class Settings : Fragment() {
                             Toast.makeText(requireContext(), getString(R.string.Toast68) + email, Toast.LENGTH_SHORT).show()
                         }
                     }
-            }.addOnFailureListener{ exception ->
+                }.addOnFailureListener{ exception ->
                     Toast.makeText(requireContext(), getString(R.string.Toast69), Toast.LENGTH_SHORT).show()
                 }
         }
@@ -167,54 +167,54 @@ class Settings : Fragment() {
     private fun handleBiometricClick()
     {
         //On click for button
-            biometricButton.setOnClickListener {
-                //Check to see the current value of the biometrics field
-                if(biometricsEnabled == false)
+        biometricButton.setOnClickListener {
+            //Check to see the current value of the biometrics field
+            if(biometricsEnabled == false)
+            {
+                // Use BiometricManager to check if biometric features are available and enabled
+                val biometricManager = BiometricManager.from(requireContext())
+                val canAuthenticate = biometricManager.canAuthenticate(
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG
+                            or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+                //The following code checks to see if the users device can support biometrics before allows them to enable it
+                when(canAuthenticate)
                 {
-                    // Use BiometricManager to check if biometric features are available and enabled
-                    val biometricManager = BiometricManager.from(requireContext())
-                    val canAuthenticate = biometricManager.canAuthenticate(
-                        BiometricManager.Authenticators.BIOMETRIC_STRONG
-                                or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-                    //The following code checks to see if the users device can support biometrics before allows them to enable it
-                    when(canAuthenticate)
-                    {
-                        BiometricManager.BIOMETRIC_SUCCESS ->{
-                            //If biometrics is successfully checked and works then we can enable the settings in user preferences
-                            enableBiometricFields()
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->{
-                            // Device does not have biometric hardware
-                            Toast.makeText(requireActivity(), getString(R.string.Toast70),
-                                Toast.LENGTH_LONG).show()
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->{
-                            // Devices hardware is currently unavailable
-                            Toast.makeText(requireContext(), getString(R.string.Toast71),
-                                Toast.LENGTH_LONG).show()
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->{
-                            // Devices supports biometrics but user has now set it up yet
-                            Toast.makeText(requireContext(), getString(R.string.Toast72),
-                                Toast.LENGTH_LONG).show()
-                        }
-                        else ->{
-                            // Unknown error
-                            Toast.makeText(
-                                requireContext(),
-                                getString(R.string.Toast73),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                    BiometricManager.BIOMETRIC_SUCCESS ->{
+                        //If biometrics is successfully checked and works then we can enable the settings in user preferences
+                        enableBiometricFields()
+                    }
+                    BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->{
+                        // Device does not have biometric hardware
+                        Toast.makeText(requireActivity(), getString(R.string.Toast70),
+                            Toast.LENGTH_LONG).show()
+                    }
+                    BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->{
+                        // Devices hardware is currently unavailable
+                        Toast.makeText(requireContext(), getString(R.string.Toast71),
+                            Toast.LENGTH_LONG).show()
+                    }
+                    BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->{
+                        // Devices supports biometrics but user has now set it up yet
+                        Toast.makeText(requireContext(), getString(R.string.Toast72),
+                            Toast.LENGTH_LONG).show()
+                    }
+                    else ->{
+                        // Unknown error
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.Toast73),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-                else if(biometricsEnabled == true)
-                {
-                    //If field is already enabled this means that their device supports biometrics and we can then just disable it
-                    disableBiometricFields()
-                }
-
             }
+            else if(biometricsEnabled == true)
+            {
+                //If field is already enabled this means that their device supports biometrics and we can then just disable it
+                disableBiometricFields()
+            }
+
+        }
     }
 
     private fun handleLangaugeClick()
@@ -237,8 +237,18 @@ class Settings : Fragment() {
     private fun handlePushNotificationClick()
     {
         pushNotificationButton.setOnClickListener{
-            //According to Grier (2020), this is how we create a toast message inside of a fragment
-            Toast.makeText(requireContext(),getString(R.string.Toast75), Toast.LENGTH_SHORT).show()
+            if(pushNotificationsEnabled == true)
+            {
+                disablePush()
+            }
+            else if (pushNotificationsEnabled == false)
+            {
+                enablePush()
+            }
+            else
+            {
+                Toast.makeText(requireContext(), getString(R.string.Toast97), Toast.LENGTH_LONG).show()
+            }
         }
     }
     private fun handleThemeClick()
@@ -515,6 +525,120 @@ class Settings : Fragment() {
         }
         else
         {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Toast79),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    /*The following method enables the users pushnotifications preference in firestore, this code was inspired from the following video:
+        The following code was inspired from the following youtube video:
+        Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+        Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+        [Accessed 12 October 2024].*/
+    private fun enablePush()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update pushnotifications field in Firestore to true
+                            document.reference.update("PushNotificationsEnabled", true)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast98), // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    pushNotificationsEnabled = true
+                                    // Update our button text accordingly
+                                    pushNotificationButton.text = "ON" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast99),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.Toast78),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Toast79),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+    /*The following method disables the users pushnotifications preference in firestore, this code was inspired from the following video:
+        The following code was inspired from the following youtube video:
+        Risky, A., 2019. Youtube, Add and Display Data Firestore — Kotlin Android Studio tutorial — Part 2. [Online]
+        Available at: https://www.youtube.com/watch?v=7fkXdfaMRPw
+        [Accessed 12 October 2024].*/
+    private fun disablePush()
+    {
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        // Store current user's email
+        val user: FirebaseUser? = auth.currentUser
+        val email = user?.email
+
+        if (email != null) {
+            val settingsRef = db.collection("Settings")
+            settingsRef.whereEqualTo("Email", email).get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            // Update pushnotifications field in Firestore to true
+                            document.reference.update("PushNotificationsEnabled", false)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast100), // Update success message
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    // Update our local biometricsEnabled variable to false
+                                    pushNotificationsEnabled = false
+                                    // Update our button text accordingly
+                                    pushNotificationButton.text = "OFF" // Set button text to OFF
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        getString(R.string.Toast99),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.Toast78),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        } else {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.Toast79),
