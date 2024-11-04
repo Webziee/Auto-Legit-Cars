@@ -40,6 +40,11 @@ This comprehensive read me file will provide you with an overview of our project
 - Please note that we do not recognise (Faten848), this person is not apart of our group and we have no idea why and how he/she joined our repo link
   
 ### 3.1 Evidence Of Preperation For Google Play Store Publication
+![Play Store Publication 01](https://github.com/user-attachments/assets/352183e7-b472-4383-a5af-2febf76f9fca)
+
+![Play Store Publication 02](https://github.com/user-attachments/assets/fa91dda9-7deb-4fd4-9bf3-9594fcc5bc76)
+
+![Play Store Publication 03](https://github.com/user-attachments/assets/6a33f81b-333e-4768-9a6e-a37f5bf49679)
 
 
 ## 4. TEAM MEMBER GROUP RATING AND COMMIT EVIDENCE
