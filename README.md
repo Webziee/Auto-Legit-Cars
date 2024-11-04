@@ -33,11 +33,14 @@ This comprehensive read me file will provide you with an overview of our project
    - [9.5 Conclusion](#95-conclusion)
 10. [Reference List](#reference-list)
 
-## 3. TEAM MEMBERS
+## 3. TEAM MEMBERS & Evidence Of Preperation For Google Play Store Publication
 - Ashwin Pillay (ST10088734)
 - Tristan Singh (ST10022401)
 - Jaiden Naidoo (10218221)
 - Please note that we do not recognise (Faten848), this person is not apart of our group and we have no idea why and how he/she joined our repo link
+  
+### 3.1 Evidence Of Preperation For Google Play Store Publication
+
 
 ## 4. TEAM MEMBER GROUP RATING AND COMMIT EVIDENCE
 ### 4.1 Group Rating
