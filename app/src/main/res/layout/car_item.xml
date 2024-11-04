@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:contentDescription="@string/placeholder"
-        android:src="@drawable/carplaceholder" />
+         />
 
     <TextView
         android:id="@+id/carModelTextView"
