@@ -91,11 +91,11 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 ### 7.1 Release Notes
 POE Part 1 
 ----------
-This part consisted of the comprehensive research, planning and design of our app, including screen designs, features to be implemented and requirementes to meet. in part 2 we started to address all of these items.
+This version consisted of the comprehensive research, planning and design of our app, including screen designs, features to be implemented and requirementes to meet. in part 2 we started to address all of these items.
 
 POE Part 2
 ----------
-The following features/requirements were implemented/met in this part based on the research/ planning and design document.
+The following features/requirements were implemented/met in this version based on the research/ planning and design document.
 - App Runs on Mobile Device ✓
 - Feature: SSO Sign-in ✓
 - Feature: Settings Menu ✓
@@ -109,7 +109,7 @@ The following features/requirements were implemented/met in this part based on t
 
 POE Part 3
 ----------
-The following features/requirements were implemented/met in this part based on the shortcomings of POE part 2: 
+The following features/requirements were implemented/met in this version based on the shortcomings of POE part 2: 
 - App Runs on Mobile Device ✓
 - Feature Biometric Authentication Implemented ✓
 - Feature Offline Mode Implemented ✓
