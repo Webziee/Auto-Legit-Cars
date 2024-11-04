@@ -88,7 +88,7 @@ with a tick or cross indicating if that feature/functionality as been indluded o
 - Automated Testing ✓
 - Demonstration Video ✓
 - Published on Google Play Store
-# 7.1 Release Notes
+### 7.1 Release Notes
 POE Part 1 
 ----------
 This part consisted of the comprehensive research, planning and design of our app, including screen designs, features to be implemented and requirementes to meet. in part 2 we started to address all of these items.
